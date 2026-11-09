@@ -367,3 +367,4 @@ export const ARTICLES: ResourceArticle[] = [
 export function getArticleBySlug(slug: string): ResourceArticle | undefined {
   return ARTICLES.find((art) => art.slug === slug);
 }
+

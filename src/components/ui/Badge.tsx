@@ -23,3 +23,4 @@ export function Badge({ variant = "steel", className, children, ...props }: Badg
     </span>
   );
 }
+

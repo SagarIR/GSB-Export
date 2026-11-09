@@ -135,3 +135,4 @@ export function generateCustomerAcknowledgementHtml(data: any): string {
     </div>
   `;
 }
+

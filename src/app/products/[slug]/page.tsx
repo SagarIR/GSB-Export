@@ -352,3 +352,4 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
     </div>
   );
 }
+

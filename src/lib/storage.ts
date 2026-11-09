@@ -82,3 +82,4 @@ export async function storeAttachment(file: File): Promise<StoredFileMetadata> {
     fileSize: buffer.length,
   };
 }
+

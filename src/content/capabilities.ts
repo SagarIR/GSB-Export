@@ -61,3 +61,4 @@ export const CAPABILITIES = {
   ],
   disclaimer: "GSB Export operates as a specialized export supplier and supply-chain coordinator. Manufacturing operations are executed in specialized partner facilities subject to strict QA oversight."
 };
+

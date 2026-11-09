@@ -105,3 +105,4 @@ export const APPLICATION_CASES: ApplicationCase[] = [
     ]
   }
 ];
+

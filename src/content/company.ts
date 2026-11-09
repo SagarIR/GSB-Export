@@ -58,3 +58,4 @@ export const COMPANY_INFO = {
     { name: "European Markets", region: "Europe", status: "Target Market", keySectors: "Specialty Chemicals, Industrial Manufacturing" }
   ]
 };
+

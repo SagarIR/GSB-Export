@@ -34,3 +34,4 @@ export const contactSchema = z.object({
 
 export type RFQFormData = z.infer<typeof rfqSchema>;
 export type ContactFormData = z.infer<typeof contactSchema>;
+

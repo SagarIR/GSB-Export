@@ -289,3 +289,4 @@ export const PRODUCTS: Product[] = [
 export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug);
 }
+

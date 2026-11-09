@@ -38,3 +38,4 @@ export function checkRateLimit(
   existing.count += 1;
   return { allowed: true, remaining: limit - existing.count, resetAt: existing.resetAt };
 }
+

@@ -181,3 +181,4 @@ export default function ProductsOverviewPage() {
     </div>
   );
 }
+

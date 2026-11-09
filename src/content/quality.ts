@@ -61,3 +61,4 @@ export const QUALITY_SYSTEM = {
   ],
   standardsDisclaimer: "Quality standards, design stamps, and inspection witnessing protocols are established based on individual project specifications, client engineering standards, and target country regulations."
 };
+

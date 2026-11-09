@@ -208,3 +208,4 @@ export const INDUSTRIES: Industry[] = [
 export function getIndustryBySlug(slug: string): Industry | undefined {
   return INDUSTRIES.find((ind) => ind.slug === slug);
 }
+
