@@ -1,0 +1,116 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { BookOpen, Clock, ArrowRight, FileText, CheckCircle2 } from "lucide-react";
+import { ARTICLES } from "@/content/resources";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+
+export const metadata: Metadata = {
+  title: "Technical Resources & Thermal Guides | Knowledge Base",
+  description:
+    "Authoritative technical articles on industrial heat exchangers: LMTD calculation, metallurgy selection, Shell & Tube vs Plate comparison, and maintenance.",
+};
+
+export default function ResourcesPage() {
+  const categories = ["All", "Fundamentals", "Comparison", "Engineering Design", "Maintenance & Operations"];
+
+  return (
+    <div className="bg-white">
+      {/* Header Banner */}
+      <section className="bg-navy py-16 sm:py-20 text-white relative overflow-hidden border-b border-steel/30">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
+        <Container className="relative z-10">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-widest uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
+              Engineering Knowledge Base
+            </span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Technical Resources &amp; Guides
+            </h1>
+            <p className="mt-4 text-base sm:text-lg text-silver leading-relaxed">
+              In-depth engineering articles on thermodynamics, equipment comparison, metallurgy for harsh corrosive service, and heat exchanger maintenance best practices.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Main Articles Listing */}
+      <section className="py-16 sm:py-20 bg-offwhite">
+        <Container>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {ARTICLES.map((article) => (
+              <article
+                key={article.id}
+                className="bg-white border border-silver/70 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-steel/60 transition-all duration-200 flex flex-col justify-between group"
+              >
+                <div className="p-6 sm:p-7">
+                  <div className="flex items-center justify-between text-xs text-graphite/60 mb-3">
+                    <span className="bg-steel/10 text-steel font-bold uppercase tracking-wider px-2.5 py-0.5 rounded text-[10px]">
+                      {article.category}
+                    </span>
+                    <span className="flex items-center gap-1 text-[11px]">
+                      <Clock className="w-3.5 h-3.5 text-copper" />
+                      <span>{article.readTime}</span>
+                    </span>
+                  </div>
+
+                  <h2 className="text-base sm:text-lg font-bold text-navy group-hover:text-copper transition-colors mb-3 line-clamp-2">
+                    <Link href={`/resources/${article.slug}`}>
+                      {article.title}
+                    </Link>
+                  </h2>
+
+                  <p className="text-xs text-graphite/80 leading-relaxed line-clamp-3 mb-4">
+                    {article.summary}
+                  </p>
+
+                  <div className="bg-offwhite p-3 rounded border border-silver/50 text-[11px] text-graphite">
+                    <span className="font-bold text-navy block mb-1">Key Takeaway:</span>
+                    <p className="text-graphite/80 line-clamp-2">
+                      {article.keyTakeaways[0]}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="px-6 pb-6 pt-3 border-t border-silver/40 flex items-center justify-between">
+                  <span className="text-[11px] text-graphite/60">
+                    {article.publishDate}
+                  </span>
+                  <Link
+                    href={`/resources/${article.slug}`}
+                    className="text-xs font-bold text-steel group-hover:text-copper flex items-center gap-1 transition-colors"
+                  >
+                    <span>Read Full Guide</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="py-14 bg-navy text-white">
+        <Container>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                Have Questions on Sizing or Equipment Selection?
+              </h3>
+              <p className="text-xs sm:text-sm text-silver max-w-xl">
+                Our thermal engineering coordinators can assist with LMTD verification, fluid property calculations, and equipment budgeting.
+              </p>
+            </div>
+            <Link
+              href="/request-a-quote"
+              className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded shrink-0"
+            >
+              Consult an Engineer
+            </Link>
+          </div>
+        </Container>
+      </section>
+    </div>
+  );
+}

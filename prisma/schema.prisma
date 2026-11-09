@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum EnquiryType {
+  RFQ
+  GENERAL
+}
+
+enum EnquiryStatus {
+  NEW
+  REVIEWED
+  REPLIED
+  CLOSED
+}
+
+model Enquiry {
+  id                    String              @id @default(uuid())
+  referenceNumber       String              @unique
+  enquiryType           EnquiryType         @default(RFQ)
+  status                EnquiryStatus       @default(NEW)
+  name                  String
+  company               String?
+  email                 String
+  phone                 String?
+  country               String
+  companyWebsite        String?
+  subject               String?
+  productCategory       String?
+  quantity              String?
+  fluidType             String?
+  inletTemperature      String?
+  outletTemperature     String?
+  operatingPressure     String?
+  flowRate              String?
+  material              String?
+  deliveryDestination   String?
+  technicalRequirements String?
+  message               String?
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  attachments           EnquiryAttachment[]
+
+  @@index([referenceNumber])
+  @@index([enquiryType])
+  @@index([status])
+  @@index([email])
+  @@index([createdAt])
+}
+
+model EnquiryAttachment {
+  id               String   @id @default(uuid())
+  enquiryId        String
+  originalFilename String
+  storageKey       String
+  mimeType         String
+  fileSize         Int
+  createdAt        DateTime @default(now())
+
+  enquiry          Enquiry  @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+
+  @@index([enquiryId])
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <rect width="600" height="400" fill="#10263D" />
+  <g transform="translate(60, 40)">
+    <!-- Anaerobic Sludge Digester Dome -->
+    <path d="M 60 220 L 60 140 C 60 80 180 80 180 140 L 180 220 Z" fill="#163248" stroke="#234D70" stroke-width="2.5" />
+    <circle cx="120" cy="150" r="25" fill="none" stroke="#D88B35" stroke-width="2" stroke-dasharray="4 4" />
+    
+    <!-- Heavy Sludge Spiral Exchanger Body -->
+    <g transform="translate(240, 100)">
+      <circle cx="80" cy="80" r="65" fill="#163248" stroke="#D88B35" stroke-width="2.5" />
+      <!-- Spiral Channel lines -->
+      <path d="M 80 80 A 10 10 0 0 1 90 80 A 20 20 0 0 1 70 80 A 30 30 0 0 1 100 80 A 40 40 0 0 1 60 80 A 50 50 0 0 1 110 80" 
+            fill="none" stroke="#D8DEE5" stroke-width="3" />
+      <circle cx="80" cy="80" r="8" fill="#D88B35" />
+    </g>
+
+    <!-- Sludge Slurry Loop Piping -->
+    <path d="M 180 180 L 240 180" stroke="#D88B35" stroke-width="3" />
+    <polygon points="215,176 225,180 215,184" fill="#D88B35" />
+    <path d="M 320 220 L 320 260 L 120 260 L 120 220" stroke="#234D70" stroke-width="3" fill="none" />
+    <polygon points="124,235 120,225 116,235" fill="#234D70" />
+  </g>
+  <text x="50" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">Water, Wastewater &amp; Desalination</text>
+  <text x="50" y="380" font-family="'Inter', sans-serif" font-size="12" fill="#D88B35">Clog-Resistant Spiral Sludge &amp; Titanium Brine Heating</text>
+</svg>

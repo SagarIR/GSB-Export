@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <rect width="600" height="400" fill="#10263D" />
+  <g transform="translate(60, 40)">
+    <!-- District Cooling ETS Heat Transfer Station -->
+    <rect x="60" y="80" width="160" height="200" rx="8" fill="#163248" stroke="#234D70" stroke-width="2" />
+    <circle cx="140" cy="140" r="30" fill="none" stroke="#D8DEE5" stroke-width="3" stroke-dasharray="6 4" />
+    
+    <!-- Plate Exchanger Core Inside Chiller Room -->
+    <rect x="260" y="90" width="60" height="180" fill="#234D70" stroke="#D88B35" stroke-width="2" rx="4" />
+    <line x1="260" y1="120" x2="320" y2="120" stroke="#D8DEE5" stroke-width="2" />
+    <line x1="260" y1="150" x2="320" y2="150" stroke="#D88B35" stroke-width="2" />
+    <line x1="260" y1="180" x2="320" y2="180" stroke="#D8DEE5" stroke-width="2" />
+    <line x1="260" y1="210" x2="320" y2="210" stroke="#D88B35" stroke-width="2" />
+    <line x1="260" y1="240" x2="320" y2="240" stroke="#D8DEE5" stroke-width="2" />
+
+    <!-- Chilled Water Flow Circulation -->
+    <path d="M 220 120 L 260 120" stroke="#356B98" stroke-width="3" />
+    <path d="M 320 120 L 390 120 L 390 220 L 320 220" stroke="#356B98" stroke-width="3" fill="none" />
+    
+    <!-- Building Schematic in Background -->
+    <rect x="390" y="50" width="70" height="230" fill="none" stroke="#234D70" stroke-width="2" />
+    <rect x="405" y="70" width="15" height="15" fill="#D8DEE5" opacity="0.4" />
+    <rect x="430" y="70" width="15" height="15" fill="#D8DEE5" opacity="0.4" />
+    <rect x="405" y="100" width="15" height="15" fill="#D88B35" opacity="0.8" />
+    <rect x="430" y="100" width="15" height="15" fill="#D8DEE5" opacity="0.4" />
+    <rect x="405" y="130" width="15" height="15" fill="#D8DEE5" opacity="0.4" />
+    <rect x="430" y="130" width="15" height="15" fill="#D8DEE5" opacity="0.4" />
+  </g>
+  <text x="50" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">HVAC, District Cooling &amp; Chillers</text>
+  <text x="50" y="380" font-family="'Inter', sans-serif" font-size="12" fill="#D88B35">High-COP Plate Substations &amp; Shell Chiller Evaporators</text>
+</svg>
