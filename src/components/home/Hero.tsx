@@ -8,11 +8,11 @@ import { Container } from "@/components/ui/Container";
 export function Hero() {
   return (
     <section className="relative bg-navy overflow-hidden py-16 sm:py-24 lg:py-28 text-white border-b border-steel/30">
-      {/* Background Industrial Schematic Artwork */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+      {/* Background Industrial Plant Photography */}
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
         <Image
-          src="/images/hero/industrial-plant-schematic.svg"
-          alt="Industrial Thermal Transfer Plant Schematic"
+          src="/images/hero/industrial-plant.png"
+          alt="Industrial Thermal Transfer Plant & Refinery Complex"
           fill
           className="object-cover object-center"
           priority
@@ -103,7 +103,7 @@ export function Hero() {
               {/* Schematic Graphic */}
               <div className="relative aspect-[16/10] bg-navy-950 rounded-lg overflow-hidden border border-silver/20 mb-4">
                 <Image
-                  src="/images/products/shell-and-tube.svg"
+                  src="/images/products/shell-and-tube.png"
                   alt="Shell and Tube Heat Exchanger Schematic"
                   fill
                   className="object-contain p-2"

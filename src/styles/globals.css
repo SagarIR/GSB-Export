@@ -4,23 +4,29 @@
 
 @layer base {
   :root {
-    --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-primary: Georgia, 'Times New Roman', Times, serif;
+    --font-sans: Georgia, 'Times New Roman', Times, serif;
+    --font-heading: Georgia, 'Times New Roman', Times, serif;
+    --font-serif: Georgia, 'Times New Roman', Times, serif;
+    --font-inter: Georgia, 'Times New Roman', Times, serif;
 
-    /* Theme colors */
-    --color-navy: #10263D;
-    --color-steel: #234D70;
-    --color-offwhite: #F3F5F7;
-    --color-silver: #D8DEE5;
-    --color-copper: #D88B35;
-    --color-graphite: #202A35;
+    /* GSB Official Brand Colors from Logo */
+    --color-brand-navy: #0A1C33;
+    --color-brand-blue: #0F4C81;
+    --color-brand-orange: #F36C21;
+    --color-brand-ice: #F6F9FC;
+    --color-brand-dark: #050E1A;
+  }
+
+  *, *::before, *::after {
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
   }
 
   html {
     scroll-behavior: smooth;
-    color: var(--color-graphite);
+    color: #1E293B;
     background-color: #FFFFFF;
-    font-family: var(--font-inter);
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -30,74 +36,84 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    letter-spacing: -0.02em;
-    color: var(--color-navy);
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+    color: #0A1C33;
+    letter-spacing: -0.015em;
+  }
+
+  p, span, a, button, input, textarea, select, label, table, th, td, div, li, ul, nav, header, footer {
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
   }
 }
 
 @layer components {
-  /* Industrial button styles */
-  .btn-copper {
-    @apply inline-flex items-center justify-center font-semibold text-white bg-copper hover:bg-copper-dark transition-all duration-200 px-6 py-3 rounded shadow-sm hover:shadow active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-copper focus:ring-offset-2;
+  /* GSB Official Brand Button Styles */
+  .btn-copper,
+  .btn-brand-orange {
+    @apply inline-flex items-center justify-center font-semibold text-white bg-[#F36C21] hover:bg-[#D9550D] transition-all duration-200 px-6 py-2.5 rounded-full shadow-sm hover:shadow-md active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#F36C21]/50 focus:ring-offset-2;
   }
 
-  .btn-navy {
-    @apply inline-flex items-center justify-center font-semibold text-white bg-navy hover:bg-navy-900 transition-all duration-200 px-6 py-3 rounded shadow-sm hover:shadow active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2;
+  .btn-navy,
+  .btn-brand-navy {
+    @apply inline-flex items-center justify-center font-semibold text-white bg-[#0A1C33] hover:bg-[#081628] transition-all duration-200 px-6 py-2.5 rounded-full shadow-sm hover:shadow-md active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#0A1C33]/50 focus:ring-offset-2;
+  }
+
+  .btn-forest {
+    @apply inline-flex items-center justify-center font-semibold text-white bg-[#0A1C33] hover:bg-[#0F4C81] transition-all duration-200 px-6 py-2.5 rounded-full shadow-sm hover:shadow-md active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#0A1C33]/50 focus:ring-offset-2;
+  }
+
+  .btn-outline-navy {
+    @apply inline-flex items-center justify-center font-semibold text-[#0A1C33] hover:text-white bg-white hover:bg-[#0A1C33] border border-[#0A1C33]/30 transition-all duration-200 px-6 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-[#0A1C33]/50;
+  }
+
+  .btn-outline-forest,
+  .btn-outline-orange {
+    @apply inline-flex items-center justify-center font-semibold text-[#F36C21] hover:text-white bg-white hover:bg-[#F36C21] border border-[#F36C21]/40 transition-all duration-200 px-6 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-[#F36C21]/50;
   }
 
   .btn-outline-steel {
-    @apply inline-flex items-center justify-center font-semibold text-steel hover:text-white bg-transparent hover:bg-steel border border-steel transition-all duration-200 px-6 py-3 rounded focus:outline-none focus:ring-2 focus:ring-steel focus:ring-offset-2;
+    @apply inline-flex items-center justify-center font-semibold text-[#0F4C81] hover:text-white bg-transparent hover:bg-[#0F4C81] border border-[#0F4C81] transition-all duration-200 px-6 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-[#0F4C81] focus:ring-offset-2;
   }
 
   .btn-outline-white {
-    @apply inline-flex items-center justify-center font-semibold text-white hover:text-navy bg-transparent hover:bg-white border border-white/80 transition-all duration-200 px-6 py-3 rounded focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+    @apply inline-flex items-center justify-center font-semibold text-white hover:text-[#0A1C33] bg-transparent hover:bg-white border border-white/80 transition-all duration-200 px-6 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
   }
 
-  /* Industrial badges & labels */
-  .badge-copper {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-copper/10 text-copper-dark border border-copper/20;
-  }
-
-  .badge-steel {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-steel/10 text-steel border border-steel/20;
+  /* Micro pill badges */
+  .badge-orange {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-orange-50 text-[#C2410C] border border-orange-200/80;
   }
 
   .badge-navy {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold tracking-wider uppercase bg-navy/10 text-navy border border-navy/20;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-slate-100 text-[#0A1C33] border border-slate-200/80;
   }
 
-  /* Technical specs card */
-  .tech-card {
-    @apply bg-white border border-silver/60 rounded-lg p-6 hover:border-steel/40 transition-colors duration-200 shadow-sm;
+  .badge-blue {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-blue-50 text-[#0F4C81] border border-blue-200/80;
   }
 
-  .tech-table {
-    @apply w-full text-left text-sm border-collapse;
+  .badge-mint {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-emerald-50 text-emerald-800 border border-emerald-200/60;
   }
 
-  .tech-table th {
-    @apply bg-offwhite text-navy font-semibold px-4 py-3 border-b border-silver;
-  }
-
-  .tech-table td {
-    @apply px-4 py-3 border-b border-silver/40 text-graphite font-normal;
+  /* Soft card container */
+  .card-ref {
+    @apply bg-white border border-slate-200/80 rounded-2xl p-6 transition-all duration-300 hover:border-[#F36C21]/50 hover:shadow-soft-card;
   }
 }
 
-/* Subtle grid line background for engineering look */
-.bg-grid-pattern {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(216, 222, 229, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(216, 222, 229, 0.25) 1px, transparent 1px);
-}
-
+/* Subtle dot pattern with navy/slate tint */
 .bg-dot-pattern {
   background-size: 20px 20px;
-  background-image: radial-gradient(circle, rgba(35, 77, 112, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(10, 28, 51, 0.07) 1.2px, transparent 1.2px);
 }
 
+/* Giant architectural watermark in footer */
+.footer-watermark {
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+}

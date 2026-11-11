@@ -39,7 +39,7 @@ const requiredFiles = [
   "src/app/api/contact/route.ts",
   "src/app/api/health/route.ts",
   "prisma/schema.prisma",
-  "public/logo/gsb-logo.svg",
+  "public/logo/gsb-logo.png",
 ];
 
 for (const relPath of requiredFiles) {
@@ -48,18 +48,18 @@ for (const relPath of requiredFiles) {
   console.log(`  ✓ File verified: ${relPath}`);
 }
 
-// 2. Verify 5 Product SVGs
-console.log("\n2. Checking Product SVGs...");
-const productSvgs = [
-  "public/images/products/shell-and-tube.svg",
-  "public/images/products/plate-heat-exchanger.svg",
-  "public/images/products/air-cooled.svg",
-  "public/images/products/double-pipe.svg",
-  "public/images/products/spiral.svg",
+// 2. Verify 5 Product PNG Images
+console.log("\n2. Checking Product Images (PNG)...");
+const productImages = [
+  "public/images/products/shell-and-tube.png",
+  "public/images/products/plate-heat-exchanger.png",
+  "public/images/products/air-cooled.png",
+  "public/images/products/double-pipe.png",
+  "public/images/products/spiral.png",
 ];
-for (const svg of productSvgs) {
-  assert.ok(fs.existsSync(path.join(process.cwd(), svg)), `Missing SVG: ${svg}`);
-  console.log(`  ✓ Product visual exists: ${svg}`);
+for (const img of productImages) {
+  assert.ok(fs.existsSync(path.join(process.cwd(), img)), `Missing Image: ${img}`);
+  console.log(`  ✓ Product visual exists: ${img}`);
 }
 
 // 3. Verify Zod Schema Rules

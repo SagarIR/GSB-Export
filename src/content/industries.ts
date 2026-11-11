@@ -43,7 +43,7 @@ export const INDUSTRIES: Industry[] = [
       { name: "Double Pipe Heat Exchanger", slug: "double-pipe", reason: "Best for extreme high-pressure gas heating and thermal cross duties" }
     ],
     standardsAndCompliance: ["ASME BPVC Section VIII Div 1 & 2", "API Standard 660", "API Standard 661", "TEMA Class R", "NACE MR0175 / ISO 15156"],
-    image: "/images/industries/oil-gas.svg"
+    image: "/images/industries/oil-gas.png"
   },
   {
     id: "chemical-petrochemical",
@@ -70,7 +70,7 @@ export const INDUSTRIES: Industry[] = [
       { name: "Spiral Heat Exchanger", slug: "spiral", reason: "Single-channel self-cleaning flow for viscous resins and slurried crystallizers" }
     ],
     standardsAndCompliance: ["ASME Section VIII Div 1", "TEMA Class B (Chemical Service)", "EN 13445", "PED 2014/68/EU"],
-    image: "/images/industries/chemical.svg"
+    image: "/images/industries/chemical.png"
   },
   {
     id: "food-beverage",
@@ -96,7 +96,7 @@ export const INDUSTRIES: Industry[] = [
       { name: "Spiral Heat Exchanger", slug: "spiral", reason: "Handles thick fruit purees, mash, and distillery spent wash without clogging" }
     ],
     standardsAndCompliance: ["3-A Sanitary Standards", "FDA 21 CFR Compliant Gaskets", "EHEDG Guidelines", "ASME BPE"],
-    image: "/images/industries/food-beverage.svg"
+    image: "/images/industries/food-beverage.png"
   },
   {
     id: "pharmaceutical",
@@ -122,7 +122,7 @@ export const INDUSTRIES: Industry[] = [
       { name: "Shell and Tube Heat Exchanger", slug: "shell-and-tube", reason: "Double tubesheet (DTS) configuration guaranteeing zero cross-contamination in WFI loops" }
     ],
     standardsAndCompliance: ["ASME BPE (Bioprocessing Equipment)", "cGMP Compliance", "EN 10204 3.1 Material Certification", "FDA 21 CFR"],
-    image: "/images/industries/pharmaceutical.svg"
+    image: "/images/industries/pharmaceutical.png"
   },
   {
     id: "power-generation",
@@ -149,7 +149,7 @@ export const INDUSTRIES: Industry[] = [
       { name: "Plate Heat Exchanger", slug: "plate-heat-exchanger", reason: "Compact closed-circuit auxiliary cooling water systems" }
     ],
     standardsAndCompliance: ["ASME Section VIII Div 1 & Div 2", "HEI (Heat Exchange Institute) Standards", "TEMA Class R", "TUV / PED"],
-    image: "/images/industries/power-generation.svg"
+    image: "/images/industries/power-generation.png"
   },
   {
     id: "hvac-refrigeration",
@@ -175,7 +175,7 @@ export const INDUSTRIES: Industry[] = [
       { name: "Shell and Tube Heat Exchanger", slug: "shell-and-tube", reason: "Rugged DX evaporators and shell-and-tube water-cooled condensers for chillers" }
     ],
     standardsAndCompliance: ["AHRI Standard 400 (Liquid to Liquid Heat Exchangers)", "ASHRAE Standard 90.1", "ASME Section VIII Div 1"],
-    image: "/images/industries/hvac.svg"
+    image: "/images/industries/hvac.png"
   },
   {
     id: "water-wastewater",
@@ -201,7 +201,7 @@ export const INDUSTRIES: Industry[] = [
       { name: "Plate Heat Exchanger", slug: "plate-heat-exchanger", reason: "Titanium plate units for seawater desalination pre-heating and brine cooling" }
     ],
     standardsAndCompliance: ["ASME Section VIII Div 1", "EN 13445", "ISO 14001 Environmental Guidelines"],
-    image: "/images/industries/water-treatment.svg"
+    image: "/images/industries/water-treatment.png"
   }
 ];
 

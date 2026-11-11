@@ -29,11 +29,11 @@ export default function NotFound() {
               <Link href="/industries" className="text-steel hover:text-copper hover:underline">
                 • Industries We Serve
               </Link>
-              <Link href="/engineering-solutions" className="text-steel hover:text-copper hover:underline">
-                • Engineering Solutions
+              <Link href="/about-us" className="text-steel hover:text-copper hover:underline">
+                • About Us
               </Link>
-              <Link href="/resources" className="text-steel hover:text-copper hover:underline">
-                • Technical Knowledge Base
+              <Link href="/contact-us" className="text-steel hover:text-copper hover:underline">
+                • Contact Us
               </Link>
             </div>
           </div>

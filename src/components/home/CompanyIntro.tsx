@@ -36,7 +36,7 @@ export function CompanyIntro() {
           {/* Left Column: Mission & Positioning */}
           <div className="lg:col-span-5 space-y-6">
             <SectionHeading
-              badge="About GSB Export"
+              badge="About Us"
               badgeVariant="copper"
               title="A Dependable Gateway to Industrial Thermal Engineering"
               subtitle="Connecting international procurement teams, EPC contractors, and engineering companies with certified industrial manufacturing capabilities in India."

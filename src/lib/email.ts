@@ -54,7 +54,7 @@ export async function sendEmail({ to, subject, html }: EmailPayload): Promise<{ 
  */
 export function generateInternalRfqNotificationHtml(data: any): string {
   return `
-    <div style="font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; background: #ffffff; border: 1px solid #D8DEE5; border-radius: 8px; overflow: hidden;">
+    <div style="font-family: Georgia, 'Times New Roman', serif; max-width: 650px; margin: 0 auto; background: #ffffff; border: 1px solid #D8DEE5; border-radius: 8px; overflow: hidden;">
       <div style="background: #10263D; padding: 24px; text-align: left; border-bottom: 4px solid #D88B35;">
         <h2 style="color: #ffffff; margin: 0; font-size: 20px;">GSB Export — New Technical RFQ Submission</h2>
         <p style="color: #D88B35; margin: 6px 0 0 0; font-size: 13px; font-weight: bold;">Reference: ${data.referenceNumber}</p>
@@ -100,7 +100,7 @@ export function generateInternalRfqNotificationHtml(data: any): string {
  */
 export function generateCustomerAcknowledgementHtml(data: any): string {
   return `
-    <div style="font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; background: #ffffff; border: 1px solid #D8DEE5; border-radius: 8px; overflow: hidden;">
+    <div style="font-family: Georgia, 'Times New Roman', serif; max-width: 650px; margin: 0 auto; background: #ffffff; border: 1px solid #D8DEE5; border-radius: 8px; overflow: hidden;">
       <div style="background: #10263D; padding: 24px; text-align: left; border-bottom: 4px solid #D88B35;">
         <h2 style="color: #ffffff; margin: 0; font-size: 20px;">GSB Export — RFQ Acknowledgement</h2>
         <p style="color: #D88B35; margin: 6px 0 0 0; font-size: 13px;">Reference Number: <strong>${data.referenceNumber}</strong></p>

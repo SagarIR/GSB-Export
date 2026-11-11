@@ -44,6 +44,18 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/logo/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/logo/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -57,7 +69,7 @@ export default function RootLayout({
     name: COMPANY_INFO.name,
     legalName: COMPANY_INFO.legalName,
     url: "https://gsbexport.com",
-    logo: "https://gsbexport.com/logo/gsb-logo.svg",
+    logo: "https://gsbexport.com/logo/gsb-logo.png",
     description: COMPANY_INFO.heroSupportText,
     address: {
       "@type": "PostalAddress",

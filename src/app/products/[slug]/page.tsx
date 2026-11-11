@@ -328,27 +328,6 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
         </Container>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-14 bg-navy text-white">
-        <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                Need a Custom Configuration or Sizing Review?
-              </h3>
-              <p className="text-xs sm:text-sm text-silver max-w-xl">
-                Submit your process stream data for thermal sizing calculation and quotation.
-              </p>
-            </div>
-            <Link
-              href={`/request-a-quote?category=${encodeURIComponent(product.name)}`}
-              className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded shrink-0"
-            >
-              Request a Quotation
-            </Link>
-          </div>
-        </Container>
-      </section>
     </div>
   );
 }

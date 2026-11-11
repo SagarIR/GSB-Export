@@ -5,6 +5,7 @@ import { ArrowRight, Check, FileText, ShieldCheck, Ruler, Layers } from "lucide-
 import { PRODUCTS } from "@/content/products";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ProductCard } from "@/components/products/ProductCard";
 
 export const metadata: Metadata = {
   title: "Industrial Heat Exchanger Products Catalogue | GSB Export",
@@ -36,14 +37,30 @@ export default function ProductsOverviewPage() {
       {/* Catalogue Grid */}
       <section className="py-16 sm:py-20 bg-offwhite">
         <Container>
-          <div className="max-w-2xl mb-12">
+          <div className="max-w-2xl mb-10">
             <SectionHeading
-              badge="5 Primary Architectures"
+              badge="Equipment Range &amp; Architectures"
               badgeVariant="copper"
               title="Tailored Solutions for Every Thermal Duty"
               subtitle="From extreme high pressures and temperatures to severe slurries and tight 1°C temperature approaches."
               className="mb-0"
             />
+          </div>
+
+          {/* Product Cards Grid - 4 Columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {PRODUCTS.map((product, idx) => (
+              <ProductCard key={product.id} product={product} index={idx} />
+            ))}
+          </div>
+
+          <div className="border-t border-slate-200/80 pt-16 mb-10">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#0A1C33]">
+              Engineering Dossiers &amp; In-Depth Specifications
+            </h3>
+            <p className="text-sm text-slate-600 mt-1">
+              Detailed construction metallurgy, TEMA designations, operating parameters, and design codes for each architecture.
+            </p>
           </div>
 
           <div className="space-y-12">

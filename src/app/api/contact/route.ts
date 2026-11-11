@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
       to: businessEmail,
       subject: `[General Contact: ${referenceNumber}] ${data.subject} - ${data.name} (${data.country})`,
       html: `
-        <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #D8DEE5; border-radius: 6px;">
+        <div style="font-family: Georgia, 'Times New Roman', serif; padding: 20px; border: 1px solid #D8DEE5; border-radius: 6px;">
           <h3 style="color: #10263D;">GSB Export — General Website Inquiry</h3>
           <p><strong>Reference:</strong> ${referenceNumber}</p>
           <p><strong>Name:</strong> ${data.name}</p>

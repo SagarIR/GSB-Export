@@ -60,14 +60,15 @@ export default function IndustriesPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     {/* Visual & Highlights */}
                     <div className={`lg:col-span-5 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
-                      <div className="relative aspect-[16/11] bg-navy rounded-xl overflow-hidden border border-silver/40 shadow-inner mb-6">
+                      <div className="relative aspect-[16/11] bg-slate-900 rounded-xl overflow-hidden border border-slate-200/80 shadow-md mb-6 group">
                         <Image
                           src={industry.image}
-                          alt={`${industry.name} Illustration`}
+                          alt={`${industry.name} Industrial Facility`}
                           fill
-                          className="object-cover opacity-90"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
-                        <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/20 text-copper">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute top-4 left-4 bg-white/15 backdrop-blur-md p-2 rounded-lg border border-white/20 text-[#F36C21] shadow-sm">
                           <Icon className="w-6 h-6" />
                         </div>
                       </div>

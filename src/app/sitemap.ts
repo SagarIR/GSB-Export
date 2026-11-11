@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
 import { PRODUCTS } from "@/content/products";
-import { ARTICLES } from "@/content/resources";
 import { INDUSTRIES } from "@/content/industries";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -13,12 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about-us",
     "/products",
     "/industries",
-    "/engineering-solutions",
-    "/quality-assurance",
-    "/manufacturing-supply",
-    "/global-markets",
     "/projects",
-    "/resources",
     "/contact-us",
     "/request-a-quote",
     "/privacy-policy",
@@ -38,14 +32,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  // Technical Resources Pages
-  const resourceRoutes = ARTICLES.map((art) => ({
-    url: `${baseUrl}/resources/${art.slug}`,
-    lastModified: new Date(art.publishDate),
-    changeFrequency: "monthly" as const,
-    priority: 0.75,
-  }));
-
-  return [...mainRoutes, ...productRoutes, ...resourceRoutes];
+  return [...mainRoutes, ...productRoutes];
 }
 

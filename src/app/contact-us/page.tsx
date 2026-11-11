@@ -75,9 +75,6 @@ export default function ContactUsPage() {
                       <p className="font-medium text-graphite/90">
                         Vadodara, Gujarat, India
                       </p>
-                      <p className="text-graphite/60 text-[11px] mt-0.5">
-                        {COMPANY_INFO.headquarters.addressPlaceholder}
-                      </p>
                     </div>
                   </div>
 

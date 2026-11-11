@@ -23,7 +23,7 @@ export default function AboutUsPage() {
               Company Overview &amp; Principles
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              About GSB Export
+              About Us
             </h1>
             <p className="mt-4 text-base sm:text-lg text-silver leading-relaxed">
               Industrial heat exchanger solutions, technical coordination, and dependable international supply coordination based in Gujarat, India.

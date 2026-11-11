@@ -9,92 +9,94 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // GSB Official Brand Colors from Logo
+        brand: {
+          navy: "#0A1C33",    // Primary GSB Deep Navy from "GSB"
+          blue: "#0F4C81",    // Corporate Steel Blue from "EXPORT"
+          orange: "#F36C21",  // Vibrant Thermal Orange from Swoosh & Accent
+          orangeDark: "#D9550D",
+          orangeLight: "#FA8540",
+          ice: "#F6F9FC",     // Cool Slate Background Tint
+          dark: "#050E1A",    // Deep Footer / Card Background
+        },
         navy: {
-          DEFAULT: "#10263D", // Deep Navy
-          50: "#EAF0F6",
-          100: "#D5E1ED",
-          200: "#ACC3DB",
-          300: "#83A5C9",
-          400: "#4D7DAF",
-          500: "#234D70",     // Steel Blue
-          600: "#1C3E5A",
-          700: "#163248",
-          800: "#10263D",     // Primary Deep Navy
-          900: "#0B1A2A",
-          950: "#060D15",
+          DEFAULT: "#0A1C33",
+          50: "#F0F4F9",
+          100: "#DCE5F2",
+          200: "#B9CCE5",
+          300: "#8FAED4",
+          400: "#5E89BE",
+          500: "#0F4C81",
+          600: "#143660",
+          700: "#0E2746",
+          800: "#0A1C33",
+          900: "#081628",
+          950: "#050E1A",
+        },
+        copper: {
+          DEFAULT: "#F36C21",
+          light: "#FA8540",
+          dark: "#D9550D",
+          50: "#FFF7ED",
+          100: "#FFEDD5",
+          200: "#FED7AA",
+          300: "#FDBA74",
+          400: "#FB923C",
+          500: "#F36C21",
+          600: "#EA580C",
+          700: "#C2410C",
+          800: "#9A3412",
+          900: "#7C2D12",
         },
         steel: {
-          DEFAULT: "#234D70",
-          light: "#356B98",
-          dark: "#1A3B57",
+          DEFAULT: "#0F4C81",
+          light: "#1C6AA7",
+          dark: "#0B3860",
         },
         offwhite: {
-          DEFAULT: "#F3F5F7",
+          DEFAULT: "#F6F9FC",
           50: "#FFFFFF",
-          100: "#F8F9FA",
-          200: "#F3F5F7",
-          300: "#E9ECEF",
-          400: "#DEE2E6",
+          100: "#F8FAFC",
+          200: "#F1F5F9",
+          300: "#E2E8F0",
+          400: "#CBD5E1",
         },
         silver: {
           DEFAULT: "#D8DEE5",
           light: "#E7EBF0",
           dark: "#BDC7D2",
         },
-        copper: {
-          DEFAULT: "#D88B35", // Copper Accent
-          light: "#E4A053",
-          dark: "#B86F21",
-          50: "#FDF8F2",
-          100: "#FCEFE2",
-          200: "#F7DEC2",
-          300: "#F2CCA1",
-          400: "#E7A863",
-          500: "#D88B35",
-          600: "#BE7427",
-          700: "#98591B",
-          800: "#754316",
-          900: "#573012",
-        },
         graphite: {
-          DEFAULT: "#202A35",
-          50: "#7C8D9E",
-          100: "#69798A",
-          200: "#576575",
-          300: "#45515E",
-          400: "#323D47",
-          500: "#202A35",
-          600: "#182029",
-          700: "#11171E",
-          800: "#0B0E12",
-          900: "#050709",
+          DEFAULT: "#1E293B",
+          50: "#F8FAFC",
+          100: "#F1F5F9",
+          200: "#E2E8F0",
+          300: "#CBD5E1",
+          400: "#94A3B8",
+          500: "#64748B",
+          600: "#475569",
+          700: "#334155",
+          800: "#1E293B",
+          900: "#0F172A",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
+        sans: ["Georgia", "'Times New Roman'", "Times", "serif"],
+        serif: ["Georgia", "'Times New Roman'", "Times", "serif"],
+        heading: ["Georgia", "'Times New Roman'", "Times", "serif"],
+        mono: ["Georgia", "'Times New Roman'", "Times", "serif"],
       },
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "1rem",
-          sm: "1.5rem",
-          lg: "2rem",
-          xl: "2.5rem",
-          "2xl": "3rem",
-        },
-        screens: {
-          sm: "640px",
-          md: "768px",
-          lg: "1024px",
-          xl: "1280px",
-          "2xl": "1400px",
-        },
+      borderRadius: {
+        "3xl": "1.5rem",
+        "4xl": "2rem",
+        "5xl": "2.5rem",
       },
       boxShadow: {
-        industrial: "0 2px 8px -2px rgba(16, 38, 61, 0.08), 0 8px 24px -4px rgba(16, 38, 61, 0.06)",
-        "industrial-lg": "0 12px 32px -8px rgba(16, 38, 61, 0.12), 0 4px 12px -2px rgba(16, 38, 61, 0.08)",
-        "copper-glow": "0 0 20px -3px rgba(216, 139, 53, 0.35)",
+        industrial: "0 2px 8px -2px rgba(10, 28, 51, 0.08), 0 8px 24px -4px rgba(10, 28, 51, 0.06)",
+        "industrial-lg": "0 12px 32px -8px rgba(10, 28, 51, 0.12), 0 4px 12px -2px rgba(10, 28, 51, 0.08)",
+        "soft-card": "0 1px 3px rgba(0, 0, 0, 0.04), 0 10px 30px -5px rgba(10, 28, 51, 0.06)",
+        "orange-glow": "0 0 25px -4px rgba(243, 108, 33, 0.35)",
+        "navy-glow": "0 0 25px -4px rgba(15, 76, 129, 0.25)",
       },
     },
   },
@@ -102,4 +104,3 @@ const config: Config = {
 };
 
 export default config;
-

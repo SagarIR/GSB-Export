@@ -105,10 +105,10 @@ export default function ThankYouPage({ searchParams }: ThankYouPageProps) {
             </Link>
 
             <Link
-              href="/resources"
+              href="/about-us"
               className="btn-outline-steel text-xs font-bold uppercase tracking-wider px-6 py-3 rounded w-full sm:w-auto justify-center"
             >
-              <span>Browse Technical Guides</span>
+              <span>About Us</span>
             </Link>
           </div>
 

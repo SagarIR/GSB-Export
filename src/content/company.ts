@@ -8,7 +8,6 @@ export const COMPANY_INFO = {
     city: "Vadodara",
     state: "Gujarat",
     country: "India",
-    addressPlaceholder: "[Business Address — Subject to Final Confirmation, Vadodara, Gujarat, India]",
     countryCode: "IN"
   },
   contact: {
