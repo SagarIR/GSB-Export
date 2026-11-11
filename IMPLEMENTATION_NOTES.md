@@ -50,3 +50,23 @@ Target schema for Enquiry and Attachment management:
 - **Email Delivery:** Resend (`RESEND_API_KEY`) or SMTP credentials (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`).
 - **Object Storage:** S3-compatible private bucket (`S3_BUCKET`, `S3_REGION`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`).
 - **Offline / Graceful Fallback:** If database or SMTP credentials are not yet configured in local environments, the system safely logs transactions without failing or crashing.
+
+---
+
+## 4. Products Section Architecture & UX Decisions (Phase 10)
+
+### 4.1 Type-Safe Product Data Modeling (`src/content/products.ts`)
+- Added `ProductSummarySpecs` to provide rapid operational benchmark summaries (pressure, temperature, capacity envelope, flow pattern) across all 7 equipment lines without duplicating unstructured prose.
+- Enriched `indicativeSpecs` for `finned-tube` and `u-tube-bundle` with comprehensive engineering sizing notes, eliminating blank parameters in the technical specification tables.
+- Refined descriptions to prevent redundant phrasing between taglines, short descriptions, and technical overviews.
+
+### 4.2 Interactive Products Catalogue (`src/components/products/ProductsCatalogue.tsx`)
+- Multi-dimensional client-side filtering supporting both top-level equipment category tabs and real-time substring search across equipment names, category tags, metallurgy options, and international design standards.
+- Reusable `ProductCard` component upgraded to use official design tokens (Deep Navy `#10263D`, Steel Blue `#234D70`, Copper Accent `#D88B35`, Off White `#F3F5F7`), showing concise technical specifications, TEMA schematic indicators, and high-conversion RFQ CTA buttons.
+
+### 4.3 Industrial B2B Product Detail Architecture (`src/app/products/[slug]/page.tsx`)
+- **Visual Presentation:** Industrial equipment visual container with drop shadow, schematic classification pill, and 4-metric quick operational summary strip.
+- **Content Hierarchy:** Distinct technical sections for Mechanical Overview, Thermodynamics & Working Principle, Key Mechanical Highlights, Indicative Parameters Table with custom sizing disclaimer, Metallurgy Breakdown, and International Design Standards.
+- **Conversion Architecture:** Sticky procurement sidebar featuring 24-48h turnaround commitment, technical parameter checklist for fast RFQ processing, and direct contact to the Vadodara engineering coordination desk.
+- **Cross-Navigation:** Seamless bidirectional linking between equipment architectures and industrial sectors (`/industries/[slug]`), and direct alternative equipment recommendations.
+
