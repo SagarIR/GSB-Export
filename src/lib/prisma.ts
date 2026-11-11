@@ -5,18 +5,26 @@ declare global {
   var prismaGlobal: PrismaClient | undefined;
 }
 
-export const prisma =
-  globalThis.prismaGlobal ??
-  new PrismaClient({
-    log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
-  });
+let prismaInstance: PrismaClient | null = null;
 
-if (process.env.NODE_ENV !== "production") {
-  globalThis.prismaGlobal = prisma;
+try {
+  prismaInstance =
+    globalThis.prismaGlobal ??
+    new PrismaClient({
+      log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
+    });
+
+  if (process.env.NODE_ENV !== "production") {
+    globalThis.prismaGlobal = prismaInstance;
+  }
+} catch (err) {
+  console.warn("[Prisma Initialization Notice - Build / Offline Mode]:", err);
 }
 
+export const prisma = prismaInstance as PrismaClient;
+
 export async function isDatabaseAvailable(): Promise<boolean> {
-  if (!process.env.DATABASE_URL || process.env.DATABASE_URL.includes("username:password")) {
+  if (!prisma || !process.env.DATABASE_URL || process.env.DATABASE_URL.includes("username:password")) {
     return false;
   }
   try {
