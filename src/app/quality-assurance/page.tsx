@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Quality Assurance & ITP | Inspection Protocols & Testing",
+  title: "Quality Assurance & ITP | Inspection Protocols & Testing | GSB Export",
   description:
     "Learn about GSB Export's quality assurance framework: material traceability (EN 10204 3.1), ASME Section IX welding procedures, hydrostatic testing, NDT, and third-party inspection (TPIA).",
 };
@@ -182,27 +182,17 @@ export default function QualityAssurancePage() {
               </tbody>
             </table>
           </div>
-        </Container>
-      </section>
 
-      {/* Bottom CTA */}
-      <section className="py-14 bg-navy text-white">
-        <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                Require a Project-Specific Quality Plan (ITP)?
-              </h3>
-              <p className="text-xs sm:text-sm text-silver max-w-xl">
-                We can provide sample Inspection and Test Plans aligned with your project design code and third-party inspection agency requirements.
-              </p>
+          {/* Bottom Action Card */}
+          <div className="mt-12 p-8 rounded-2xl bg-navy text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-steel/60 shadow-industrial-lg">
+            <div className="space-y-1 text-center sm:text-left">
+              <h3 className="text-lg font-bold text-white">Need Project-Specific ITP Alignment?</h3>
+              <p className="text-xs sm:text-sm text-silver">Our quality team accommodates client-appointed third-party inspectors and customer-specific hold points.</p>
             </div>
-            <Link
-              href="/request-a-quote"
-              className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded shrink-0"
-            >
-              Request ITP &amp; Quotation
-            </Link>
+            <div className="flex items-center gap-3 shrink-0">
+              <Link href="/contact-us" className="btn-outline-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Contact Quality Desk</Link>
+              <Link href="/request-a-quote" className="btn-copper text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Request a Quote</Link>
+            </div>
           </div>
         </Container>
       </section>

@@ -38,9 +38,9 @@ export function ProductsGridSection() {
               Industrial Equipment Range
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold font-sans text-[#0A1C33] tracking-tight leading-[1.15]">
-              Find the Products <br />
+              Find the Heat Exchanger Systems <br />
               <span className="text-[#F36C21] font-extrabold">
-                that fit your work.
+                Engineered for Your Process.
               </span>
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-sans">

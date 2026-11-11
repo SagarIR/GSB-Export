@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { isDatabaseAvailable } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 const serverStartTime = Date.now();
 
 export async function GET() {

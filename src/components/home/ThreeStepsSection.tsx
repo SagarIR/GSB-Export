@@ -236,7 +236,7 @@ export function ThreeStepsSection() {
                     type="submit"
                     className="btn-brand-orange w-full py-3.5 text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all"
                   >
-                    <span>Calculate Sizing &amp; Request Proposal</span>
+                    <span>Submit Sizing Parameters &amp; Request Quotation</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

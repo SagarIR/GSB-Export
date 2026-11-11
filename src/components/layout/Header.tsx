@@ -9,6 +9,7 @@ import {
   Menu,
   X,
   Mail,
+  Phone,
   Clock,
   ArrowRight,
   ShieldCheck,
@@ -58,6 +59,13 @@ export function Header() {
               <Mail className="w-3.5 h-3.5 text-[#F36C21] shrink-0" />
               <a href={`mailto:${COMPANY_INFO.contact.email}`} className="hover:underline">
                 {COMPANY_INFO.contact.email}
+              </a>
+            </span>
+            <span className="h-3 w-px bg-white/20" />
+            <span className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
+              <Phone className="w-3.5 h-3.5 text-[#F36C21] shrink-0" />
+              <a href={`tel:${COMPANY_INFO.contact.phoneRaw}`} className="hover:underline font-medium">
+                {COMPANY_INFO.contact.phone}
               </a>
             </span>
           </div>
@@ -143,48 +151,85 @@ export function Header() {
                 <ChevronDown className="w-3.5 h-3.5 text-graphite/60 group-hover:text-copper group-hover:rotate-180 transition-transform duration-200" />
               </Link>
 
-              {/* Products Dropdown Menu */}
-              <div className="absolute top-full left-0 pt-2 w-[340px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 -translate-y-1 z-50 pointer-events-none group-hover:pointer-events-auto">
-                <div className="bg-white rounded-xl shadow-2xl border border-silver/70 p-3 overflow-hidden">
-                  <div className="px-3 py-2 border-b border-silver/40 flex items-center justify-between">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-navy">
-                      Heat Exchanger Solutions
-                    </span>
-                    <span className="text-[10px] font-semibold text-copper bg-copper/10 px-2 py-0.5 rounded">
-                      5 Product Lines
+              {/* Products Megamenu Dropdown */}
+              <div className="absolute top-full -left-20 xl:-left-12 pt-2.5 w-[680px] xl:w-[720px] max-w-[90vw] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 -translate-y-1 z-50 pointer-events-none group-hover:pointer-events-auto">
+                <div className="bg-white rounded-2xl shadow-2xl border border-slate-200/90 overflow-hidden">
+                  {/* Dropdown Header */}
+                  <div className="px-5 py-3.5 bg-slate-50/70 border-b border-slate-100 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#F36C21]" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#0A1C33]">
+                        Heat Exchanger Equipment
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-bold text-[#F36C21] bg-orange-50 border border-orange-200/80 px-2.5 py-0.5 rounded-full">
+                      {PRODUCTS.length} Product Lines
                     </span>
                   </div>
 
-                  <div className="py-1.5 space-y-0.5">
+                  {/* 2-Column Product Grid */}
+                  <div className="p-3 sm:p-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {PRODUCTS.map((prod) => (
                       <Link
                         key={prod.id}
                         href={`/products/${prod.slug}`}
-                        className="flex items-start gap-2.5 px-3 py-2 rounded-lg hover:bg-offwhite transition-colors group/item"
+                        className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200/80 transition-all group/item"
                       >
-                        <div className="w-7 h-7 rounded-md bg-navy/5 text-steel flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-copper/10 group-hover/item:text-copper transition-colors">
-                          <Layers className="w-4 h-4" />
+                        {/* Equipment Visual Thumbnail */}
+                        <div className="w-11 h-11 rounded-lg bg-slate-100/80 border border-slate-200/70 p-1 flex items-center justify-center shrink-0 group-hover/item:border-[#F36C21]/40 group-hover/item:bg-orange-50/40 transition-colors">
+                          <Image
+                            src={prod.image}
+                            alt={prod.name}
+                            width={40}
+                            height={40}
+                            className="max-h-8 w-auto object-contain group-hover/item:scale-105 transition-transform"
+                          />
                         </div>
+
+                        {/* Title & Architecture Subtitle */}
                         <div className="flex-1 min-w-0">
-                          <div className="text-xs font-bold text-navy group-hover/item:text-copper transition-colors truncate">
+                          <div className="text-xs font-bold text-[#0A1C33] group-hover/item:text-[#F36C21] transition-colors truncate">
                             {prod.name}
                           </div>
-                          <div className="text-[11px] text-graphite/70 truncate">
+                          <div className="text-[11px] text-slate-500 truncate mt-0.5">
                             {prod.schematicType}
                           </div>
                         </div>
                       </Link>
                     ))}
+
+                    {/* 8th Slot: Custom Thermal Sizing Card to balance 2x4 grid */}
+                    <Link
+                      href="/request-a-quote"
+                      className="flex items-center gap-3 p-2.5 rounded-xl bg-gradient-to-br from-orange-50/60 to-amber-50/30 border border-orange-200/70 hover:border-[#F36C21] transition-all group/cta"
+                    >
+                      <div className="w-11 h-11 rounded-lg bg-[#F36C21]/10 text-[#F36C21] flex items-center justify-center shrink-0 group-hover/cta:bg-[#F36C21] group-hover/cta:text-white transition-colors">
+                        <Sparkles className="w-5 h-5" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-[#0A1C33] group-hover/cta:text-[#F36C21] transition-colors">
+                          Custom Thermal Sizing
+                        </div>
+                        <div className="text-[11px] text-slate-500 truncate mt-0.5">
+                          HTRI simulation &amp; fast RFQ
+                        </div>
+                      </div>
+                    </Link>
                   </div>
 
-                  <div className="p-2.5 border-t border-silver/40 mt-1 bg-offwhite/70 rounded-lg">
+                  {/* Dropdown Footer Bar */}
+                  <div className="px-5 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-4">
                     <Link
                       href="/products"
-                      className="text-xs font-bold text-steel hover:text-navy flex items-center justify-between"
+                      className="text-xs font-bold text-[#0A1C33] hover:text-[#F36C21] transition-colors flex items-center gap-1.5"
                     >
                       <span>Explore Full Equipment Catalogue</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
+
+                    <span className="text-[11px] text-slate-500 hidden sm:inline">
+                      ASME Sec VIII &bull; TEMA R/C/B &bull; API 660/661
+                    </span>
                   </div>
                 </div>
               </div>
@@ -318,6 +363,15 @@ export function Header() {
                   className="text-steel font-semibold hover:underline"
                 >
                   {COMPANY_INFO.contact.email}
+                </a>
+              </p>
+              <p>
+                Phone:{" "}
+                <a
+                  href={`tel:${COMPANY_INFO.contact.phoneRaw}`}
+                  className="text-steel font-semibold hover:underline"
+                >
+                  {COMPANY_INFO.contact.phone}
                 </a>
               </p>
               <p className="text-[11px] text-graphite/60">

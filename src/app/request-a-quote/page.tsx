@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { COMPANY_INFO } from "@/content/company";
 
 export const metadata: Metadata = {
-  title: "Request a Quote (RFQ) | Industrial Heat Exchanger Pricing",
+  title: "Request a Quote (RFQ) | Industrial Heat Exchanger Sizing & Pricing | GSB Export",
   description:
     "Submit your technical requirements, operating pressures, temperatures, and drawings for custom industrial heat exchangers. Fast engineering review within 1-2 business days.",
 };
@@ -135,6 +135,12 @@ export default function RequestAQuotePage() {
                   Email:{" "}
                   <a href={`mailto:${COMPANY_INFO.contact.email}`} className="text-steel font-bold hover:underline">
                     {COMPANY_INFO.contact.email}
+                  </a>
+                </p>
+                <p>
+                  Direct Phone:{" "}
+                  <a href={`tel:${COMPANY_INFO.contact.phoneRaw}`} className="text-steel font-bold hover:underline">
+                    {COMPANY_INFO.contact.phone}
                   </a>
                 </p>
                 <p className="text-graphite/60 text-[11px] pt-1">

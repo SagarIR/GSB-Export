@@ -44,8 +44,8 @@ export function FaqAccordionSection() {
               Frequently Asked Questions
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold font-sans text-[#0A1C33] tracking-tight leading-[1.15]">
-              Before you explore <br />
-              <span className="text-[#F36C21] font-extrabold">the Products.</span>
+              Frequently Asked <br />
+              <span className="text-[#F36C21] font-extrabold">Procurement Questions.</span>
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-sans pt-1">
               Clear, transparent answers regarding our Indian export infrastructure, quality witnessing, ASME code compliance, and commercial terms.

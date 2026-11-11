@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Industrial Sales & Technical Support",
+  title: "Contact Us | Engineering Coordination & Export Desk | GSB Export",
   description:
     "Get in touch with GSB Export for general inquiries, technical coordination questions, and industrial heat exchanger supply consultation.",
 };
@@ -105,8 +105,13 @@ export default function ContactUsPage() {
                       <span className="font-bold text-navy block text-sm mb-0.5">
                         Telephone Coordination:
                       </span>
-                      <p className="text-graphite/70">
-                        {COMPANY_INFO.contact.phonePlaceholder}
+                      <p className="text-graphite/90 font-medium">
+                        <a
+                          href={`tel:${COMPANY_INFO.contact.phoneRaw}`}
+                          className="hover:text-copper transition-colors"
+                        >
+                          {COMPANY_INFO.contact.phone}
+                        </a>
                       </p>
                     </div>
                   </div>

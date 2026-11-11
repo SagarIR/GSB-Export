@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Clock, MapPin, ShieldCheck, ArrowUpRight, ArrowRight } from "lucide-react";
+import { Mail, Phone, Clock, MapPin, ShieldCheck, ArrowUpRight, ArrowRight } from "lucide-react";
 import { PRODUCTS } from "@/content/products";
 import { INDUSTRIES } from "@/content/industries";
 import { COMPANY_INFO } from "@/content/company";
@@ -41,6 +41,12 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-[#F36C21] shrink-0" />
                 <a href={`mailto:${COMPANY_INFO.contact.email}`} className="text-slate-200 hover:text-white transition-colors">
                   {COMPANY_INFO.contact.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-[#F36C21] shrink-0" />
+                <a href={`tel:${COMPANY_INFO.contact.phoneRaw}`} className="text-slate-200 hover:text-white transition-colors">
+                  {COMPANY_INFO.contact.phone}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
@@ -85,34 +91,70 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Industries Served (3 Cols) */}
+          {/* Column 3: Technical & Quality (3 Cols) */}
           <div className="lg:col-span-3 space-y-3.5">
             <h3 className="text-xs font-bold uppercase tracking-widest text-[#F36C21] border-b border-slate-800 pb-2">
-              Industries Served
+              Technical &amp; Quality
             </h3>
             <ul className="space-y-2.5 text-xs">
-              {INDUSTRIES.slice(0, 6).map((ind) => (
-                <li key={ind.id}>
-                  <Link
-                    href="/industries"
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    {ind.name.split("(")[0].trim()}
-                  </Link>
-                </li>
-              ))}
-              <li className="pt-1.5">
+              <li>
                 <Link
-                  href="/industries"
-                  className="text-[#F36C21] hover:text-orange-300 font-semibold block"
+                  href="/engineering-solutions"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center justify-between group"
                 >
-                  View All Industries &rarr;
+                  <span>Engineering Solutions</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#F36C21]" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/quality-assurance"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center justify-between group"
+                >
+                  <span>Quality Assurance &amp; ITP</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#F36C21]" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/manufacturing-supply"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center justify-between group"
+                >
+                  <span>Manufacturing &amp; Supply</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#F36C21]" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/global-markets"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center justify-between group"
+                >
+                  <span>Global Export Corridors</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#F36C21]" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/projects"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center justify-between group"
+                >
+                  <span>Projects &amp; Applications</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#F36C21]" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/resources"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center justify-between group"
+                >
+                  <span>Technical Knowledge Base</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#F36C21]" />
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Company & Quick RFQ (2 Cols) */}
+          {/* Column 4: Company & RFQ (2 Cols) */}
           <div className="lg:col-span-2 space-y-3.5">
             <h3 className="text-xs font-bold uppercase tracking-widest text-[#F36C21] border-b border-slate-800 pb-2">
               Company &amp; RFQ
@@ -121,6 +163,11 @@ export function Footer() {
               <li>
                 <Link href="/about-us" className="text-slate-400 hover:text-white transition-colors">
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries" className="text-slate-400 hover:text-white transition-colors">
+                  Industries We Serve
                 </Link>
               </li>
               <li>

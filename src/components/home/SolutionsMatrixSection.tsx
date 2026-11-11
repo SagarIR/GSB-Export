@@ -24,47 +24,47 @@ export function SolutionsMatrixSection() {
       icon: SearchCheck,
       desc: "Rigorous thermal calculations ensuring process duty, heat transfer coefficients, and allowable pressure drops meet TEMA and ASME Section VIII Div 1 criteria.",
       points: ["TEMA Class R, C & B sizing", "HTRI thermal verification", "Allowable \u0394P optimization"],
-      href: "/request-a-quote",
-      cta: "Request thermal sizing",
+      href: "/engineering-solutions",
+      cta: "Explore engineering solutions",
     },
     {
       title: "Metallurgical Traceability",
       icon: FileCheck2,
       desc: "Complete heat number tracking, Positive Material Identification (PMI), and EN 10204 3.1 Mill Test Certificates for every shell, tube, and flange.",
       points: ["100% PMI testing before rolling", "EN 10204 3.1 certified raw material", "Duplex, Super Duplex & Titanium"],
-      href: "/about-us",
-      cta: "Learn our verification model",
+      href: "/quality-assurance",
+      cta: "Review quality assurance",
     },
     {
       title: "Audited Partner Fabrication",
       icon: Factory,
       desc: "Coordination with specialized fabrication bays in Vadodara, Gujarat equipped with CNC tube sheet drilling, automatic orbital welding, and clean bays.",
       points: ["Qualified fabrication infrastructure", "ASME-trained welding operators", "WPS & PQR code alignment"],
-      href: "/about-us",
-      cta: "Learn about partner network",
+      href: "/manufacturing-supply",
+      cta: "Explore supply capabilities",
     },
     {
       title: "Rigorous QA/QC Witnessing",
       icon: ShieldCheck,
       desc: "Hold-point inspections per agreed Inspection Test Plans (ITP): non-destructive testing (NDT), radiography, ultrasonic examination, and hydrotesting.",
       points: ["100% Hydrostatic test witnessing", "Radiography (RT) on longitudinal seams", "Client & TPI witnessing accommodated"],
-      href: "/about-us",
-      cta: "Review quality commitment",
+      href: "/quality-assurance",
+      cta: "Inspect QA protocols",
     },
     {
       title: "Engineering Dossier & Docs",
       icon: CheckCircle2,
       desc: "Complete technical submittal packages including General Arrangement (GA) drawings, thermal datasheets, design calculations, and hydrotest charts.",
       points: ["Clear CAD / 3D model submittals", "As-built documentation packages", "Certificate of Origin & customs clearance"],
-      href: "/request-a-quote",
-      cta: "Request documentation details",
+      href: "/global-markets",
+      cta: "View compliance dossier",
     },
     {
       title: "Seaworthy Transit Packing",
       icon: Anchor,
       desc: "Industrial export protection engineered for long oceanic voyages and tropical humidity: nitrogen purging, vapor-phase inhibitors, and ISPM 15 timber.",
       points: ["ISPM 15 heat-treated wood crating", "VCI moisture barrier wrapping", "Dispatch to Nhava Sheva / Mundra ports"],
-      href: "/about-us",
+      href: "/manufacturing-supply",
       cta: "Review export packaging",
     },
   ];
@@ -119,7 +119,7 @@ export function SolutionsMatrixSection() {
               </Link>
 
               <Link
-                href="/about-us"
+                href="/quality-assurance"
                 className="btn-outline-navy text-sm font-semibold px-6 py-3 rounded-full text-center"
               >
                 <span>Our Quality Commitment</span>

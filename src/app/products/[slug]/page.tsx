@@ -11,10 +11,12 @@ import {
   Ruler,
   Layers,
   Flame,
-  HelpCircle,
   CheckCircle2,
+  Factory,
+  Cpu,
 } from "lucide-react";
 import { PRODUCTS, getProductBySlug } from "@/content/products";
+import { INDUSTRIES } from "@/content/industries";
 import { Container } from "@/components/ui/Container";
 
 interface ProductPageProps {
@@ -33,12 +35,12 @@ export function generateMetadata({ params }: ProductPageProps): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) {
     return {
-      title: "Product Not Found",
+      title: "Product Not Found | GSB Export",
     };
   }
 
   return {
-    title: `${product.name} | Industrial Heat Exchanger Solutions`,
+    title: `${product.name} | Industrial Heat Exchanger Solutions | GSB Export`,
     description: product.shortDescription,
     openGraph: {
       title: `${product.name} | GSB Export`,
@@ -57,7 +59,12 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
 
   // Related products
   const relatedProducts = PRODUCTS.filter((p) =>
-    product.relatedSlugs.includes(p.slug)
+    product.relatedSlugs?.includes(p.slug)
+  );
+
+  // Industries that use this product
+  const relevantIndustries = INDUSTRIES.filter((ind) =>
+    ind.recommendedExchangers.some((rec) => rec.slug === product.slug)
   );
 
   return (
@@ -84,7 +91,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               {product.schematicType}
             </span>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight font-sans">
               {product.name}
             </h1>
 
@@ -96,18 +103,33 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               {product.shortDescription}
             </p>
 
+            {/* Quick Highlights Pills */}
+            {product.highlights && product.highlights.length > 0 && (
+              <div className="mt-5 flex flex-wrap items-center gap-2">
+                {product.highlights.map((h, hIdx) => (
+                  <span
+                    key={hIdx}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white/10 text-white border border-white/15 px-3 py-1 rounded-full"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#52B72A]" />
+                    {h}
+                  </span>
+                ))}
+              </div>
+            )}
+
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <Link
                 href={`/request-a-quote?category=${encodeURIComponent(product.name)}`}
-                className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded shadow flex items-center gap-2"
+                className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full shadow flex items-center gap-2"
               >
                 <FileText className="w-4 h-4" />
-                <span>Request a Quote for this Product</span>
+                <span>Request a Quote for this Unit</span>
               </Link>
 
               <Link
                 href="#specifications"
-                className="btn-outline-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded"
+                className="btn-outline-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full"
               >
                 <span>Jump to Specifications</span>
               </Link>
@@ -117,36 +139,52 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
       </section>
 
       {/* Main Details Body */}
-      <section className="py-16 sm:py-20 bg-white">
+      <section className="py-14 sm:py-20 bg-white">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Content Column */}
-            <div className="lg:col-span-8 space-y-14">
-              {/* Technical Schematic Illustration */}
+            <div className="lg:col-span-8 space-y-12">
+              {/* Technical Schematic / Product Image Showcase */}
               <div>
-                <h2 className="text-lg font-bold text-navy border-b border-silver/40 pb-2.5 mb-4">
-                  Engineering Schematic &amp; Component Layout
-                </h2>
-                <div className="relative aspect-[16/10] bg-offwhite rounded-xl overflow-hidden border border-silver/70 shadow-sm p-4">
+                <div className="flex items-center justify-between border-b border-silver/40 pb-2.5 mb-4">
+                  <h2 className="text-lg font-bold text-navy">
+                    Equipment Layout &amp; Configuration
+                  </h2>
+                  <span className="text-xs font-mono font-bold text-copper">
+                    {product.categoryTag}
+                  </span>
+                </div>
+                <div className="relative aspect-[16/10] bg-[#F7F9FC] rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm p-6 flex items-center justify-center">
                   <Image
                     src={product.image}
-                    alt={`${product.name} Technical Schematic`}
+                    alt={`${product.name} Technical Visual`}
                     fill
-                    className="object-contain p-2"
+                    className="object-contain p-4 drop-shadow-md"
                     priority
                   />
                 </div>
               </div>
 
+              {/* Overview & Engineering Context */}
+              <div>
+                <h2 className="text-xl font-bold text-navy border-b border-silver/40 pb-2.5 mb-3 flex items-center gap-2">
+                  <Cpu className="w-5 h-5 text-copper" />
+                  <span>Engineering Overview</span>
+                </h2>
+                <p className="text-sm sm:text-base text-graphite/90 leading-relaxed">
+                  {product.overview}
+                </p>
+              </div>
+
               {/* Working Principle */}
               <div>
-                <h2 className="text-xl font-bold text-navy border-b border-silver/40 pb-2.5 mb-4 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-navy border-b border-silver/40 pb-2.5 mb-3 flex items-center gap-2">
                   <Flame className="w-5 h-5 text-copper" />
                   <span>Thermodynamics &amp; Working Principle</span>
                 </h2>
-                <p className="text-sm sm:text-base text-graphite/85 leading-relaxed bg-offwhite/60 p-5 rounded-xl border border-silver/50">
+                <div className="text-sm sm:text-base text-graphite/85 leading-relaxed bg-offwhite p-5 sm:p-6 rounded-2xl border border-silver/60">
                   {product.workingPrinciple}
-                </p>
+                </div>
               </div>
 
               {/* Key Features & Advantages */}
@@ -158,7 +196,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                   {product.keyFeatures.map((feat, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 bg-offwhite rounded-lg border border-silver/50 flex items-start gap-2.5 text-xs text-graphite"
+                      className="p-4 bg-offwhite rounded-xl border border-silver/60 flex items-start gap-2.5 text-xs text-graphite"
                     >
                       <Check className="w-4 h-4 text-copper shrink-0 mt-0.5" />
                       <span className="leading-relaxed font-medium">{feat}</span>
@@ -177,16 +215,16 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                   {product.materials.map((mat, idx) => (
                     <div
                       key={idx}
-                      className="p-4 rounded-xl border border-silver/60 bg-white shadow-sm"
+                      className="p-5 rounded-xl border border-silver/60 bg-white shadow-2xs"
                     >
-                      <span className="font-bold text-navy text-xs uppercase tracking-wider block mb-2">
+                      <span className="font-bold text-navy text-xs uppercase tracking-wider block mb-2.5">
                         {mat.category}
                       </span>
                       <div className="flex flex-wrap gap-2">
                         {mat.options.map((opt, oIdx) => (
                           <span
                             key={oIdx}
-                            className="text-xs bg-offwhite border border-silver/70 text-graphite px-2.5 py-1 rounded font-medium"
+                            className="text-xs bg-offwhite border border-silver/70 text-slate-700 px-3 py-1 rounded-full font-medium"
                           >
                             {opt}
                           </span>
@@ -204,10 +242,10 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                   <span>Indicative Technical Parameters</span>
                 </h2>
                 <p className="text-xs text-graphite/70 mb-4">
-                  The values below represent typical operational benchmarks. Equipment sizing is custom engineered to exact project process conditions.
+                  The values below represent typical operational benchmarks. Equipment sizing is custom calculated to exact project process conditions.
                 </p>
 
-                <div className="overflow-x-auto border border-silver/60 rounded-xl overflow-hidden shadow-sm">
+                <div className="overflow-x-auto border border-silver/60 rounded-xl overflow-hidden shadow-2xs">
                   <table className="tech-table">
                     <thead>
                       <tr>
@@ -231,7 +269,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 </div>
 
                 {/* Disclaimer Note */}
-                <div className="mt-3 p-3 bg-offwhite rounded-lg border border-silver/50 text-[11px] text-graphite/80 flex items-start gap-2">
+                <div className="mt-3 p-3.5 bg-offwhite rounded-xl border border-silver/50 text-[11px] text-graphite/80 flex items-start gap-2.5">
                   <ShieldCheck className="w-4 h-4 text-copper shrink-0 mt-0.5" />
                   <p>
                     <strong>Engineering Clarification:</strong> Design parameters are confirmed upon review of client process flow diagrams (PFD), heat &amp; material balances (HMB), and target pressure vessel codes.
@@ -244,21 +282,54 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 <h2 className="text-xl font-bold text-navy border-b border-silver/40 pb-2.5 mb-4">
                   Applicable International Standards &amp; Codes
                 </h2>
-                <ul className="space-y-2 text-xs sm:text-sm text-graphite">
+                <ul className="space-y-2.5 text-xs sm:text-sm text-graphite">
                   {product.designStandards.map((std, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
                       <CheckCircle2 className="w-4 h-4 text-copper shrink-0 mt-0.5" />
-                      <span>{std}</span>
+                      <span className="font-medium text-slate-800">{std}</span>
                     </li>
                   ))}
                 </ul>
               </div>
+
+              {/* Primary Sectors Serving This Product */}
+              {relevantIndustries.length > 0 && (
+                <div className="pt-4 border-t border-silver/40">
+                  <h2 className="text-xl font-bold text-navy mb-2 flex items-center gap-2">
+                    <Factory className="w-5 h-5 text-copper" />
+                    <span>Key Industry Sectors for {product.name}</span>
+                  </h2>
+                  <p className="text-xs text-slate-600 mb-4">
+                    Explore how this heat exchanger architecture is deployed across critical industry sectors:
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {relevantIndustries.map((ind) => (
+                      <Link
+                        key={ind.id}
+                        href={`/industries/${ind.slug}`}
+                        className="p-3.5 rounded-xl border border-slate-200/90 bg-offwhite hover:border-[#F36C21] hover:bg-white transition-all group flex items-start justify-between gap-3"
+                      >
+                        <div>
+                          <span className="text-xs font-bold text-navy group-hover:text-[#F36C21] transition-colors block">
+                            {ind.name}
+                          </span>
+                          <span className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                            {ind.tagline}
+                          </span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#F36C21] group-hover:translate-x-0.5 transition-all shrink-0 mt-1" />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right Sticky Sidebar: Applications & Quotation CTA */}
             <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
               {/* Quick RFQ Box */}
-              <div className="bg-navy rounded-xl p-6 text-white border border-steel/60 shadow-industrial-lg">
+              <div className="bg-navy rounded-2xl p-6 text-white border border-steel/60 shadow-industrial-lg">
                 <span className="text-copper text-xs font-bold uppercase tracking-wider block mb-1">
                   Procurement &amp; Inquiries
                 </span>
@@ -271,29 +342,29 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
 
                 <Link
                   href={`/request-a-quote?category=${encodeURIComponent(product.name)}`}
-                  className="btn-copper text-xs font-bold uppercase tracking-wider py-3 px-4 rounded w-full text-center flex items-center justify-center gap-1.5 shadow"
+                  className="btn-copper text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-full w-full text-center flex items-center justify-center gap-1.5 shadow"
                 >
                   <FileText className="w-4 h-4" />
                   <span>Configure RFQ Details</span>
                 </Link>
 
-                <div className="mt-4 pt-3 border-t border-steel/40 text-[11px] text-silver/80 space-y-1">
-                  <p>• Fast technical evaluation (1-2 days)</p>
-                  <p>• Drawing uploads supported (PDF, DWG)</p>
-                  <p>• Vadodara, India supply coordination</p>
+                <div className="mt-4 pt-3 border-t border-steel/40 text-[11px] text-silver/80 space-y-1.5">
+                  <p>• Fast technical evaluation (24-48 hours)</p>
+                  <p>• Engineering drawing review (PDF, DWG)</p>
+                  <p>• Vadodara, Gujarat supply coordination</p>
                 </div>
               </div>
 
               {/* Typical Applications Card */}
-              <div className="bg-white border border-silver/70 rounded-xl p-6 shadow-sm">
+              <div className="bg-white border border-silver/70 rounded-2xl p-6 shadow-2xs">
                 <h3 className="text-sm font-bold text-navy uppercase tracking-wider border-b border-silver/40 pb-2.5 mb-4">
                   Typical Industrial Applications
                 </h3>
-                <ul className="space-y-2 text-xs text-graphite/85">
+                <ul className="space-y-2.5 text-xs text-graphite/85">
                   {product.applications.map((app, aIdx) => (
                     <li key={aIdx} className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-copper shrink-0 mt-1.5" />
-                      <span className="leading-relaxed">{app}</span>
+                      <span className="leading-relaxed font-medium">{app}</span>
                     </li>
                   ))}
                 </ul>
@@ -301,7 +372,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
 
               {/* Related Products Card */}
               {relatedProducts.length > 0 && (
-                <div className="bg-offwhite border border-silver/60 rounded-xl p-6">
+                <div className="bg-offwhite border border-silver/60 rounded-2xl p-6">
                   <h3 className="text-xs font-bold text-navy uppercase tracking-wider border-b border-silver/40 pb-2 mb-3">
                     Alternative Equipment
                   </h3>
@@ -310,7 +381,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                       <Link
                         key={rel.id}
                         href={`/products/${rel.slug}`}
-                        className="block p-2.5 bg-white rounded border border-silver/50 hover:border-steel/60 transition-colors group"
+                        className="block p-3 bg-white rounded-xl border border-silver/50 hover:border-steel/60 transition-colors group"
                       >
                         <span className="text-xs font-bold text-navy group-hover:text-copper transition-colors block">
                           {rel.name}
@@ -323,12 +394,21 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                   </div>
                 </div>
               )}
+
+              {/* Back to Catalogue */}
+              <div className="text-center pt-2">
+                <Link
+                  href="/products"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-navy hover:text-copper transition-colors"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Back to Full Products Catalogue</span>
+                </Link>
+              </div>
             </div>
           </div>
         </Container>
       </section>
-
     </div>
   );
 }
-

@@ -13,8 +13,11 @@ export const COMPANY_INFO = {
   contact: {
     email: "enquiry@gsbexport.com",
     supportEmail: "info@gsbexport.com",
-    phonePlaceholder: "+91 [Contact Number — Subject to Final Confirmation]",
-    whatsappPlaceholder: "+91 [WhatsApp Number — Subject to Final Confirmation]",
+    phone: "+91 72658 55481",
+    phoneRaw: "+917265855481",
+    whatsapp: "+91 72658 55481",
+    phonePlaceholder: "+91 72658 55481",
+    whatsappPlaceholder: "+91 72658 55481",
     workingHours: "Monday – Saturday: 09:00 – 18:00 IST (UTC +5:30)"
   },
   businessModel: {

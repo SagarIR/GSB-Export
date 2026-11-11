@@ -34,7 +34,7 @@ export function PersonaCardsSection() {
       description:
         "Specialized metallurgy coordination for severe chemical environments: Duplex 2205, Hastelloy C-276, Titanium Gr 2, and ASME Section VIII Div 1 pressure shells.",
       metric: "Duplex & Exotic Alloys",
-      link: "/industries",
+      link: "/industries/chemical-petrochemical",
     },
     {
       id: "oilgas",
@@ -49,7 +49,7 @@ export function PersonaCardsSection() {
       description:
         "High-pressure shell & tube exchangers and induced-draft fin-fan air coolers engineered to API 660, API 661, and international refinery process codes.",
       metric: "Up to 300+ bar(g)",
-      link: "/industries",
+      link: "/industries/oil-gas",
     },
     {
       id: "foodpharma",
@@ -64,7 +64,7 @@ export function PersonaCardsSection() {
       description:
         "Sanitary gasketed plate heat exchangers, CIP cleanability, electro-polished stainless steel 316L, and FDA-grade elastomer gaskets with zero cross-contamination.",
       metric: "Sanitary CIP Compatible",
-      link: "/industries",
+      link: "/industries/food-beverage",
     },
   ];
 

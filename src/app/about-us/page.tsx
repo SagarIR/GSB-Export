@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { COMPANY_INFO } from "@/content/company";
 
 export const metadata: Metadata = {
-  title: "About Us | Industrial Sourcing & Supply Coordination",
+  title: "About Us | Industrial Heat Exchanger Exporter & Technical Partner | GSB Export",
   description:
     "Learn about GSB Export: our mission, technical coordination model, commitment to quality, and role connecting international buyers with certified heat exchanger manufacturing in India.",
 };
@@ -207,34 +207,16 @@ export default function AboutUsPage() {
               </div>
             ))}
           </div>
-        </Container>
-      </section>
 
-      {/* Bottom CTA Banner */}
-      <section className="py-14 bg-navy text-white">
-        <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                Have a Project or Tender to Evaluate?
-              </h3>
-              <p className="text-xs sm:text-sm text-silver max-w-xl">
-                Send us your process datasheets, thermal duties, or equipment specifications for comprehensive engineering evaluation.
-              </p>
+          {/* Bottom Action Card */}
+          <div className="mt-12 p-8 rounded-2xl bg-navy text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-steel/60 shadow-industrial-lg">
+            <div className="space-y-1 text-center sm:text-left">
+              <h3 className="text-lg font-bold text-white">Ready to Discuss Your Equipment Requirements?</h3>
+              <p className="text-xs sm:text-sm text-silver">Our engineering desk in Vadodara reviews thermal parameters and provides formal proposals within 24–48 hours.</p>
             </div>
             <div className="flex items-center gap-3 shrink-0">
-              <Link
-                href="/request-a-quote"
-                className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded"
-              >
-                Request a Quote
-              </Link>
-              <Link
-                href="/contact-us"
-                className="btn-outline-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded"
-              >
-                Contact Us
-              </Link>
+              <Link href="/products" className="btn-outline-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Explore Equipment</Link>
+              <Link href="/request-a-quote" className="btn-copper text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Request a Quote</Link>
             </div>
           </div>
         </Container>

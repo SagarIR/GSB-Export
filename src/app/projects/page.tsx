@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Projects & Applications | Technical Case Studies",
+  title: "Projects & Applications | Technical Case Studies & Benchmarks | GSB Export",
   description:
     "Review technical application case studies: refinery crude preheating, sanitary milk HTST pasteurization, desert gas compression cooling, and anaerobic sludge heating.",
 };
@@ -152,27 +152,17 @@ export default function ProjectsPage() {
               </div>
             ))}
           </div>
-        </Container>
-      </section>
 
-      {/* Bottom CTA */}
-      <section className="py-14 bg-navy text-white">
-        <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                Have a Unique Thermal Process Challenge?
-              </h3>
-              <p className="text-xs sm:text-sm text-silver max-w-xl">
-                Our technical team evaluates non-standard process fluids, viscous slurries, high pressures, and tight temperature approaches.
-              </p>
+          {/* Bottom Action Card */}
+          <div className="mt-16 p-8 rounded-2xl bg-navy text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-steel/60 shadow-industrial-lg">
+            <div className="space-y-1 text-center sm:text-left">
+              <h3 className="text-lg font-bold text-white">Have a Challenging Thermal Process Requirement?</h3>
+              <p className="text-xs sm:text-sm text-silver">Our engineering team analyzes heat duty parameters, fouling risks, and metallurgy to recommend the right configuration.</p>
             </div>
-            <Link
-              href="/request-a-quote"
-              className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded shrink-0"
-            >
-              Request Engineering Review
-            </Link>
+            <div className="flex items-center gap-3 shrink-0">
+              <Link href="/products" className="btn-outline-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Explore Equipment</Link>
+              <Link href="/request-a-quote" className="btn-copper text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Request a Quote</Link>
+            </div>
           </div>
         </Container>
       </section>

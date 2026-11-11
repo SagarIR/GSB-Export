@@ -219,7 +219,7 @@ export function ReferenceHero() {
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                   </div>
                   <span className="text-xs font-semibold text-slate-700 ml-2 font-mono">
-                    thermal-sizing-module.exe
+                    asme-thermal-sizing-module
                   </span>
                 </div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/50">

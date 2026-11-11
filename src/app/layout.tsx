@@ -81,6 +81,7 @@ export default function RootLayout({
       "@type": "ContactPoint",
       contactType: "Customer Support & Technical Sales",
       email: COMPANY_INFO.contact.email,
+      telephone: COMPANY_INFO.contact.phone,
     },
     makesOffer: [
       {

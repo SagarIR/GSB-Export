@@ -13,6 +13,7 @@ const requiredFiles = [
   "src/app/products/page.tsx",
   "src/app/products/[slug]/page.tsx",
   "src/app/industries/page.tsx",
+  "src/app/industries/[slug]/page.tsx",
   "src/app/engineering-solutions/page.tsx",
   "src/app/quality-assurance/page.tsx",
   "src/app/manufacturing-supply/page.tsx",
@@ -48,18 +49,35 @@ for (const relPath of requiredFiles) {
   console.log(`  ✓ File verified: ${relPath}`);
 }
 
-// 2. Verify 5 Product PNG Images
+// 2. Verify 7 Product PNG Images & 7 Industry Photography Images
 console.log("\n2. Checking Product Images (PNG)...");
 const productImages = [
   "public/images/products/shell-and-tube.png",
   "public/images/products/plate-heat-exchanger.png",
   "public/images/products/air-cooled.png",
+  "public/images/products/finned-tube.png",
+  "public/images/products/u-tube-bundle.png",
   "public/images/products/double-pipe.png",
   "public/images/products/spiral.png",
 ];
 for (const img of productImages) {
-  assert.ok(fs.existsSync(path.join(process.cwd(), img)), `Missing Image: ${img}`);
+  assert.ok(fs.existsSync(path.join(process.cwd(), img)), `Missing Product Image: ${img}`);
   console.log(`  ✓ Product visual exists: ${img}`);
+}
+
+console.log("\n2b. Checking Industry Photography Images (PNG)...");
+const industryImages = [
+  "public/images/industries/oil-gas.png",
+  "public/images/industries/chemical.png",
+  "public/images/industries/food-beverage.png",
+  "public/images/industries/pharmaceutical.png",
+  "public/images/industries/power-generation.png",
+  "public/images/industries/hvac.png",
+  "public/images/industries/water-treatment.png",
+];
+for (const img of industryImages) {
+  assert.ok(fs.existsSync(path.join(process.cwd(), img)), `Missing Industry Image: ${img}`);
+  console.log(`  ✓ Industry visual exists: ${img}`);
 }
 
 // 3. Verify Zod Schema Rules

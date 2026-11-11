@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Technical Resources & Thermal Guides | Knowledge Base",
+  title: "Technical Resources & Thermal Guides | Knowledge Base | GSB Export",
   description:
     "Authoritative technical articles on industrial heat exchangers: LMTD calculation, metallurgy selection, Shell & Tube vs Plate comparison, and maintenance.",
 };
@@ -86,28 +86,6 @@ export default function ResourcesPage() {
                 </div>
               </article>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="py-14 bg-navy text-white">
-        <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                Have Questions on Sizing or Equipment Selection?
-              </h3>
-              <p className="text-xs sm:text-sm text-silver max-w-xl">
-                Our thermal engineering coordinators can assist with LMTD verification, fluid property calculations, and equipment budgeting.
-              </p>
-            </div>
-            <Link
-              href="/request-a-quote"
-              className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded shrink-0"
-            >
-              Consult an Engineer
-            </Link>
           </div>
         </Container>
       </section>

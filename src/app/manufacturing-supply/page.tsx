@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Manufacturing & Supply Capabilities | Sourcing Workflow & Export",
+  title: "Manufacturing & Supply Capabilities | Sourcing Workflow & Export | GSB Export",
   description:
     "Discover GSB Export's international supply chain workflow: technical evaluation, specialized partner facility selection, fabrication oversight, testing, and seaworthy export packing.",
 };
@@ -163,27 +163,17 @@ export default function ManufacturingSupplyPage() {
               </div>
             ))}
           </div>
-        </Container>
-      </section>
 
-      {/* Bottom CTA */}
-      <section className="py-14 bg-navy text-white">
-        <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                Evaluate Your Equipment Supply Schedule
-              </h3>
-              <p className="text-xs sm:text-sm text-silver max-w-xl">
-                Contact our supply coordination team to assess fabrication lead times, material availability, and shipping windows.
-              </p>
+          {/* Bottom Action Card */}
+          <div className="mt-12 p-8 rounded-2xl bg-navy text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-steel/60 shadow-industrial-lg">
+            <div className="space-y-1 text-center sm:text-left">
+              <h3 className="text-lg font-bold text-white">Require High-Specification Equipment Supply?</h3>
+              <p className="text-xs sm:text-sm text-silver">We coordinate specialized fabrication, non-destructive testing, and certified export packing from Gujarat.</p>
             </div>
-            <Link
-              href="/request-a-quote"
-              className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded shrink-0"
-            >
-              Request Supply Schedule &amp; RFQ
-            </Link>
+            <div className="flex items-center gap-3 shrink-0">
+              <Link href="/quality-assurance" className="btn-outline-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Review QA &amp; ITP</Link>
+              <Link href="/request-a-quote" className="btn-copper text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Request a Quote</Link>
+            </div>
           </div>
         </Container>
       </section>

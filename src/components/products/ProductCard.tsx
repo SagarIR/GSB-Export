@@ -24,7 +24,7 @@ export function ProductCard({ product, index, className = "" }: ProductCardProps
       : product.keyFeatures.slice(0, 3);
 
   const categoryTag =
-    product.categoryTag || `${product.name.toUpperCase()} MANUFACTURERS`;
+    product.categoryTag || product.name.toUpperCase();
 
   return (
     <div
