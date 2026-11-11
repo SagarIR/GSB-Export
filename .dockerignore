@@ -1,0 +1,10 @@
+Dockerfile
+.dockerignore
+node_modules
+.next
+.git
+.github
+*.log
+.env*.local
+private_uploads
+tests

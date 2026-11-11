@@ -3,6 +3,7 @@ import { prisma, isDatabaseAvailable } from "@/lib/prisma";
 import { rfqSchema } from "@/lib/validation";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { validateFile, storeAttachment } from "@/lib/storage";
+import { persistOfflineSubmission } from "@/lib/offline-storage";
 import {
   sendEmail,
   generateInternalRfqNotificationHtml,
@@ -118,6 +119,10 @@ export async function POST(req: NextRequest) {
       });
     } else {
       console.log(`[Database Notice - Offline/Pending Mode]: Enquiry ${referenceNumber} logged safely for ${data.name} (${data.email})`);
+      await persistOfflineSubmission("RFQ", referenceNumber, {
+        ...data,
+        attachments: attachmentMetadataList,
+      });
     }
 
     // 8. Send Emails (Non-blocking: failures will not discard saved enquiry)

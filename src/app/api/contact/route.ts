@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma, isDatabaseAvailable } from "@/lib/prisma";
 import { contactSchema } from "@/lib/validation";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { persistOfflineSubmission } from "@/lib/offline-storage";
 import { sendEmail } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
@@ -52,6 +53,7 @@ export async function POST(req: NextRequest) {
       });
     } else {
       console.log(`[Database Notice - Offline/Pending Mode]: General Contact ${referenceNumber} logged safely for ${data.name} (${data.email})`);
+      await persistOfflineSubmission("CONTACT", referenceNumber, data);
     }
 
     const businessEmail = process.env.BUSINESS_NOTIFICATION_EMAIL || "enquiry@gsbexport.com";

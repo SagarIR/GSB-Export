@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, FileText, ArrowRight, Clock, ShieldCheck, Mail } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { CopyReferenceButton } from "@/components/ui/CopyReferenceButton";
 import { COMPANY_INFO } from "@/content/company";
 
 export const metadata: Metadata = {
@@ -45,9 +46,12 @@ export default function ThankYouPage({ searchParams }: ThankYouPageProps) {
               <span className="text-xs text-graphite/60 block uppercase font-medium mb-1">
                 Your Unique Inquiry Reference Number:
               </span>
-              <span className="text-lg font-mono font-extrabold text-navy tracking-wider">
-                {referenceNumber}
-              </span>
+              <div className="flex items-center justify-center gap-3">
+                <span className="text-lg font-mono font-extrabold text-navy tracking-wider">
+                  {referenceNumber}
+                </span>
+                <CopyReferenceButton referenceNumber={referenceNumber} />
+              </div>
             </div>
           )}
 

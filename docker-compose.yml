@@ -1,20 +1,49 @@
 version: "3.8"
 
 services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gsb_export_web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://gsb_user:gsb_secure_password@postgres:5432/gsb_export?schema=public
+      - BUSINESS_NOTIFICATION_EMAIL=enquiry@gsbexport.com
+      - NEXT_PUBLIC_SITE_URL=http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - gsb_network
+
   postgres:
     image: postgres:16-alpine
     container_name: gsb_export_db
     restart: always
     environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: gsb_user
+      POSTGRES_PASSWORD: gsb_secure_password
       POSTGRES_DB: gsb_export
     ports:
       - "5432:5432"
     volumes:
       - gsb_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gsb_user -d gsb_export"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - gsb_network
 
 volumes:
   gsb_postgres_data:
     driver: local
 
+networks:
+  gsb_network:
+    driver: bridge
