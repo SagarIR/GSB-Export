@@ -30,8 +30,9 @@ jobs:
       - name: TypeScript Type Check
         run: npx tsc --noEmit
 
+      - name: Run Next.js Production Build
+        run: npm run build
+
       - name: Execute System Verification Test Suite
         run: npm test
 
-      - name: Run Next.js Production Build
-        run: npm run build
