@@ -37,19 +37,19 @@ export function PreFooterCtaSection() {
             <span>Direct Technical Coordination</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-sans text-white tracking-tight leading-[1.15]">
+          <h2 className="text-h1 font-bold font-sans text-white leading-[1.15]">
             Let&apos;s engineer your <br />
-            <span className="text-[#F36C21] font-extrabold">heat transfer solution.</span>
+            <span className="text-[#FA8540] font-bold">heat transfer solution.</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed font-sans">
+          <p className="text-base text-slate-200 max-w-xl mx-auto leading-relaxed font-sans">
             Connect directly with our thermal engineering team in Vadodara to evaluate process parameters, select optimal metallurgy, and receive an itemized proposal.
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/request-a-quote"
-              className="inline-flex items-center justify-center font-bold text-white bg-[#F36C21] hover:bg-[#D9550D] transition-all duration-200 px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl active:scale-[0.99] text-sm uppercase tracking-wider group"
+              className="btn-brand-orange px-8 py-3.5 shadow-lg hover:shadow-xl text-sm sm:text-base font-bold tracking-wide group w-full sm:w-auto"
             >
               <span>Request a Quotation</span>
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
@@ -57,17 +57,17 @@ export function PreFooterCtaSection() {
 
             <Link
               href="/contact-us"
-              className="inline-flex items-center justify-center font-semibold text-white hover:text-[#F36C21] bg-white/10 hover:bg-white/15 border border-white/20 transition-all duration-200 px-7 py-3.5 rounded-full text-sm"
+              className="btn-outline-white px-7 py-3.5 text-sm sm:text-base font-semibold w-full sm:w-auto bg-white/10 hover:bg-white hover:text-[#0A1C33] border-white/30"
             >
               <span>Contact Engineering Desk</span>
             </Link>
           </div>
 
-          <div className="pt-4 text-xs text-slate-400 font-sans flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <div className="pt-4 text-xs sm:text-sm text-slate-300 font-sans flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <span>Free initial thermal sizing</span>
-            <span>&bull;</span>
+            <span aria-hidden="true">&bull;</span>
             <span>Non-disclosure agreement guaranteed</span>
-            <span>&bull;</span>
+            <span aria-hidden="true">&bull;</span>
             <span>24h response time</span>
           </div>
         </div>

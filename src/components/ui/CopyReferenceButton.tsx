@@ -35,16 +35,16 @@ export function CopyReferenceButton({ referenceNumber }: CopyReferenceButtonProp
       type="button"
       onClick={handleCopy}
       aria-label="Copy reference number to clipboard"
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-navy/5 hover:bg-navy/10 text-navy border border-silver/80 transition-colors focus:outline-none focus:ring-2 focus:ring-copper/40"
+      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-sm font-semibold rounded-lg bg-navy/5 hover:bg-navy/10 text-navy border border-silver/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F4C81]"
     >
       {copied ? (
         <>
-          <Check className="w-3.5 h-3.5 text-emerald-600" />
-          <span className="text-emerald-700">Copied!</span>
+          <Check className="w-4 h-4 text-emerald-700" />
+          <span className="text-emerald-800">Copied!</span>
         </>
       ) : (
         <>
-          <Copy className="w-3.5 h-3.5 text-graphite/70" />
+          <Copy className="w-4 h-4 text-slate-600" />
           <span>Copy ID</span>
         </>
       )}

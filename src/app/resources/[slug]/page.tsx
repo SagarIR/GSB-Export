@@ -55,31 +55,31 @@ export default function ArticleDetailPage({ params }: ArticlePageProps) {
           <div className="max-w-4xl mx-auto">
             <Link
               href="/resources"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-copper hover:text-copper-light mb-6 transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#FA8540] hover:text-orange-200 mb-6 transition-colors"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
+              <ArrowLeft className="w-4 h-4" />
               <span>Back to Knowledge Base</span>
             </Link>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs text-silver mb-4">
+            <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-200 mb-4">
               <span className="bg-steel/30 text-copper-light font-bold uppercase tracking-wider px-2.5 py-0.5 rounded border border-steel/40">
                 {article.category}
               </span>
-              <span className="flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-copper" />
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-4 h-4 text-[#FA8540]" />
                 <span>{article.readTime}</span>
               </span>
-              <span className="flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5 text-copper" />
+              <span className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4 text-[#FA8540]" />
                 <span>Published: {article.publishDate}</span>
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight">
+            <h1 className="text-h1 font-bold text-white leading-tight">
               {article.title}
             </h1>
 
-            <p className="mt-4 text-sm sm:text-base text-silver leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed mb-0">
               {article.summary}
             </p>
           </div>
@@ -91,15 +91,15 @@ export default function ArticleDetailPage({ params }: ArticlePageProps) {
         <Container>
           <div className="max-w-4xl mx-auto">
             {/* Key Takeaways Card */}
-            <div className="mb-10 p-6 sm:p-7 bg-offwhite rounded-xl border-l-4 border-copper border-y border-r border-silver/60">
-              <h2 className="text-sm font-bold uppercase tracking-wider text-navy mb-3 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-copper" />
+            <div className="mb-10 p-6 sm:p-7 bg-offwhite rounded-xl border-l-4 border-[#F36C21] border-y border-r border-silver/60">
+              <h2 className="text-lg sm:text-xl font-bold text-navy mb-3.5 flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-[#C2410C]" />
                 <span>Key Engineering Takeaways</span>
               </h2>
-              <ul className="space-y-2 text-xs sm:text-sm text-graphite/90">
+              <ul className="space-y-2.5 text-sm sm:text-base text-slate-700 leading-relaxed">
                 {article.keyTakeaways.map((takeaway, idx) => (
                   <li key={idx} className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-copper shrink-0 mt-2" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C2410C] shrink-0 mt-2.5" />
                     <span>{takeaway}</span>
                   </li>
                 ))}
@@ -107,10 +107,10 @@ export default function ArticleDetailPage({ params }: ArticlePageProps) {
             </div>
 
             {/* Sections */}
-            <div className="space-y-10 text-sm sm:text-base text-graphite/85 leading-relaxed">
+            <div className="space-y-10 text-base text-slate-700 leading-relaxed">
               {article.contentSections.map((section, idx) => (
                 <div key={idx} className="space-y-4">
-                  <h2 className="text-xl sm:text-2xl font-bold text-navy border-b border-silver/40 pb-2.5">
+                  <h2 className="text-h3 font-bold text-navy border-b border-silver/40 pb-2.5">
                     {section.heading}
                   </h2>
                   {section.body.map((paragraph, pIdx) => (
@@ -126,16 +126,16 @@ export default function ArticleDetailPage({ params }: ArticlePageProps) {
             <div className="mt-14 p-8 bg-navy rounded-xl text-white border border-steel/60">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-1">
+                  <h3 className="text-xl font-bold text-white mb-1.5">
                     Need Engineering Sizing Support?
                   </h3>
-                  <p className="text-xs sm:text-sm text-silver max-w-lg">
+                  <p className="text-sm sm:text-base text-slate-200 max-w-lg mb-0">
                     Submit your thermal datasheets and fluid parameters. Our engineering coordinators evaluate LMTD, heat transfer coefficients, and metallurgy.
                   </p>
                 </div>
                 <Link
                   href="/request-a-quote"
-                  className="btn-copper text-xs font-bold uppercase tracking-wider px-6 py-3 rounded shrink-0 flex items-center gap-1.5"
+                  className="btn-copper text-sm font-bold px-6 py-3 rounded-full shrink-0 flex items-center gap-2"
                 >
                   <FileText className="w-4 h-4" />
                   <span>Request RFQ</span>
@@ -145,7 +145,7 @@ export default function ArticleDetailPage({ params }: ArticlePageProps) {
 
             {/* Related Articles Navigation */}
             <div className="mt-16 pt-10 border-t border-silver/60">
-              <h3 className="text-base font-bold text-navy mb-6">
+              <h3 className="text-xl font-bold text-navy mb-6">
                 Related Engineering Guides
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -155,21 +155,21 @@ export default function ArticleDetailPage({ params }: ArticlePageProps) {
                     className="p-5 bg-offwhite rounded-xl border border-silver/60 hover:border-steel/60 transition-colors flex flex-col justify-between"
                   >
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-copper block mb-1">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#C2410C] block mb-1.5">
                         {rel.category}
                       </span>
-                      <h4 className="text-xs sm:text-sm font-bold text-navy line-clamp-2 mb-2">
-                        <Link href={`/resources/${rel.slug}`} className="hover:text-copper transition-colors">
+                      <h4 className="text-base font-bold text-navy line-clamp-2 mb-2.5 leading-snug">
+                        <Link href={`/resources/${rel.slug}`} className="hover:text-[#C2410C] transition-colors">
                           {rel.title}
                         </Link>
                       </h4>
                     </div>
                     <Link
                       href={`/resources/${rel.slug}`}
-                      className="text-xs font-semibold text-steel hover:text-copper flex items-center gap-1 pt-2 transition-colors"
+                      className="text-sm font-semibold text-[#0F4C81] hover:text-[#C2410C] flex items-center gap-1 pt-2 transition-colors"
                     >
                       <span>Read Guide</span>
-                      <ArrowRight className="w-3 h-3" />
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 ))}

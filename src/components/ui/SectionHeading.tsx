@@ -35,18 +35,18 @@ export function SectionHeading({
         <div className="mb-3">
           <span
             className={cn(
-              "inline-flex items-center px-3 py-1 rounded text-xs font-bold tracking-widest uppercase border",
+              "inline-flex items-center px-3 py-1 rounded text-xs font-bold tracking-wider uppercase border",
               badgeVariant === "copper" &&
                 (isDark
                   ? "bg-copper/20 text-copper-light border-copper/40"
-                  : "bg-copper/10 text-copper-dark border-copper/30"),
+                  : "bg-orange-50 text-[#C2410C] border-orange-200/80"),
               badgeVariant === "steel" &&
                 (isDark
-                  ? "bg-steel-light/20 text-silver-light border-steel-light/40"
-                  : "bg-steel/10 text-steel border-steel/30"),
+                  ? "bg-steel-light/20 text-slate-200 border-steel-light/40"
+                  : "bg-steel/10 text-[#0F4C81] border-steel/30"),
               badgeVariant === "navy" &&
                 (isDark
-                  ? "bg-white/10 text-silver-light border-white/20"
+                  ? "bg-white/10 text-slate-200 border-white/20"
                   : "bg-navy/10 text-navy border-navy/20")
             )}
           >
@@ -56,7 +56,7 @@ export function SectionHeading({
       )}
       <h2
         className={cn(
-          "text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight",
+          "text-h2 font-bold leading-tight",
           isDark ? "text-white" : "text-navy"
         )}
       >
@@ -65,8 +65,8 @@ export function SectionHeading({
       {subtitle && (
         <p
           className={cn(
-            "mt-4 text-base sm:text-lg leading-relaxed",
-            isDark ? "text-silver" : "text-graphite/80"
+            "mt-4 text-base sm:text-lg leading-relaxed mb-0",
+            isDark ? "text-slate-200" : "text-slate-700"
           )}
         >
           {subtitle}

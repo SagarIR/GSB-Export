@@ -75,7 +75,7 @@ export function IndustryCard({
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent pointer-events-none" />
 
           {/* Top-Right Number Badge (Matching ProductCard pattern) */}
-          <span className="absolute top-3.5 right-3.5 z-10 text-[11px] font-mono font-bold tracking-wider bg-[#0A1C33]/90 backdrop-blur-xs text-white px-2.5 py-0.5 rounded-md shadow-xs border border-white/20">
+          <span className="absolute top-3.5 right-3.5 z-10 text-xs font-mono font-bold tracking-wider bg-[#0A1C33]/90 backdrop-blur-xs text-white px-2.5 py-0.5 rounded-md shadow-xs border border-white/20">
             Sector {numberStr}
           </span>
         </Link>
@@ -90,23 +90,26 @@ export function IndustryCard({
               </div>
 
               {/* Large Faint Number Watermark (from Davar ChemTech reference) */}
-              <span className="text-4xl sm:text-5xl font-sans font-black text-slate-200 group-hover:text-slate-300/80 transition-colors select-none tracking-tight">
+              <span
+                aria-hidden="true"
+                className="text-4xl sm:text-5xl font-sans font-bold text-slate-200 group-hover:text-slate-300/80 transition-colors select-none tracking-tight"
+              >
                 {numberStr}
               </span>
             </div>
 
             {/* Subtitle / Category Label */}
-            <p className="text-[10px] sm:text-[10.5px] font-bold uppercase tracking-wider text-[#F36C21] mb-1.5 line-clamp-1">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#C2410C] mb-1.5 line-clamp-1">
               {industry.tagline}
             </p>
 
             {/* Industry Title */}
-            <h3 className="text-lg sm:text-[19px] font-bold font-sans text-[#0A1C33] group-hover:text-[#2B7A78] transition-colors leading-snug mb-2">
+            <h3 className="text-lg sm:text-xl font-bold font-sans text-[#0A1C33] group-hover:text-[#1F5F5D] transition-colors leading-snug mb-2">
               <Link href={`/industries/${industry.slug}`}>{industry.name}</Link>
             </h3>
 
             {/* Short Description */}
-            <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed line-clamp-2 mb-4">
+            <p className="text-sm text-slate-700 leading-relaxed line-clamp-2 mb-4">
               {industry.shortDescription}
             </p>
 
@@ -115,9 +118,9 @@ export function IndustryCard({
               {bullets.map((bullet, bIdx) => (
                 <li
                   key={bIdx}
-                  className="flex items-start gap-2.5 text-xs text-slate-700 font-medium"
+                  className="flex items-start gap-2.5 text-sm text-slate-700 font-medium"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#52B72A] shrink-0 mt-1.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#52B72A] shrink-0 mt-2" />
                   <span className="line-clamp-1">{bullet}</span>
                 </li>
               ))}
@@ -128,7 +131,7 @@ export function IndustryCard({
           <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3 mt-auto">
             <Link
               href={`/industries/${industry.slug}`}
-              className="text-xs sm:text-sm font-bold text-[#0A1C33] group-hover:text-[#2B7A78] transition-colors py-1 inline-flex items-center gap-1"
+              className="text-sm font-bold text-[#0A1C33] group-hover:text-[#1F5F5D] transition-colors py-1 inline-flex items-center gap-1"
             >
               <span>View Details</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -136,9 +139,9 @@ export function IndustryCard({
 
             <Link
               href={`/request-a-quote?industry=${encodeURIComponent(industry.name)}`}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white bg-[#0A3D78] hover:bg-[#F36C21] active:scale-95 transition-all duration-200 shadow-sm hover:shadow"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-white bg-[#0A3D78] hover:bg-[#CC4B08] active:scale-95 transition-all duration-200 shadow-sm hover:shadow"
             >
-              <FileText className="w-3 h-3" />
+              <FileText className="w-3.5 h-3.5" />
               <span>Get Quote</span>
             </Link>
           </div>

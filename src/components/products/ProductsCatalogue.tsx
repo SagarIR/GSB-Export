@@ -80,7 +80,7 @@ export function ProductsCatalogue() {
   return (
     <div>
       {/* Controls Bar: Filter Tabs & Search */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-10 pb-6 border-b border-slate-200/80">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-10 pb-6 border-b border-slate-200/80">
         {/* Category Tabs */}
         <div className="flex flex-wrap items-center gap-2">
           {filterOptions.map((opt) => (
@@ -88,18 +88,18 @@ export function ProductsCatalogue() {
               key={opt.key}
               type="button"
               onClick={() => setActiveTab(opt.key)}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
+              className={`px-3.5 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap shrink-0 transition-all flex items-center gap-2 ${
                 activeTab === opt.key
                   ? "bg-[#0A1C33] text-white shadow-sm"
-                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                  : "bg-slate-100 text-slate-800 hover:bg-slate-200"
               }`}
             >
               <span>{opt.label}</span>
               <span
-                className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                className={`text-xs px-2 py-0.5 rounded-full font-mono leading-none ${
                   activeTab === opt.key
                     ? "bg-white/20 text-white"
-                    : "bg-slate-200 text-slate-600"
+                    : "bg-slate-200 text-slate-700"
                 }`}
               >
                 {opt.count}
@@ -109,20 +109,24 @@ export function ProductsCatalogue() {
         </div>
 
         {/* Search Input */}
-        <div className="relative w-full lg:w-72">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="relative w-full lg:w-72 shrink-0">
+          <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
             type="text"
+            aria-label="Search heat exchanger equipment or code"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search equipment or code..."
-            className="w-full pl-10 pr-4 py-2 text-xs bg-white border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#F36C21] focus:border-transparent text-slate-800 placeholder-slate-400 shadow-2xs"
+            className={`w-full pl-10 ${
+              searchQuery ? "pr-9" : "pr-4"
+            } py-2.5 text-base sm:text-sm bg-white border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#0F4C81] focus:border-[#0F4C81] text-slate-900 placeholder:text-slate-500 shadow-sm`}
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-bold"
+              aria-label="Clear search"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-600 hover:text-slate-900 font-bold px-1"
             >
               ✕
             </button>
@@ -139,10 +143,10 @@ export function ProductsCatalogue() {
         </div>
       ) : (
         <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-slate-300 p-8">
-          <p className="text-sm font-semibold text-slate-700 mb-2">
+          <p className="text-base font-semibold text-slate-800 mb-2">
             No equipment matching &quot;{searchQuery}&quot; in this category.
           </p>
-          <p className="text-xs text-slate-500 mb-6">
+          <p className="text-sm text-slate-600 mb-6">
             Try clearing the search query or selecting &quot;All Equipment&quot;.
           </p>
           <button
@@ -151,7 +155,7 @@ export function ProductsCatalogue() {
               setActiveTab("ALL");
               setSearchQuery("");
             }}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold text-white bg-[#0A1C33] hover:bg-[#F36C21] transition-colors"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-bold text-white bg-[#0A1C33] hover:bg-[#CC4B08] transition-colors"
           >
             <span>Reset Catalogue Filters</span>
           </button>

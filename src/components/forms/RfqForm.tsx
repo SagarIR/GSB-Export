@@ -139,7 +139,7 @@ export function RfqForm() {
       />
 
       {status === "error" && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm flex items-start gap-3">
+        <div role="alert" className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm flex items-start gap-3">
           <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
           <span>{errorMessage}</span>
         </div>
@@ -148,106 +148,115 @@ export function RfqForm() {
       {/* Section 1: Customer & Company Details */}
       <div>
         <div className="border-b border-silver/50 pb-3 mb-6">
-          <span className="text-copper text-xs font-bold uppercase tracking-wider block mb-1">
+          <span className="text-[#C2410C] text-xs font-bold uppercase tracking-wider block mb-1">
             Section 01
           </span>
-          <h2 className="text-lg sm:text-xl font-bold text-navy">
+          <h2 className="text-h3 font-bold text-navy">
             Client &amp; Commercial Information
           </h2>
-          <p className="text-xs text-graphite/70 mt-1">
+          <p className="text-sm text-slate-600 mt-1 mb-0">
             Your corporate contact details for official proposal transmission.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
-              Full Name <span className="text-copper">*</span>
+            <label htmlFor="rfq-name" className="form-label">
+              Full Name <span className="text-[#C2410C]" aria-hidden="true">*</span>
             </label>
             <input
+              id="rfq-name"
               type="text"
               name="name"
               required
+              aria-required="true"
               value={formData.name}
               onChange={handleChange}
               placeholder="e.g. John Doe"
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+            <label htmlFor="rfq-company" className="form-label">
               Company / Entity Name
             </label>
             <input
+              id="rfq-company"
               type="text"
               name="company"
               value={formData.company}
               onChange={handleChange}
               placeholder="e.g. Gulf Petrochem LLC"
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
-              Business Email <span className="text-copper">*</span>
+            <label htmlFor="rfq-email" className="form-label">
+              Business Email <span className="text-[#C2410C]" aria-hidden="true">*</span>
             </label>
             <input
+              id="rfq-email"
               type="email"
               name="email"
               required
+              aria-required="true"
               value={formData.email}
               onChange={handleChange}
               placeholder="e.g. j.doe@company.com"
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+            <label htmlFor="rfq-phone" className="form-label">
               Contact Phone / WhatsApp
             </label>
             <input
+              id="rfq-phone"
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               placeholder="e.g. +971 50 123 4567"
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
-              Country of Delivery / Operation <span className="text-copper">*</span>
+            <label htmlFor="rfq-country" className="form-label">
+              Country of Delivery / Operation <span className="text-[#C2410C]" aria-hidden="true">*</span>
             </label>
             <input
+              id="rfq-country"
               type="text"
               name="country"
               required
+              aria-required="true"
               value={formData.country}
               onChange={handleChange}
-              placeholder="e.g. United Arab Emirates, Saudi Arabia, Germany"
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              placeholder="e.g. United Arab Emirates, Saudi Arabia"
+              className="form-input"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+            <label htmlFor="rfq-website" className="form-label">
               Company Website (Optional)
             </label>
             <input
+              id="rfq-website"
               type="text"
               name="companyWebsite"
               value={formData.companyWebsite}
               onChange={handleChange}
               placeholder="e.g. https://www.company.com"
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
         </div>
@@ -256,28 +265,29 @@ export function RfqForm() {
       {/* Section 2: Equipment & Process Technical Parameters */}
       <div>
         <div className="border-b border-silver/50 pb-3 mb-6">
-          <span className="text-copper text-xs font-bold uppercase tracking-wider block mb-1">
+          <span className="text-[#C2410C] text-xs font-bold uppercase tracking-wider block mb-1">
             Section 02
           </span>
-          <h2 className="text-lg sm:text-xl font-bold text-navy">
+          <h2 className="text-h3 font-bold text-navy">
             Equipment &amp; Thermal Requirements
           </h2>
-          <div className="flex items-center gap-1.5 text-xs text-copper-dark mt-1 font-medium">
-            <HelpCircle className="w-3.5 h-3.5" />
+          <div className="flex items-center gap-2 text-sm text-[#C2410C] mt-1.5 font-medium">
+            <HelpCircle className="w-4 h-4 shrink-0" />
             <span>Unknown parameters can be left blank — our engineering team will assist you.</span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
-              Product Category <span className="text-copper">*</span>
+            <label htmlFor="rfq-category" className="form-label">
+              Product Category <span className="text-[#C2410C]" aria-hidden="true">*</span>
             </label>
             <select
+              id="rfq-category"
               name="productCategory"
               value={formData.productCategory}
               onChange={handleChange}
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite bg-white"
+              className="form-input"
             >
               {PRODUCTS.map((prod) => (
                 <option key={prod.id} value={prod.name}>
@@ -289,46 +299,49 @@ export function RfqForm() {
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+            <label htmlFor="rfq-quantity" className="form-label">
               Required Quantity
             </label>
             <input
+              id="rfq-quantity"
               type="text"
               name="quantity"
               value={formData.quantity}
               onChange={handleChange}
               placeholder="e.g. 1 unit, 2 units, battery of 4"
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+            <label htmlFor="rfq-fluid" className="form-label">
               Process Fluids (Hot / Cold Media)
             </label>
             <input
+              id="rfq-fluid"
               type="text"
               name="fluidType"
               value={formData.fluidType}
               onChange={handleChange}
-              placeholder="e.g. Crude Oil / Cooling Water, Steam / Condensate"
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              placeholder="e.g. Crude Oil / Cooling Water, Steam"
+              className="form-input"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+            <label htmlFor="rfq-material" className="form-label">
               Material Preference (if known)
             </label>
             <input
+              id="rfq-material"
               type="text"
               name="material"
               value={formData.material}
               onChange={handleChange}
-              placeholder="e.g. Carbon Steel, SS 316L, Titanium, Duplex 2205"
-              className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              placeholder="e.g. Carbon Steel, SS 316L, Titanium"
+              className="form-input"
             />
           </div>
         </div>
@@ -336,87 +349,93 @@ export function RfqForm() {
         {/* Operating Conditions Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-navy mb-1">
+            <label htmlFor="rfq-inlet-temp" className="form-label">
               Inlet Temp (°C / °F)
             </label>
             <input
+              id="rfq-inlet-temp"
               type="text"
               name="inletTemperature"
               value={formData.inletTemperature}
               onChange={handleChange}
               placeholder="e.g. 140°C"
-              className="w-full text-xs px-3.5 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-navy mb-1">
+            <label htmlFor="rfq-outlet-temp" className="form-label">
               Outlet Temp (°C / °F)
             </label>
             <input
+              id="rfq-outlet-temp"
               type="text"
               name="outletTemperature"
               value={formData.outletTemperature}
               onChange={handleChange}
               placeholder="e.g. 45°C"
-              className="w-full text-xs px-3.5 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-navy mb-1">
+            <label htmlFor="rfq-pressure" className="form-label">
               Operating Pressure
             </label>
             <input
+              id="rfq-pressure"
               type="text"
               name="operatingPressure"
               value={formData.operatingPressure}
               onChange={handleChange}
               placeholder="e.g. 16 bar(g)"
-              className="w-full text-xs px-3.5 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-navy mb-1">
+            <label htmlFor="rfq-flow" className="form-label">
               Flow Rate (m³/h / kg/s)
             </label>
             <input
+              id="rfq-flow"
               type="text"
               name="flowRate"
               value={formData.flowRate}
               onChange={handleChange}
               placeholder="e.g. 120 m³/h"
-              className="w-full text-xs px-3.5 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+              className="form-input"
             />
           </div>
         </div>
 
         <div className="mb-5">
-          <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+          <label htmlFor="rfq-destination" className="form-label">
             Delivery Destination (Port / Jobsite)
           </label>
           <input
+            id="rfq-destination"
             type="text"
             name="deliveryDestination"
             value={formData.deliveryDestination}
             onChange={handleChange}
             placeholder="e.g. Jebel Ali Port, UAE (CIF) / Dammam, Saudi Arabia"
-            className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite"
+            className="form-input"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+          <label htmlFor="rfq-message" className="form-label">
             Additional Technical Requirements &amp; Project Description
           </label>
           <textarea
+            id="rfq-message"
             name="message"
             rows={4}
             value={formData.message}
             onChange={handleChange}
             placeholder="Please detail allowable pressure drop, fouling factor tolerances, corrosion allowances, design codes (ASME/TEMA), or delivery timeframe..."
-            className="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-silver focus:outline-none focus:ring-2 focus:ring-steel text-graphite leading-relaxed"
+            className="form-input leading-relaxed"
           />
         </div>
       </div>
@@ -424,38 +443,39 @@ export function RfqForm() {
       {/* Section 3: Technical Document Uploads */}
       <div>
         <div className="border-b border-silver/50 pb-3 mb-6">
-          <span className="text-copper text-xs font-bold uppercase tracking-wider block mb-1">
+          <span className="text-[#C2410C] text-xs font-bold uppercase tracking-wider block mb-1">
             Section 03
           </span>
-          <h2 className="text-lg sm:text-xl font-bold text-navy">
+          <h2 className="text-h3 font-bold text-navy">
             Technical Drawing &amp; Specification Uploads
           </h2>
-          <p className="text-xs text-graphite/70 mt-1">
+          <p className="text-sm text-slate-600 mt-1 mb-0">
             Attach process data sheets, General Arrangement drawings, P&amp;ID extracts, or project specifications. (PDF, DWG, DXF, Images, max 15MB each, up to 5 files).
           </p>
         </div>
 
         {fileError && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg flex items-center gap-2">
+          <div role="alert" className="mb-4 p-3.5 bg-red-50 border border-red-200 text-red-800 text-sm rounded-lg flex items-center gap-2">
             <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{fileError}</span>
           </div>
         )}
 
         {/* Upload Dropzone */}
-        <label className="border-2 border-dashed border-silver hover:border-steel/80 transition-colors rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer bg-offwhite/50 text-center block">
-          <UploadCloud className="w-10 h-10 text-copper mb-2" />
-          <span className="text-xs sm:text-sm font-bold text-navy">
+        <label htmlFor="rfq-files" className="border-2 border-dashed border-silver hover:border-[#0F4C81] transition-colors rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer bg-offwhite/50 text-center block">
+          <UploadCloud className="w-10 h-10 text-[#F36C21] mb-2" />
+          <span className="text-sm sm:text-base font-bold text-navy">
             Click to Browse or Drag &amp; Drop Technical Files Here
           </span>
-          <span className="text-xs text-graphite/60 mt-1">
+          <span className="text-xs sm:text-sm text-slate-600 mt-1">
             Accepted: PDF, DWG, DXF, DOCX, XLSX, PNG, JPG (Max 15MB per file)
           </span>
           <input
+            id="rfq-files"
             type="file"
             multiple
             onChange={handleFileChange}
-            className="hidden"
+            className="sr-only"
             accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.webp,.dwg,.dxf"
           />
         </label>
@@ -463,25 +483,26 @@ export function RfqForm() {
         {/* Attached Files List */}
         {files.length > 0 && (
           <div className="mt-4 space-y-2">
-            <span className="text-xs font-bold text-navy block">
+            <span className="text-sm font-bold text-navy block">
               Attached Technical Files ({files.length}/5):
             </span>
             {files.map((file, idx) => (
               <div
                 key={idx}
-                className="p-3 bg-white border border-silver/70 rounded-lg flex items-center justify-between text-xs"
+                className="p-3 bg-white border border-silver/70 rounded-lg flex items-center justify-between text-sm"
               >
                 <div className="flex items-center gap-2.5 truncate pr-2">
                   <FileText className="w-4 h-4 text-steel shrink-0" />
                   <span className="font-medium text-navy truncate">{file.name}</span>
-                  <span className="text-[11px] text-graphite/60 shrink-0">
+                  <span className="text-xs text-slate-600 shrink-0">
                     ({(file.size / 1024 / 1024).toFixed(2)} MB)
                   </span>
                 </div>
                 <button
                   type="button"
+                  aria-label={`Remove ${file.name}`}
                   onClick={() => removeFile(idx)}
-                  className="text-graphite/60 hover:text-red-600 p-1 rounded"
+                  className="text-slate-600 hover:text-red-700 p-1.5 rounded"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -490,10 +511,10 @@ export function RfqForm() {
           </div>
         )}
 
-        <div className="mt-4 p-3.5 bg-offwhite rounded-lg border border-silver/50 text-[11px] text-graphite/80 flex items-start gap-2">
-          <ShieldCheck className="w-4 h-4 text-copper shrink-0 mt-0.5" />
+        <div className="mt-4 p-4 bg-offwhite rounded-lg border border-silver/50 text-xs sm:text-sm text-slate-700 flex items-start gap-2.5 leading-relaxed">
+          <ShieldCheck className="w-4 h-4 text-[#C2410C] shrink-0 mt-0.5" />
           <span>
-            <strong>Confidentiality Guaranteed:</strong> All uploaded engineering drawings and proprietary process parameters are stored in private object storage and accessed strictly for quotation calculation.
+            <strong className="text-navy">Confidentiality Guaranteed:</strong> All uploaded engineering drawings and proprietary process parameters are stored in private object storage and accessed strictly for quotation calculation.
           </span>
         </div>
       </div>
@@ -503,7 +524,7 @@ export function RfqForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="btn-copper text-xs sm:text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
+          className="btn-copper text-sm sm:text-base font-bold px-8 py-4 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {status === "submitting" ? (
             <>
@@ -518,7 +539,7 @@ export function RfqForm() {
           )}
         </button>
 
-        <span className="text-xs text-graphite/60 text-center sm:text-right">
+        <span className="text-xs sm:text-sm text-slate-600 text-center sm:text-right">
           Estimated engineering response: 1–2 business days
         </span>
       </div>

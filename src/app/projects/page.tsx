@@ -19,13 +19,13 @@ export default function ProjectsPage() {
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-widest uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Technical Case Studies
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-h1 font-bold text-white leading-tight">
               Projects &amp; Applications
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-silver leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed mb-0">
               Real-world thermal challenges and engineering solutions. Exploring how customized heat exchangers resolve severe fouling, high pressures, and extreme temperature crossings.
             </p>
           </div>
@@ -33,12 +33,12 @@ export default function ProjectsPage() {
       </section>
 
       {/* Transparency Note */}
-      <section className="py-6 bg-offwhite border-b border-silver/50 text-xs text-graphite/80">
+      <section className="py-6 bg-offwhite border-b border-silver/50 text-sm text-slate-700">
         <Container>
-          <div className="flex items-center gap-2 p-3 bg-white rounded border border-silver/70">
-            <ShieldCheck className="w-4 h-4 text-copper shrink-0" />
-            <p>
-              <strong>Engineering Integrity Notice:</strong> Case studies on this page represent typical engineering application benchmarks and technical problem-solution models designed to illustrate equipment selection criteria.
+          <div className="flex items-start sm:items-center gap-3 p-4 bg-white rounded-lg border border-silver/70">
+            <ShieldCheck className="w-5 h-5 text-[#C2410C] shrink-0 mt-0.5 sm:mt-0" />
+            <p className="mb-0 text-sm leading-relaxed">
+              <strong className="text-navy">Engineering Integrity Notice:</strong> Case studies on this page represent typical engineering application benchmarks and technical problem-solution models designed to illustrate equipment selection criteria.
             </p>
           </div>
         </Container>
@@ -48,7 +48,7 @@ export default function ProjectsPage() {
       <section className="py-16 sm:py-20 bg-white">
         <Container>
           <div className="space-y-16">
-            {APPLICATION_CASES.map((appCase, idx) => (
+            {APPLICATION_CASES.map((appCase) => (
               <div
                 key={appCase.id}
                 id={appCase.slug}
@@ -57,62 +57,62 @@ export default function ProjectsPage() {
                 {/* Header Info */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-silver/50 pb-5 mb-6">
                   <div>
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      <span className="text-[10px] font-bold uppercase tracking-wider bg-copper/10 text-copper-dark px-2.5 py-0.5 rounded border border-copper/30">
+                    <div className="flex flex-wrap items-center gap-2.5 mb-2">
+                      <span className="text-xs font-bold uppercase tracking-wider bg-orange-50 text-[#C2410C] px-2.5 py-0.5 rounded border border-orange-200/80">
                         {appCase.type}
                       </span>
-                      <span className="text-xs text-steel font-bold">
+                      <span className="text-sm text-[#0F4C81] font-bold">
                         {appCase.industry}
                       </span>
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-navy">
+                    <h2 className="text-h3 font-bold text-navy">
                       {appCase.title}
                     </h2>
                   </div>
-                  <span className="text-xs font-semibold bg-white px-3 py-1.5 rounded border border-silver/60 text-navy self-start sm:self-auto">
+                  <span className="text-xs sm:text-sm font-semibold bg-white px-3.5 py-1.5 rounded-lg border border-silver/60 text-navy self-start sm:self-auto">
                     {appCase.equipmentType}
                   </span>
                 </div>
 
                 {/* Duty Summary */}
-                <div className="mb-6 p-4 bg-white rounded-lg border border-silver/50 text-xs text-graphite/90">
-                  <span className="font-bold text-navy uppercase text-[10px] tracking-wider block mb-1">
+                <div className="mb-6 p-4 sm:p-5 bg-white rounded-lg border border-silver/50 text-sm text-slate-700">
+                  <span className="font-bold text-navy uppercase text-xs tracking-wider block mb-1.5">
                     Process Duty:
                   </span>
-                  <p className="leading-relaxed">
+                  <p className="leading-relaxed mb-0 text-sm sm:text-base">
                     {appCase.dutySummary}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-4">
                   {/* Challenge & Solution */}
-                  <div className="lg:col-span-7 space-y-4">
+                  <div className="lg:col-span-7 space-y-5">
                     <div>
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-copper-dark mb-1.5">
-                        The Technical Challenge:
+                      <h3 className="text-base font-bold text-[#C2410C] mb-2">
+                        The Technical Challenge
                       </h3>
-                      <p className="text-xs sm:text-sm text-graphite/85 leading-relaxed bg-white/70 p-3.5 rounded border border-silver/40">
+                      <p className="text-sm sm:text-base text-slate-700 leading-relaxed bg-white/80 p-4 rounded-lg border border-silver/40 mb-0">
                         {appCase.challenge}
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-steel mb-1.5">
-                        The Engineering Solution:
+                      <h3 className="text-base font-bold text-[#0F4C81] mb-2">
+                        The Engineering Solution
                       </h3>
-                      <p className="text-xs sm:text-sm text-graphite/85 leading-relaxed bg-white/70 p-3.5 rounded border border-silver/40">
+                      <p className="text-sm sm:text-base text-slate-700 leading-relaxed bg-white/80 p-4 rounded-lg border border-silver/40 mb-0">
                         {appCase.technicalSolution}
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-navy mb-2">
-                        Demonstrated Operational Benefits:
+                      <h3 className="text-base font-bold text-navy mb-2.5">
+                        Demonstrated Operational Benefits
                       </h3>
-                      <ul className="space-y-1.5 text-xs text-graphite">
+                      <ul className="space-y-2 text-sm sm:text-[15px] text-slate-700">
                         {appCase.keyBenefits.map((ben, bIdx) => (
-                          <li key={bIdx} className="flex items-start gap-2">
-                            <Check className="w-3.5 h-3.5 text-copper shrink-0 mt-0.5" />
+                          <li key={bIdx} className="flex items-start gap-2.5">
+                            <Check className="w-4 h-4 text-[#C2410C] shrink-0 mt-1" />
                             <span>{ben}</span>
                           </li>
                         ))}
@@ -121,14 +121,14 @@ export default function ProjectsPage() {
                   </div>
 
                   {/* Technical Specifications Matrix */}
-                  <div className="lg:col-span-5 bg-white rounded-xl p-5 border border-silver/60 shadow-sm">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-navy border-b border-silver/40 pb-2 mb-3">
+                  <div className="lg:col-span-5 bg-white rounded-xl p-5 sm:p-6 border border-silver/60 shadow-sm">
+                    <h3 className="text-base font-bold text-navy border-b border-silver/40 pb-2.5 mb-3.5">
                       Equipment Technical Parameters
                     </h3>
-                    <div className="space-y-2.5 text-xs">
+                    <div className="space-y-3 text-sm">
                       {appCase.equipmentSpecs.map((spec, sIdx) => (
-                        <div key={sIdx} className="border-b border-silver/30 pb-2 last:border-0 last:pb-0">
-                          <span className="text-graphite/60 block text-[10px] uppercase">
+                        <div key={sIdx} className="border-b border-silver/30 pb-2.5 last:border-0 last:pb-0">
+                          <span className="text-slate-600 block text-xs uppercase font-medium mb-0.5">
                             {spec.label}
                           </span>
                           <span className="font-semibold text-navy">
@@ -141,9 +141,9 @@ export default function ProjectsPage() {
                     <div className="mt-5 pt-4 border-t border-silver/40">
                       <Link
                         href={`/request-a-quote?application=${encodeURIComponent(appCase.title)}`}
-                        className="btn-copper text-xs font-bold uppercase tracking-wider py-2.5 px-4 rounded w-full text-center flex items-center justify-center gap-1.5"
+                        className="btn-copper text-sm font-bold py-3 px-4 rounded-full w-full text-center flex items-center justify-center gap-2"
                       >
-                        <FileText className="w-3.5 h-3.5" />
+                        <FileText className="w-4 h-4" />
                         <span>Inquire About Similar Duty</span>
                       </Link>
                     </div>
@@ -155,13 +155,13 @@ export default function ProjectsPage() {
 
           {/* Bottom Action Card */}
           <div className="mt-16 p-8 rounded-2xl bg-navy text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-steel/60 shadow-industrial-lg">
-            <div className="space-y-1 text-center sm:text-left">
-              <h3 className="text-lg font-bold text-white">Have a Challenging Thermal Process Requirement?</h3>
-              <p className="text-xs sm:text-sm text-silver">Our engineering team analyzes heat duty parameters, fouling risks, and metallurgy to recommend the right configuration.</p>
+            <div className="space-y-1.5 text-center sm:text-left">
+              <h3 className="text-xl font-bold text-white">Have a Challenging Thermal Process Requirement?</h3>
+              <p className="text-sm sm:text-base text-slate-200 mb-0">Our engineering team analyzes heat duty parameters, fouling risks, and metallurgy to recommend the right configuration.</p>
             </div>
-            <div className="flex items-center gap-3 shrink-0">
-              <Link href="/products" className="btn-outline-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Explore Equipment</Link>
-              <Link href="/request-a-quote" className="btn-copper text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Request a Quote</Link>
+            <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+              <Link href="/products" className="btn-outline-white text-sm font-bold px-5 py-2.5 rounded-full">Explore Equipment</Link>
+              <Link href="/request-a-quote" className="btn-copper text-sm font-bold px-5 py-2.5 rounded-full">Request a Quote</Link>
             </div>
           </div>
         </Container>

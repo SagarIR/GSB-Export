@@ -19,13 +19,13 @@ export default function QualityAssurancePage() {
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-widest uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Zero-Defect Quality Governance
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-h1 font-bold text-white leading-tight">
               Quality Assurance &amp; Inspection
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-silver leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed mb-0">
               Guaranteed material traceability, certified weld procedures, 100% pressure containment verification, and third-party inspection authority coordination.
             </p>
           </div>
@@ -45,9 +45,9 @@ export default function QualityAssurancePage() {
                 className="mb-4"
               />
 
-              <div className="space-y-4 text-sm text-graphite/85 leading-relaxed">
+              <div className="space-y-4 text-base text-slate-700 leading-relaxed">
                 <p>
-                  At <strong>GSB Export</strong>, quality is not a post-manufacturing check; it is a continuous, document-driven discipline executed at every milestone of equipment lifecycle. We formulate and oversee detailed project-specific <strong>Inspection and Test Plans (ITP)</strong> that outline witness, hold, and review points before any metal is cut.
+                  At <strong className="text-navy">GSB Export</strong>, quality is not a post-manufacturing check; it is a continuous, document-driven discipline executed at every milestone of equipment lifecycle. We formulate and oversee detailed project-specific <strong className="text-navy">Inspection and Test Plans (ITP)</strong> that outline witness, hold, and review points before any metal is cut.
                 </p>
                 <p>
                   From validating heat numbers against raw mill test certificates to observing final hydrostatic pressure tests with calibrated digital chart loggers, our technical quality team ensures full compliance with ASME, TEMA, and international regulatory frameworks.
@@ -55,12 +55,12 @@ export default function QualityAssurancePage() {
               </div>
 
               {/* Factual Disclaimer Box */}
-              <div className="p-4 bg-offwhite border-l-4 border-steel rounded-r-lg text-xs text-graphite/90 space-y-1">
-                <span className="font-bold text-navy flex items-center gap-1.5 text-sm">
-                  <ShieldCheck className="w-4 h-4 text-copper" />
+              <div className="p-5 bg-offwhite border-l-4 border-steel rounded-r-lg text-sm text-slate-700 space-y-1.5">
+                <span className="font-bold text-navy flex items-center gap-2 text-base">
+                  <ShieldCheck className="w-4 h-4 text-[#C2410C]" />
                   <span>Standards Applicability Notice</span>
                 </span>
-                <p className="leading-relaxed">
+                <p className="leading-relaxed mb-0 text-sm sm:text-[15px]">
                   {QUALITY_SYSTEM.standardsDisclaimer}
                 </p>
               </div>
@@ -69,33 +69,33 @@ export default function QualityAssurancePage() {
             {/* Right Card: Third Party Inspection Authorities */}
             <div className="lg:col-span-5 bg-navy rounded-xl p-6 lg:p-8 text-white border border-steel/60 shadow-industrial-lg">
               <div className="flex items-center gap-2.5 border-b border-steel/40 pb-3 mb-4">
-                <Eye className="w-5 h-5 text-copper" />
-                <h3 className="text-base font-bold text-white">
+                <Eye className="w-5 h-5 text-[#FA8540]" />
+                <h3 className="text-lg font-bold text-white">
                   Third-Party Inspection Coordination (TPIA)
                 </h3>
               </div>
-              <p className="text-xs text-silver leading-relaxed mb-4">
+              <p className="text-sm text-slate-200 leading-relaxed mb-4">
                 We regularly coordinate stage-wise witnessing, hold-point clearance, and final dossier release with globally recognized independent inspection agencies:
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-silver-light">
-                <div className="p-2.5 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-copper shrink-0" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm font-semibold text-slate-100">
+                <div className="p-3 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#FA8540] shrink-0" />
                   <span>TÜV Rheinland / NORD</span>
                 </div>
-                <div className="p-2.5 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-copper shrink-0" />
+                <div className="p-3 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#FA8540] shrink-0" />
                   <span>Bureau Veritas (BV)</span>
                 </div>
-                <div className="p-2.5 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-copper shrink-0" />
+                <div className="p-3 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#FA8540] shrink-0" />
                   <span>DNV GL</span>
                 </div>
-                <div className="p-2.5 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-copper shrink-0" />
+                <div className="p-3 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#FA8540] shrink-0" />
                   <span>Lloyd&apos;s Register (LR)</span>
                 </div>
-                <div className="p-2.5 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2 sm:col-span-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-copper shrink-0" />
+                <div className="p-3 bg-navy-900/90 rounded border border-steel/40 flex items-center gap-2 sm:col-span-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#FA8540] shrink-0" />
                   <span>SGS India / Intertek / Client-Appointed Agency</span>
                 </div>
               </div>
@@ -122,23 +122,23 @@ export default function QualityAssurancePage() {
                 className="bg-white border border-silver/70 rounded-xl p-6 sm:p-7 shadow-sm hover:border-steel/60 transition-colors flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-copper text-xs font-bold uppercase tracking-wider block mb-1">
+                  <span className="text-[#C2410C] text-xs font-bold uppercase tracking-wider block mb-1.5">
                     Protocol 0{idx + 1}
                   </span>
-                  <h3 className="text-base font-bold text-navy mb-2.5">
+                  <h3 className="text-lg font-bold text-navy mb-2.5">
                     {pillar.title}
                   </h3>
-                  <p className="text-xs text-graphite/80 leading-relaxed mb-4">
+                  <p className="text-sm text-slate-700 leading-relaxed mb-4">
                     {pillar.description}
                   </p>
                 </div>
 
                 <div className="pt-3 border-t border-silver/40">
-                  <ul className="space-y-1.5 text-[11px] text-graphite">
+                  <ul className="space-y-1.5 text-xs sm:text-sm text-slate-700">
                     {pillar.details.map((det, dIdx) => (
-                      <li key={dIdx} className="flex items-start gap-1.5">
-                        <CheckCircle2 className="w-3 h-3 text-copper shrink-0 mt-0.5" />
-                        <span className="text-graphite/85">{det}</span>
+                      <li key={dIdx} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C2410C] shrink-0 mt-1" />
+                        <span>{det}</span>
                       </li>
                     ))}
                   </ul>
@@ -167,16 +167,16 @@ export default function QualityAssurancePage() {
                   <th className="w-28">Stage</th>
                   <th className="w-56">Phase Name</th>
                   <th>Key Quality Assurance &amp; Witnessing Activities</th>
-                  <th className="w-40">Documentation</th>
+                  <th className="w-44">Documentation</th>
                 </tr>
               </thead>
               <tbody>
                 {QUALITY_SYSTEM.itpPhases.map((phase, idx) => (
                   <tr key={idx} className="hover:bg-offwhite/50 transition-colors">
-                    <td className="font-bold text-copper">{phase.stage}</td>
+                    <td className="font-bold text-[#C2410C]">{phase.stage}</td>
                     <td className="font-semibold text-navy">{phase.name}</td>
-                    <td className="text-xs leading-relaxed">{phase.activities}</td>
-                    <td className="text-xs text-steel font-medium">Signed Quality Report</td>
+                    <td className="text-slate-700">{phase.activities}</td>
+                    <td className="text-[#0F4C81] font-medium">Signed Quality Report</td>
                   </tr>
                 ))}
               </tbody>
@@ -185,13 +185,13 @@ export default function QualityAssurancePage() {
 
           {/* Bottom Action Card */}
           <div className="mt-12 p-8 rounded-2xl bg-navy text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-steel/60 shadow-industrial-lg">
-            <div className="space-y-1 text-center sm:text-left">
-              <h3 className="text-lg font-bold text-white">Need Project-Specific ITP Alignment?</h3>
-              <p className="text-xs sm:text-sm text-silver">Our quality team accommodates client-appointed third-party inspectors and customer-specific hold points.</p>
+            <div className="space-y-1.5 text-center sm:text-left">
+              <h3 className="text-xl font-bold text-white">Need Project-Specific ITP Alignment?</h3>
+              <p className="text-sm sm:text-base text-slate-200 mb-0">Our quality team accommodates client-appointed third-party inspectors and customer-specific hold points.</p>
             </div>
-            <div className="flex items-center gap-3 shrink-0">
-              <Link href="/contact-us" className="btn-outline-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Contact Quality Desk</Link>
-              <Link href="/request-a-quote" className="btn-copper text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Request a Quote</Link>
+            <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+              <Link href="/contact-us" className="btn-outline-white text-sm font-bold px-5 py-2.5 rounded-full">Contact Quality Desk</Link>
+              <Link href="/request-a-quote" className="btn-copper text-sm font-bold px-5 py-2.5 rounded-full">Request a Quote</Link>
             </div>
           </div>
         </Container>

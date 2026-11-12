@@ -19,13 +19,13 @@ export default function AboutUsPage() {
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-widest uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Company Overview &amp; Principles
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-h1 font-bold text-white leading-tight">
               About Us
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-silver leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed mb-0">
               Industrial heat exchanger solutions, technical coordination, and dependable international supply coordination based in Gujarat, India.
             </p>
           </div>
@@ -45,9 +45,9 @@ export default function AboutUsPage() {
                 className="mb-4"
               />
 
-              <div className="space-y-4 text-sm text-graphite/85 leading-relaxed">
+              <div className="space-y-4 text-base text-slate-700 leading-relaxed">
                 <p>
-                  <strong>GSB Export</strong> operates as a specialized industrial thermal equipment supplier, technical sourcing coordinator, and export partner headquartered in Vadodara, Gujarat, India. We serve procurement managers, plant operators, EPC contractors, and industrial distributors worldwide who require reliable, code-compliant heat exchangers tailored to demanding process conditions.
+                  <strong className="text-navy">GSB Export</strong> operates as a specialized industrial thermal equipment supplier, technical sourcing coordinator, and export partner headquartered in Vadodara, Gujarat, India. We serve procurement managers, plant operators, EPC contractors, and industrial distributors worldwide who require reliable, code-compliant heat exchangers tailored to demanding process conditions.
                 </p>
                 <p>
                   The global process industry demands rigorous thermal design, stringent pressure containment compliance, and certified metallurgy. Rather than operating as a disconnected trading entity, GSB Export provides deep technical oversight. We evaluate process parameters, clarify thermal rating sheets, coordinate design calculations with specialized engineering teams, and ensure complete alignment with international standards including ASME Section VIII, TEMA, and API codes.
@@ -58,12 +58,12 @@ export default function AboutUsPage() {
               </div>
 
               {/* Verified Positioning Box */}
-              <div className="p-5 bg-offwhite border-l-4 border-steel rounded-r-lg text-xs text-graphite/90 space-y-2">
-                <span className="font-bold text-navy flex items-center gap-1.5 text-sm">
-                  <ShieldCheck className="w-4 h-4 text-copper" />
+              <div className="p-5 sm:p-6 bg-offwhite border-l-4 border-steel rounded-r-lg text-sm text-slate-700 space-y-2">
+                <span className="font-bold text-navy flex items-center gap-2 text-base">
+                  <ShieldCheck className="w-4 h-4 text-[#C2410C]" />
                   <span>Commercial Transparency Guarantee</span>
                 </span>
-                <p className="leading-relaxed">
+                <p className="leading-relaxed mb-0 text-sm sm:text-[15px]">
                   We believe technical credibility begins with factual honesty. GSB Export clearly distinguishes our engineering coordination, quality oversight, and international export supply capabilities from the physical fabrication bays of our manufacturing partners. We do not claim ownership of unverified facilities or certifications; our value lies in uncompromising specification alignment, stage-wise ITP witnessing, and flawless export delivery.
                 </p>
               </div>
@@ -73,40 +73,40 @@ export default function AboutUsPage() {
             <div className="lg:col-span-5 space-y-6">
               <div className="bg-navy rounded-xl p-6 lg:p-8 text-white border border-steel/60 shadow-industrial-lg">
                 <div className="flex items-center gap-3 border-b border-steel/40 pb-4 mb-6">
-                  <Building2 className="w-6 h-6 text-copper" />
+                  <Building2 className="w-6 h-6 text-[#FA8540]" />
                   <div>
-                    <h3 className="text-base font-bold text-white">Commercial Profile</h3>
-                    <span className="text-xs text-copper-light">Vadodara, Gujarat, India</span>
+                    <h3 className="text-lg font-bold text-white">Commercial Profile</h3>
+                    <span className="text-sm text-[#FA8540]">Vadodara, Gujarat, India</span>
                   </div>
                 </div>
 
-                <div className="space-y-4 text-xs">
+                <div className="space-y-4 text-sm">
                   <div>
-                    <span className="text-silver/60 block uppercase text-[10px] tracking-wider">Business Activity</span>
-                    <span className="text-white font-semibold text-sm">Industrial Heat Exchanger Supply &amp; Export</span>
+                    <span className="text-slate-300 block uppercase text-xs tracking-wider mb-0.5">Business Activity</span>
+                    <span className="text-white font-semibold text-sm sm:text-base">Industrial Heat Exchanger Supply &amp; Export</span>
                   </div>
                   <div>
-                    <span className="text-silver/60 block uppercase text-[10px] tracking-wider">Primary Supply Base</span>
-                    <span className="text-white font-semibold text-sm">Vadodara / Gujarat Industrial Fabrication Hub</span>
+                    <span className="text-slate-300 block uppercase text-xs tracking-wider mb-0.5">Primary Supply Base</span>
+                    <span className="text-white font-semibold text-sm sm:text-base">Vadodara / Gujarat Industrial Fabrication Hub</span>
                   </div>
                   <div>
-                    <span className="text-silver/60 block uppercase text-[10px] tracking-wider">Equipment Scope</span>
-                    <span className="text-white font-semibold text-sm">Shell &amp; Tube, Plate, Air-Cooled, Hairpin, Spiral</span>
+                    <span className="text-slate-300 block uppercase text-xs tracking-wider mb-0.5">Equipment Scope</span>
+                    <span className="text-white font-semibold text-sm sm:text-base">Shell &amp; Tube, Plate, Air-Cooled, Hairpin, Spiral</span>
                   </div>
                   <div>
-                    <span className="text-silver/60 block uppercase text-[10px] tracking-wider">Target International Corridors</span>
-                    <span className="text-white font-semibold text-sm">Middle East, South/Southeast Asia, Africa, Europe</span>
+                    <span className="text-slate-300 block uppercase text-xs tracking-wider mb-0.5">Target International Corridors</span>
+                    <span className="text-white font-semibold text-sm sm:text-base">Middle East, South/Southeast Asia, Africa, Europe</span>
                   </div>
                   <div>
-                    <span className="text-silver/60 block uppercase text-[10px] tracking-wider">Core Standards Alignment</span>
-                    <span className="text-white font-semibold text-sm">ASME Section VIII, TEMA Class R/C/B, API 660, API 661</span>
+                    <span className="text-slate-300 block uppercase text-xs tracking-wider mb-0.5">Core Standards Alignment</span>
+                    <span className="text-white font-semibold text-sm sm:text-base">ASME Section VIII, TEMA Class R/C/B, API 660, API 661</span>
                   </div>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-steel/40">
                   <Link
                     href="/request-a-quote"
-                    className="btn-copper text-xs font-bold uppercase tracking-wider py-2.5 px-4 rounded w-full text-center block"
+                    className="btn-copper text-sm font-bold py-3 px-4 rounded-full w-full text-center block"
                   >
                     Submit Technical RFQ
                   </Link>
@@ -136,19 +136,19 @@ export default function AboutUsPage() {
               <div className="w-12 h-12 rounded-lg bg-steel/10 text-steel flex items-center justify-center mb-4">
                 <Target className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-navy mb-3">Our Mission</h3>
-              <p className="text-sm text-graphite/85 leading-relaxed">
+              <h3 className="text-xl font-bold text-navy mb-3">Our Mission</h3>
+              <p className="text-base text-slate-700 leading-relaxed mb-0">
                 {COMPANY_INFO.mission}
               </p>
             </div>
 
             {/* Vision */}
             <div className="bg-white border border-silver/70 rounded-xl p-8 shadow-sm hover:border-steel/60 transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-copper/10 text-copper flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-lg bg-orange-50 text-[#C2410C] flex items-center justify-center mb-4">
                 <Compass className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-navy mb-3">Our Vision</h3>
-              <p className="text-sm text-graphite/85 leading-relaxed">
+              <h3 className="text-xl font-bold text-navy mb-3">Our Vision</h3>
+              <p className="text-base text-slate-700 leading-relaxed mb-0">
                 {COMPANY_INFO.vision}
               </p>
             </div>
@@ -159,15 +159,15 @@ export default function AboutUsPage() {
             {COMPANY_INFO.coreValues.map((val, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-silver/60 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white border border-silver/60 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
               >
-                <span className="text-copper text-xs font-bold uppercase tracking-wider block mb-1">
+                <span className="text-[#C2410C] text-xs font-bold uppercase tracking-wider block mb-1.5">
                   Principle 0{idx + 1}
                 </span>
-                <h4 className="text-sm font-bold text-navy mb-2">
+                <h3 className="text-lg font-bold text-navy mb-2">
                   {val.title}
-                </h4>
-                <p className="text-xs text-graphite/80 leading-relaxed">
+                </h3>
+                <p className="text-sm text-slate-700 leading-relaxed mb-0">
                   {val.description}
                 </p>
               </div>
@@ -191,17 +191,17 @@ export default function AboutUsPage() {
             {COMPANY_INFO.businessModel.keyDifferentiators.map((diff, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-xl border border-silver/70 bg-offwhite hover:border-steel/60 transition-colors"
+                className="p-6 sm:p-7 rounded-xl border border-silver/70 bg-offwhite hover:border-steel/60 transition-colors"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-full bg-navy text-copper font-bold text-xs flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-navy text-[#FA8540] font-bold text-xs flex items-center justify-center shrink-0">
                     0{idx + 1}
                   </div>
-                  <h3 className="text-base font-bold text-navy">
+                  <h3 className="text-lg font-bold text-navy">
                     {diff.title}
                   </h3>
                 </div>
-                <p className="text-xs text-graphite/85 leading-relaxed pl-11">
+                <p className="text-sm sm:text-[15px] text-slate-700 leading-relaxed pl-11 mb-0">
                   {diff.description}
                 </p>
               </div>
@@ -210,13 +210,13 @@ export default function AboutUsPage() {
 
           {/* Bottom Action Card */}
           <div className="mt-12 p-8 rounded-2xl bg-navy text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-steel/60 shadow-industrial-lg">
-            <div className="space-y-1 text-center sm:text-left">
-              <h3 className="text-lg font-bold text-white">Ready to Discuss Your Equipment Requirements?</h3>
-              <p className="text-xs sm:text-sm text-silver">Our engineering desk in Vadodara reviews thermal parameters and provides formal proposals within 24–48 hours.</p>
+            <div className="space-y-1.5 text-center sm:text-left">
+              <h3 className="text-xl font-bold text-white">Ready to Discuss Your Equipment Requirements?</h3>
+              <p className="text-sm sm:text-base text-slate-200 mb-0">Our engineering desk in Vadodara reviews thermal parameters and provides formal proposals within 24–48 hours.</p>
             </div>
-            <div className="flex items-center gap-3 shrink-0">
-              <Link href="/products" className="btn-outline-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Explore Equipment</Link>
-              <Link href="/request-a-quote" className="btn-copper text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full">Request a Quote</Link>
+            <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+              <Link href="/products" className="btn-outline-white text-sm font-bold px-5 py-2.5 rounded-full">Explore Equipment</Link>
+              <Link href="/request-a-quote" className="btn-copper text-sm font-bold px-5 py-2.5 rounded-full">Request a Quote</Link>
             </div>
           </div>
         </Container>

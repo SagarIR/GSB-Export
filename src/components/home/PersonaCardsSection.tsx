@@ -73,14 +73,14 @@ export function PersonaCardsSection() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16 space-y-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C2410C] bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200/80 inline-block">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#C2410C] bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-200/80 inline-block">
             Tailored Coordination
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-sans text-[#0A1C33] tracking-tight leading-[1.15]">
+          <h2 className="text-h2 font-bold font-sans text-[#0A1C33] leading-[1.18]">
             Built for international <br />
-            <span className="text-[#F36C21] font-extrabold">industrial procurement.</span>
+            <span className="text-[#D9550D] font-bold">industrial procurement.</span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-sans">
+          <p className="text-base text-slate-700 leading-relaxed font-sans">
             Whether you manage complex refinery revamps, multi-phase EPC contracts, or hygienic food processing lines, our coordination model conforms to your technical parameters.
           </p>
         </div>
@@ -95,13 +95,13 @@ export function PersonaCardsSection() {
                 className={`rounded-3xl bg-gradient-to-br ${item.bgGradient} border ${item.borderColor} ${item.hoverBorder} p-7 sm:p-9 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden hover:-translate-y-1`}
               >
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
                     <span
                       className={`text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full border ${item.badgeColor}`}
                     >
                       {item.badge}
                     </span>
-                    <span className="text-xs font-mono font-semibold text-slate-600 bg-white/90 px-2.5 py-1 rounded-full border border-slate-200 shadow-xs">
+                    <span className="text-xs font-mono font-semibold text-slate-700 bg-white/95 px-2.5 py-1 rounded-full border border-slate-200 shadow-xs">
                       {item.metric}
                     </span>
                   </div>
@@ -110,12 +110,12 @@ export function PersonaCardsSection() {
                     <div className={`w-11 h-11 rounded-2xl ${item.iconBg} flex items-center justify-center shrink-0 shadow-sm`}>
                       <IconComp className="w-5 h-5" />
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-bold font-sans text-[#0A1C33]">
+                    <h3 className="text-h4 sm:text-h3 font-bold font-sans text-[#0A1C33]">
                       {item.title}
                     </h3>
                   </div>
 
-                  <p className="text-sm text-slate-600 leading-relaxed font-sans pt-1">
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-sans pt-1">
                     {item.description}
                   </p>
                 </div>
@@ -123,13 +123,13 @@ export function PersonaCardsSection() {
                 <div className="pt-6 mt-6 border-t border-slate-200/80 flex items-center justify-between">
                   <Link
                     href={item.link}
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0A1C33] group-hover:text-[#F36C21] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0A1C33] group-hover:text-[#C2410C] transition-colors"
                   >
                     <span>View application standards</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
 
-                  <span className="text-xs text-slate-400 font-mono">Verified Supply</span>
+                  <span className="text-xs sm:text-sm text-slate-600 font-mono">Verified Supply</span>
                 </div>
               </div>
             );
