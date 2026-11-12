@@ -1,24 +1,77 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ShieldCheck, FileText, Check } from "lucide-react";
+import { ArrowRight, ShieldCheck, FileText, Check } from "lucide-react";
 import { APPLICATION_CASES } from "@/content/projects";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Projects & Applications | Technical Case Studies & Benchmarks | GSB Export",
-  description:
-    "Review technical application case studies: refinery crude preheating, sanitary milk HTST pasteurization, desert gas compression cooling, and anaerobic sludge heating.",
+const PAGE_DESCRIPTION =
+  "Technical heat exchanger application benchmarks: refinery crude preheating, milk HTST pasteurization, desert gas fin-fan cooling & anaerobic sludge heating.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Projects & Heat Exchanger Application Benchmarks",
+  description: PAGE_DESCRIPTION,
+  path: "/projects",
+  keywords: [
+    "Heat Exchanger Case Studies",
+    "Refinery Crude Preheat Heat Exchanger",
+    "Milk Pasteurization Plate Heat Exchanger",
+    "Anaerobic Sludge Spiral Heat Exchanger",
+  ],
+});
+
+const CASE_PRODUCT_LINKS: Record<string, { productHref: string; productLabel: string; industryHref: string }> = {
+  "refinery-crude-preheat": {
+    productHref: "/products/shell-and-tube",
+    productLabel: "Shell & Tube Heat Exchanger Specs",
+    industryHref: "/industries/oil-gas",
+  },
+  "dairy-pasteurization": {
+    productHref: "/products/plate-heat-exchanger",
+    productLabel: "Plate Heat Exchanger Specs",
+    industryHref: "/industries/food-beverage",
+  },
+  "arid-gas-compression-cooler": {
+    productHref: "/products/air-cooled",
+    productLabel: "Air Cooled Heat Exchanger Specs",
+    industryHref: "/industries/power-generation",
+  },
+  "anaerobic-sludge-digester": {
+    productHref: "/products/spiral",
+    productLabel: "Spiral Heat Exchanger Specs",
+    industryHref: "/industries/water-wastewater",
+  },
 };
 
 export default function ProjectsPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Projects & Applications", path: "/projects" },
+  ]);
+  const pageJsonLd = buildWebPageJsonLd({
+    name: "Projects & Heat Exchanger Applications",
+    description: PAGE_DESCRIPTION,
+    path: "/projects",
+    type: "CollectionPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={pageJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-16 sm:py-20 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
+            <BannerBreadcrumb items={[{ label: "Projects & Applications" }]} />
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Technical Case Studies
             </span>
@@ -138,7 +191,7 @@ export default function ProjectsPage() {
                       ))}
                     </div>
 
-                    <div className="mt-5 pt-4 border-t border-silver/40">
+                    <div className="mt-5 pt-4 border-t border-silver/40 space-y-2.5">
                       <Link
                         href={`/request-a-quote?application=${encodeURIComponent(appCase.title)}`}
                         className="btn-copper text-sm font-bold py-3 px-4 rounded-full w-full text-center flex items-center justify-center gap-2"
@@ -146,6 +199,24 @@ export default function ProjectsPage() {
                         <FileText className="w-4 h-4" />
                         <span>Inquire About Similar Duty</span>
                       </Link>
+
+                      {CASE_PRODUCT_LINKS[appCase.id] && (
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs sm:text-sm">
+                          <Link
+                            href={CASE_PRODUCT_LINKS[appCase.id].productHref}
+                            className="text-[#0F4C81] hover:text-[#C2410C] font-semibold inline-flex items-center gap-1"
+                          >
+                            <span>{CASE_PRODUCT_LINKS[appCase.id].productLabel}</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                          <Link
+                            href={CASE_PRODUCT_LINKS[appCase.id].industryHref}
+                            className="text-slate-600 hover:text-[#C2410C] font-medium"
+                          >
+                            Sector Standards &rarr;
+                          </Link>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

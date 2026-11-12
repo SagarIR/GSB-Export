@@ -68,8 +68,9 @@ export function IndustryCard({
         >
           <Image
             src={industry.image}
-            alt={`${industry.name} Facility`}
+            alt={`Industrial heat exchanger applications in ${industry.name}`}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent pointer-events-none" />

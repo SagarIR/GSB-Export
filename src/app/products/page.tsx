@@ -2,35 +2,62 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ShieldCheck,
-  Cpu,
   Layers,
   Award,
+  ArrowRight,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { ProductsCatalogue } from "@/components/products/ProductsCatalogue";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Industrial Heat Exchanger Products | GSB Export",
-  description:
-    "Explore our complete range of precision heat exchangers: Shell and Tube, Plate Heat Exchangers, Air-Cooled Fin-Fan Coolers, Finned Tube, U-Tube Bundles, Double Pipe Hairpin, and Spiral Exchangers.",
-};
+const PAGE_DESCRIPTION =
+  "Browse ASME & TEMA industrial heat exchangers: Shell & Tube, Plate, Air-Cooled Fin-Fan, Finned Tube, U-Tube Bundles, Double Pipe Hairpin & Spiral units.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Industrial Heat Exchanger Products",
+  description: PAGE_DESCRIPTION,
+  path: "/products",
+  keywords: [
+    "Industrial Heat Exchanger Products",
+    "Shell and Tube Heat Exchanger",
+    "Plate Heat Exchanger",
+    "Air Cooled Heat Exchanger",
+    "Finned Tube Heat Exchanger",
+    "U-Tube Bundle",
+    "Double Pipe Heat Exchanger",
+    "Spiral Heat Exchanger",
+  ],
+});
 
 export default function ProductsOverviewPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+  ]);
+  const collectionJsonLd = buildWebPageJsonLd({
+    name: "Industrial Heat Exchanger Products",
+    description: PAGE_DESCRIPTION,
+    path: "/products",
+    type: "CollectionPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={collectionJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-14 sm:py-18 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-4xl">
-            {/* Breadcrumb */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-slate-200 mb-4">
-              <Link href="/" className="hover:text-[#FA8540] transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#FA8540] font-semibold">Products</span>
-            </nav>
+            <BannerBreadcrumb items={[{ label: "Products" }]} />
 
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Equipment Range &amp; Specifications
@@ -82,6 +109,34 @@ export default function ProductsOverviewPage() {
 
           {/* Interactive Products Catalogue */}
           <ProductsCatalogue />
+
+          {/* Engineering & Quality Cross-Links */}
+          <div className="mt-14 p-6 sm:p-8 bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-1.5 max-w-2xl">
+              <h2 className="text-h3 font-bold text-[#0A1C33]">
+                Compare Thermal Architectures &amp; Engineering Standards
+              </h2>
+              <p className="text-sm sm:text-base text-slate-700 mb-0">
+                Review our ASME/TEMA engineering workflow, inspection &amp; test plans (ITP), or read our technical comparison guides before issuing an RFQ.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <Link
+                href="/resources/shell-and-tube-vs-plate"
+                className="btn-outline-navy text-sm font-semibold px-5 py-2.5 rounded-full inline-flex items-center gap-1.5"
+              >
+                <span>Shell &amp; Tube vs Plate Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link
+                href="/engineering-solutions"
+                className="btn-copper text-sm font-bold px-5 py-2.5 rounded-full inline-flex items-center gap-1.5"
+              >
+                <span>Engineering Solutions</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
         </Container>
       </section>
     </div>

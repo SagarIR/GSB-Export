@@ -1,9 +1,54 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Clock, Calendar, ArrowLeft, ArrowRight, CheckCircle2, FileText, Share2, BookOpen } from "lucide-react";
+import { Clock, Calendar, ArrowLeft, ArrowRight, CheckCircle2, FileText } from "lucide-react";
 import { ARTICLES, getArticleBySlug } from "@/content/resources";
 import { Container } from "@/components/ui/Container";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildArticleJsonLd,
+} from "@/lib/seo";
+
+const ARTICLE_RELATED_SOLUTIONS: Record<
+  string,
+  { label: string; href: string }[]
+> = {
+  "what-is-a-heat-exchanger": [
+    { label: "Explore All Heat Exchangers", href: "/products" },
+    { label: "Engineering Solutions", href: "/engineering-solutions" },
+  ],
+  "shell-and-tube-vs-plate": [
+    { label: "Shell & Tube Heat Exchanger", href: "/products/shell-and-tube" },
+    { label: "Plate Heat Exchanger", href: "/products/plate-heat-exchanger" },
+  ],
+  "how-heat-exchangers-work": [
+    { label: "Shell & Tube Heat Exchanger", href: "/products/shell-and-tube" },
+    { label: "Engineering & Thermal Sizing", href: "/engineering-solutions" },
+  ],
+  "counterflow-vs-parallel-flow": [
+    { label: "Double Pipe / Hairpin Exchanger", href: "/products/double-pipe" },
+    { label: "Plate Heat Exchanger", href: "/products/plate-heat-exchanger" },
+  ],
+  "heat-exchanger-material-selection": [
+    { label: "Quality Assurance & EN 10204 3.1", href: "/quality-assurance" },
+    { label: "Shell & Tube Heat Exchanger", href: "/products/shell-and-tube" },
+  ],
+  "heat-exchanger-maintenance-guide": [
+    { label: "Removable U-Tube Bundles", href: "/products/u-tube-bundle" },
+    { label: "Self-Cleaning Spiral Exchanger", href: "/products/spiral" },
+  ],
+  "understanding-lmtd": [
+    { label: "Engineering Solutions", href: "/engineering-solutions" },
+    { label: "Request Thermal Sizing (RFQ)", href: "/request-a-quote" },
+  ],
+  "heat-exchanger-applications-sectors": [
+    { label: "Industries We Serve", href: "/industries" },
+    { label: "Projects & Applications", href: "/projects" },
+  ],
+};
 
 interface ArticlePageProps {
   params: {
@@ -22,19 +67,18 @@ export function generateMetadata({ params }: ArticlePageProps): Metadata {
   if (!article) {
     return {
       title: "Article Not Found",
+      robots: { index: false, follow: false },
     };
   }
 
-  return {
-    title: `${article.title} | GSB Export Resources`,
+  return buildPageMetadata({
+    title: article.title,
     description: article.summary,
-    openGraph: {
-      title: article.title,
-      description: article.summary,
-      type: "article",
-      publishedTime: article.publishDate,
-    },
-  };
+    path: `/resources/${article.slug}`,
+    type: "article",
+    publishedTime: article.publishDate,
+    keywords: [article.category, "Heat Exchanger Engineering", "GSB Export"],
+  });
 }
 
 export default function ArticleDetailPage({ params }: ArticlePageProps) {
@@ -46,13 +90,32 @@ export default function ArticleDetailPage({ params }: ArticlePageProps) {
 
   // Related articles
   const otherArticles = ARTICLES.filter((a) => a.slug !== article.slug).slice(0, 3);
+  const relatedSolutions = ARTICLE_RELATED_SOLUTIONS[article.slug] || [
+    { label: "Explore All Heat Exchangers", href: "/products" },
+    { label: "Engineering Solutions", href: "/engineering-solutions" },
+  ];
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Resources", path: "/resources" },
+    { name: article.title, path: `/resources/${article.slug}` },
+  ]);
+  const articleJsonLd = buildArticleJsonLd(article);
 
   return (
     <article className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={articleJsonLd} />
+
       {/* Article Header */}
       <section className="bg-navy py-14 sm:py-18 text-white relative border-b border-steel/30">
         <Container>
           <div className="max-w-4xl mx-auto">
+            <BannerBreadcrumb
+              items={[
+                { label: "Resources", href: "/resources" },
+                { label: article.category },
+              ]}
+            />
             <Link
               href="/resources"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#FA8540] hover:text-orange-200 mb-6 transition-colors"
@@ -140,6 +203,19 @@ export default function ArticleDetailPage({ params }: ArticlePageProps) {
                   <FileText className="w-4 h-4" />
                   <span>Request RFQ</span>
                 </Link>
+              </div>
+              <div className="mt-6 pt-4 border-t border-steel/40 flex flex-wrap items-center gap-4 text-sm">
+                <span className="text-slate-300 font-semibold">Related Equipment &amp; Capabilities:</span>
+                {relatedSolutions.map((sol) => (
+                  <Link
+                    key={sol.href}
+                    href={sol.href}
+                    className="text-[#FA8540] hover:text-orange-200 font-semibold inline-flex items-center gap-1 transition-colors"
+                  >
+                    <span>{sol.label}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                ))}
               </div>
             </div>
 

@@ -1,24 +1,55 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Cpu, Layers, Ruler, FileText, CheckCircle2, ShieldCheck, ArrowRight, Cog, Check } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Check } from "lucide-react";
 import { ENGINEERING_SERVICES } from "@/content/engineering";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Engineering Solutions | Thermal Sizing & ASME / TEMA Coordination | GSB Export",
-  description:
-    "Explore our technical coordination approach: thermal duty sizing, LMTD optimization, metallurgy selection, ASME/TEMA mechanical compliance, and GA drawing reviews.",
-};
+const PAGE_DESCRIPTION =
+  "Heat exchanger thermal duty sizing, LMTD optimization, metallurgy selection, ASME Section VIII & TEMA mechanical alignment, and GA drawing reviews by GSB Export.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Engineering Solutions & Thermal Sizing (ASME / TEMA)",
+  description: PAGE_DESCRIPTION,
+  path: "/engineering-solutions",
+  keywords: [
+    "Heat Exchanger Thermal Sizing",
+    "ASME Section VIII Coordination",
+    "TEMA Class R C B Engineering",
+    "LMTD Thermal Rating",
+  ],
+});
 
 export default function EngineeringSolutionsPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Engineering Solutions", path: "/engineering-solutions" },
+  ]);
+  const pageJsonLd = buildWebPageJsonLd({
+    name: "Engineering Solutions & Thermal Sizing",
+    description: PAGE_DESCRIPTION,
+    path: "/engineering-solutions",
+    type: "WebPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={pageJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-16 sm:py-20 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
+            <BannerBreadcrumb items={[{ label: "Engineering Solutions" }]} />
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Technical Design Alignment
             </span>
@@ -196,6 +227,7 @@ export default function EngineeringSolutionsPage() {
               <p className="text-sm sm:text-base text-slate-200 mb-0">Send us your process datasheets, fluid properties, and temperature parameters for review.</p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+              <Link href="/resources/understanding-lmtd" className="btn-outline-white text-sm font-bold px-5 py-2.5 rounded-full">LMTD Guide</Link>
               <Link href="/products" className="btn-outline-white text-sm font-bold px-5 py-2.5 rounded-full">Explore Equipment</Link>
               <Link href="/request-a-quote" className="btn-copper text-sm font-bold px-5 py-2.5 rounded-full">Request Thermal Sizing</Link>
             </div>

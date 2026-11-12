@@ -1,24 +1,56 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ShieldCheck, CheckCircle2, FileCheck, Eye, Layers, Gauge, AlertTriangle, ArrowRight } from "lucide-react";
+import { ShieldCheck, CheckCircle2, Eye } from "lucide-react";
 import { QUALITY_SYSTEM } from "@/content/quality";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Quality Assurance & ITP | Inspection Protocols & Testing | GSB Export",
-  description:
-    "Learn about GSB Export's quality assurance framework: material traceability (EN 10204 3.1), ASME Section IX welding procedures, hydrostatic testing, NDT, and third-party inspection (TPIA).",
-};
+const PAGE_DESCRIPTION =
+  "EN 10204 3.1 material traceability, ASME Section IX welding procedures, NDT examination, hydrostatic proof testing, and third-party inspection (TUV, BV, DNV, LR).";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Quality Assurance, ITP & NDT Inspection Protocols",
+  description: PAGE_DESCRIPTION,
+  path: "/quality-assurance",
+  keywords: [
+    "Heat Exchanger Quality Assurance",
+    "EN 10204 3.1 Material Traceability",
+    "Inspection and Test Plan ITP",
+    "Third Party Inspection TUV BV DNV",
+    "Hydrostatic Pressure Testing",
+  ],
+});
 
 export default function QualityAssurancePage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Quality Assurance", path: "/quality-assurance" },
+  ]);
+  const pageJsonLd = buildWebPageJsonLd({
+    name: "Quality Assurance & Inspection Protocols",
+    description: PAGE_DESCRIPTION,
+    path: "/quality-assurance",
+    type: "WebPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={pageJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-16 sm:py-20 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
+            <BannerBreadcrumb items={[{ label: "Quality Assurance" }]} />
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Zero-Defect Quality Governance
             </span>

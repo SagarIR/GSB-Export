@@ -14,28 +14,52 @@ import {
 } from "lucide-react";
 import { PRODUCTS } from "@/content/products";
 
+function normalizeCategoryParam(rawCategory: string): string {
+  const lower = rawCategory.trim().toLowerCase();
+  if (!lower) return "Shell & Tube Heat Exchanger";
+  const matched = PRODUCTS.find(
+    (p) =>
+      p.name.toLowerCase() === lower ||
+      p.slug.toLowerCase() === lower ||
+      p.name.toLowerCase().replace(/&/g, "and").replace(/-/g, " ") ===
+        lower.replace(/&/g, "and").replace(/-/g, " ")
+  );
+  return matched ? matched.name : rawCategory;
+}
+
 export function RfqForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const preSelectedCategory = searchParams.get("category") || "";
+  const rawCategory = searchParams.get("category") || "";
+  const preSelectedCategory = normalizeCategoryParam(rawCategory);
+  const preFluid = searchParams.get("fluid") || "";
+  const preTemp = searchParams.get("temp") || "";
+  const prePressure = searchParams.get("pressure") || "";
+  const preCountry = searchParams.get("country") || "";
+  const preIndustry = searchParams.get("industry") || "";
+  const preApplication = searchParams.get("application") || "";
 
   const [formData, setFormData] = useState({
     name: "",
     company: "",
     email: "",
     phone: "",
-    country: "",
+    country: preCountry,
     companyWebsite: "",
-    productCategory: preSelectedCategory || "Shell and Tube Heat Exchanger",
+    productCategory: preSelectedCategory,
     quantity: "1",
-    fluidType: "",
-    inletTemperature: "",
+    fluidType: preFluid,
+    inletTemperature: preTemp ? `${preTemp} °C` : "",
     outletTemperature: "",
-    operatingPressure: "",
+    operatingPressure: prePressure ? `${prePressure} bar` : "",
     flowRate: "",
     material: "",
-    deliveryDestination: "",
-    technicalRequirements: "",
+    deliveryDestination: preCountry,
+    technicalRequirements: preIndustry
+      ? `Industry Sector: ${preIndustry}`
+      : preApplication
+      ? `Reference Application: ${preApplication}`
+      : "",
     message: "",
     honeypot: "",
   });
@@ -46,13 +70,13 @@ export function RfqForm() {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    if (preSelectedCategory) {
+    if (rawCategory) {
       setFormData((prev) => ({
         ...prev,
-        productCategory: preSelectedCategory,
+        productCategory: normalizeCategoryParam(rawCategory),
       }));
     }
-  }, [preSelectedCategory]);
+  }, [rawCategory]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>

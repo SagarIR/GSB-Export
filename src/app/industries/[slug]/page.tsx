@@ -21,8 +21,15 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { INDUSTRIES, getIndustryBySlug } from "@/content/industries";
-import { PRODUCTS, getProductBySlug } from "@/content/products";
+import { getProductBySlug } from "@/content/products";
 import { Container } from "@/components/ui/Container";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
 interface IndustryPageProps {
   params: {
@@ -50,19 +57,25 @@ export function generateMetadata({ params }: IndustryPageProps): Metadata {
   const industry = getIndustryBySlug(params.slug);
   if (!industry) {
     return {
-      title: "Industry Not Found | GSB Export",
+      title: "Industry Not Found",
+      robots: { index: false, follow: false },
     };
   }
 
-  return {
-    title: `${industry.name} | Heat Exchanger Solutions | GSB Export`,
+  const shortSector = industry.name.split("(")[0].trim();
+
+  return buildPageMetadata({
+    title: `${shortSector} Heat Exchangers`,
     description: industry.shortDescription,
-    openGraph: {
-      title: `${industry.name} | GSB Export`,
-      description: industry.shortDescription,
-      type: "website",
-    },
-  };
+    path: `/industries/${industry.slug}`,
+    image: industry.image,
+    imageAlt: `Industrial heat exchangers for ${industry.name}`,
+    keywords: [
+      `${shortSector} heat exchanger`,
+      ...industry.standardsAndCompliance,
+      "GSB Export",
+    ],
+  });
 }
 
 export default function IndustryDetailPage({ params }: IndustryPageProps) {
@@ -74,26 +87,34 @@ export default function IndustryDetailPage({ params }: IndustryPageProps) {
 
   const Icon = iconMap[industry.id] || Flame;
   const otherIndustries = INDUSTRIES.filter((ind) => ind.slug !== industry.slug);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Industries", path: "/industries" },
+    { name: industry.name, path: `/industries/${industry.slug}` },
+  ]);
+  const webPageJsonLd = buildWebPageJsonLd({
+    name: `${industry.name} Heat Exchanger Solutions`,
+    description: industry.shortDescription,
+    path: `/industries/${industry.slug}`,
+    type: "WebPage",
+  });
 
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={webPageJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-12 sm:py-16 text-white relative border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-4xl">
-            {/* Breadcrumb */}
-            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-slate-200 mb-4">
-              <Link href="/" className="hover:text-[#FA8540] transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <Link href="/industries" className="hover:text-[#FA8540] transition-colors">
-                Industries
-              </Link>
-              <span>/</span>
-              <span className="text-[#FA8540] font-semibold">{industry.name}</span>
-            </nav>
+            <BannerBreadcrumb
+              items={[
+                { label: "Industries", href: "/industries" },
+                { label: industry.name },
+              ]}
+            />
 
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-3">
               Sector Application Engineering
@@ -137,8 +158,9 @@ export default function IndustryDetailPage({ params }: IndustryPageProps) {
           <div className="relative w-full h-[240px] sm:h-[320px] md:h-[380px] lg:h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 shadow-md">
             <Image
               src={industry.image}
-              alt={`${industry.name} Facility Overview`}
+              alt={`Industrial heat exchanger systems for ${industry.name}`}
               fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
               className="object-cover"
               priority
             />

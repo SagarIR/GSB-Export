@@ -2,12 +2,10 @@ import { MetadataRoute } from "next";
 import { PRODUCTS } from "@/content/products";
 import { INDUSTRIES } from "@/content/industries";
 import { ARTICLES } from "@/content/resources";
+import { SITE_URL, SITE_LAST_UPDATED } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gsbexport.com";
-  const now = new Date();
-
-  // Core Pages
+  // Core Indexable Pages (excludes /thank-you, /api/*, and non-indexable routes)
   const mainRoutes = [
     "",
     "/about-us",
@@ -24,32 +22,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy-policy",
     "/terms-and-conditions",
   ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: now,
+    url: `${SITE_URL}${route}`,
+    lastModified: SITE_LAST_UPDATED,
     changeFrequency: (route === "" ? "weekly" : "monthly") as "weekly" | "monthly",
     priority: route === "" ? 1.0 : route === "/request-a-quote" || route === "/products" ? 0.9 : 0.8,
   }));
 
-  // 7 Product Detail Pages
+  // Product Detail Pages
   const productRoutes = PRODUCTS.map((prod) => ({
-    url: `${baseUrl}/products/${prod.slug}`,
-    lastModified: now,
+    url: `${SITE_URL}/products/${prod.slug}`,
+    lastModified: SITE_LAST_UPDATED,
     changeFrequency: "monthly" as const,
     priority: 0.85,
   }));
 
-  // 7 Industry Detail Pages
+  // Industry Detail Pages
   const industryRoutes = INDUSTRIES.map((ind) => ({
-    url: `${baseUrl}/industries/${ind.slug}`,
-    lastModified: now,
+    url: `${SITE_URL}/industries/${ind.slug}`,
+    lastModified: SITE_LAST_UPDATED,
     changeFrequency: "monthly" as const,
     priority: 0.85,
   }));
 
-  // 8 Resource Article Detail Pages
+  // Resource Article Detail Pages
   const articleRoutes = ARTICLES.map((art) => ({
-    url: `${baseUrl}/resources/${art.slug}`,
-    lastModified: now,
+    url: `${SITE_URL}/resources/${art.slug}`,
+    lastModified: new Date(`${art.publishDate}T00:00:00Z`),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));

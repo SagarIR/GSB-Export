@@ -44,9 +44,10 @@ export function ProductCard({ product, index, className = "" }: ProductCardProps
         >
           <Image
             src={product.image}
-            alt={product.name}
+            alt={`${product.name} — ${product.schematicType}`}
             width={320}
             height={200}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="max-h-36 sm:max-h-40 w-auto object-contain drop-shadow-md"
           />
         </Link>

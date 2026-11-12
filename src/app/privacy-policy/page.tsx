@@ -12,12 +12,21 @@ import { COMPANY_INFO } from "@/content/company";
 import { LegalPageShell } from "@/components/legal/LegalPageShell";
 import { LegalSection } from "@/components/legal/LegalSection";
 import { LegalFaqAccordion } from "@/components/legal/LegalFaqAccordion";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Data Protection & Technical File Confidentiality",
-  description:
-    "Read GSB Export's Privacy Policy governing B2B procurement inquiries, RFQ submissions, proprietary CAD/datasheet handling, private storage safeguards, and client data rights.",
-};
+const PAGE_DESCRIPTION =
+  "Read GSB Export's Privacy Policy governing B2B procurement inquiries, RFQ submissions, proprietary CAD/datasheet handling, and client data rights.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Privacy Policy — Data & RFQ Confidentiality",
+  description: PAGE_DESCRIPTION,
+  path: "/privacy-policy",
+});
 
 const SECTIONS = [
   {
@@ -175,8 +184,22 @@ const PRIVACY_FAQS = [
 ];
 
 export default function PrivacyPolicyPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Privacy Policy", path: "/privacy-policy" },
+  ]);
+  const pageJsonLd = buildWebPageJsonLd({
+    name: "Privacy Policy — GSB Export",
+    description: PAGE_DESCRIPTION,
+    path: "/privacy-policy",
+    type: "WebPage",
+  });
+
   return (
-    <LegalPageShell
+    <>
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={pageJsonLd} />
+      <LegalPageShell
       badge="Legal & Data Governance"
       title="Privacy Policy"
       subtitle="How GSB Export collects, safeguards, and processes corporate contact records, thermal process parameters, and uploaded engineering drawings submitted through our global RFQ and inquiry systems."
@@ -676,5 +699,6 @@ export default function PrivacyPolicyPage() {
         items={PRIVACY_FAQS}
       />
     </LegalPageShell>
+    </>
   );
 }

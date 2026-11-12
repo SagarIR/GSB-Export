@@ -1,26 +1,54 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Clock, ArrowRight, FileText, CheckCircle2 } from "lucide-react";
+import { Clock, ArrowRight } from "lucide-react";
 import { ARTICLES } from "@/content/resources";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Technical Resources & Thermal Guides | Knowledge Base | GSB Export",
-  description:
-    "Authoritative technical articles on industrial heat exchangers: LMTD calculation, metallurgy selection, Shell & Tube vs Plate comparison, and maintenance.",
-};
+const PAGE_DESCRIPTION =
+  "Technical heat exchanger engineering guides: LMTD calculation, Shell & Tube vs Plate comparisons, corrosion metallurgy selection, and preventive maintenance.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Technical Resources & Heat Exchanger Guides",
+  description: PAGE_DESCRIPTION,
+  path: "/resources",
+  keywords: [
+    "Heat Exchanger Engineering Guides",
+    "LMTD Calculation Guide",
+    "Shell and Tube vs Plate Heat Exchanger",
+    "Heat Exchanger Material Selection",
+  ],
+});
 
 export default function ResourcesPage() {
-  const categories = ["All", "Fundamentals", "Comparison", "Engineering Design", "Maintenance & Operations"];
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Technical Resources", path: "/resources" },
+  ]);
+  const collectionJsonLd = buildWebPageJsonLd({
+    name: "Technical Resources & Heat Exchanger Guides",
+    description: PAGE_DESCRIPTION,
+    path: "/resources",
+    type: "CollectionPage",
+  });
 
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={collectionJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-16 sm:py-20 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
+            <BannerBreadcrumb items={[{ label: "Technical Resources" }]} />
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Engineering Knowledge Base
             </span>

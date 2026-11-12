@@ -1,25 +1,54 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import Link from "next/link";
-import { ShieldCheck, FileCheck, Clock, CheckCircle2, Building2, PhoneCall, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { RfqForm } from "@/components/forms/RfqForm";
 import { Container } from "@/components/ui/Container";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { COMPANY_INFO } from "@/content/company";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Request a Quote (RFQ) | Industrial Heat Exchanger Sizing & Pricing | GSB Export",
-  description:
-    "Submit your technical requirements, operating pressures, temperatures, and drawings for custom industrial heat exchangers. Fast engineering review within 1-2 business days.",
-};
+const PAGE_DESCRIPTION =
+  "Submit thermal duty parameters, operating pressures, temperatures, and engineering drawings for custom heat exchanger sizing and itemized RFQ quotation.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Request a Quote (RFQ) — Heat Exchanger Sizing",
+  description: PAGE_DESCRIPTION,
+  path: "/request-a-quote",
+  keywords: [
+    "Heat Exchanger RFQ",
+    "Request Heat Exchanger Quote India",
+    "Custom Thermal Sizing Proposal",
+  ],
+});
 
 export default function RequestAQuotePage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Request a Quote", path: "/request-a-quote" },
+  ]);
+  const pageJsonLd = buildWebPageJsonLd({
+    name: "Request a Quotation (RFQ)",
+    description: PAGE_DESCRIPTION,
+    path: "/request-a-quote",
+    type: "WebPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={pageJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-14 sm:py-18 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
+            <BannerBreadcrumb items={[{ label: "Request a Quote (RFQ)" }]} />
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Direct Technical Coordination
             </span>

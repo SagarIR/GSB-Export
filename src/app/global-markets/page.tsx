@@ -1,24 +1,55 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Globe, Ship, Anchor, FileCheck, CheckCircle2, ShieldCheck, ArrowRight, MapPin } from "lucide-react";
+import { Ship, ShieldCheck } from "lucide-react";
 import { COMPANY_INFO } from "@/content/company";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Global Markets & Export Corridors | International Supply | GSB Export",
-  description:
-    "Explore GSB Export's target international markets across the Middle East, Southeast Asia, Africa, and Europe, alongside our export documentation and shipping capabilities.",
-};
+const PAGE_DESCRIPTION =
+  "Exporting industrial heat exchangers from Vadodara via Mundra, Hazira & JNPT ports to the Middle East, Southeast Asia, Africa & Europe under Incoterms 2020.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Global Export Markets & Logistics Corridors",
+  description: PAGE_DESCRIPTION,
+  path: "/global-markets",
+  keywords: [
+    "Heat Exchanger Export India",
+    "Heat Exchanger Supplier UAE Saudi Oman",
+    "Incoterms 2020 Industrial Export",
+    "Mundra JNPT Engineering Export",
+  ],
+});
 
 export default function GlobalMarketsPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Global Markets", path: "/global-markets" },
+  ]);
+  const pageJsonLd = buildWebPageJsonLd({
+    name: "Global Markets & Export Corridors",
+    description: PAGE_DESCRIPTION,
+    path: "/global-markets",
+    type: "WebPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={pageJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-16 sm:py-20 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
+            <BannerBreadcrumb items={[{ label: "Global Markets" }]} />
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Export Logistics &amp; Corridors
             </span>

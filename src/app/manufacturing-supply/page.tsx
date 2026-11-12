@@ -1,24 +1,55 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PackageCheck, Ship, ShieldCheck, Cog, CheckCircle2, ArrowRight, Layers, FileText } from "lucide-react";
+import { ShieldCheck, CheckCircle2 } from "lucide-react";
 import { CAPABILITIES } from "@/content/capabilities";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Manufacturing & Supply Capabilities | Sourcing Workflow & Export | GSB Export",
-  description:
-    "Discover GSB Export's international supply chain workflow: technical evaluation, specialized partner facility selection, fabrication oversight, testing, and seaworthy export packing.",
-};
+const PAGE_DESCRIPTION =
+  "End-to-end Indian heat exchanger supply workflow: thermal sizing, partner facility vetting, CNC tubesheet drilling, orbital welding, NDT, and ISPM 15 export packing.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Manufacturing Coordination & Export Supply Workflow",
+  description: PAGE_DESCRIPTION,
+  path: "/manufacturing-supply",
+  keywords: [
+    "Heat Exchanger Manufacturing India",
+    "Pressure Vessel Fabrication Gujarat",
+    "ISPM 15 Export Packing",
+    "Heat Exchanger Supply Chain",
+  ],
+});
 
 export default function ManufacturingSupplyPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Manufacturing & Supply", path: "/manufacturing-supply" },
+  ]);
+  const pageJsonLd = buildWebPageJsonLd({
+    name: "Manufacturing & Supply Capabilities",
+    description: PAGE_DESCRIPTION,
+    path: "/manufacturing-supply",
+    type: "WebPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={pageJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-16 sm:py-20 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
+            <BannerBreadcrumb items={[{ label: "Manufacturing & Supply" }]} />
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Sourcing &amp; Export Infrastructure
             </span>

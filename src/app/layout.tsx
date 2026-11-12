@@ -2,18 +2,23 @@ import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { COMPANY_INFO } from "@/content/company";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  SITE_URL,
+  DEFAULT_OG_IMAGE,
+  buildOrganizationAndWebsiteJsonLd,
+} from "@/lib/seo";
 
 export const viewport: Viewport = {
-  themeColor: "#10263D",
+  themeColor: "#0A1C33",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://gsbexport.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "GSB Export | Industrial Heat Exchanger Solutions & Supply",
+    default: "GSB Export | Industrial Heat Exchanger Supplier & Exporter India",
     template: "%s | GSB Export",
   },
   description:
@@ -31,18 +36,43 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "GSB Export" }],
   creator: "GSB Export",
+  publisher: "GSB Export",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://gsbexport.com",
-    title: "GSB Export | Industrial Heat Exchanger Solutions & Supply",
-    description:
-      "Reliable sourcing, technical coordination and quality-focused export of industrial heat exchangers from India.",
     siteName: "GSB Export",
+    title: "GSB Export | Industrial Heat Exchanger Supplier & Exporter India",
+    description:
+      "Reliable sourcing, technical coordination and quality-focused export of industrial heat exchangers from Vadodara, India.",
+    images: [
+      {
+        url: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
+        alt: "GSB Export — Industrial Heat Exchanger Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GSB Export | Industrial Heat Exchanger Supplier & Exporter India",
+    description:
+      "Reliable sourcing, technical coordination and quality-focused export of industrial heat exchangers from Vadodara, India.",
+    images: [`${SITE_URL}${DEFAULT_OG_IMAGE}`],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   icons: {
     icon: [
@@ -63,61 +93,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: COMPANY_INFO.name,
-    legalName: COMPANY_INFO.legalName,
-    url: "https://gsbexport.com",
-    logo: "https://gsbexport.com/logo/gsb-logo.png",
-    description: COMPANY_INFO.heroSupportText,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: COMPANY_INFO.headquarters.city,
-      addressRegion: COMPANY_INFO.headquarters.state,
-      addressCountry: COMPANY_INFO.headquarters.countryCode,
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "Customer Support & Technical Sales",
-      email: COMPANY_INFO.contact.email,
-      telephone: COMPANY_INFO.contact.phone,
-    },
-    makesOffer: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Product",
-          name: "Shell and Tube Heat Exchanger",
-          description: "High-pressure, ASME/TEMA compliant shell and tube heat exchangers for refining and chemical processing.",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Product",
-          name: "Plate Heat Exchanger",
-          description: "Compact gasketed and welded plate heat exchangers for dairy, food, and HVAC district cooling.",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Product",
-          name: "Air-Cooled Heat Exchanger",
-          description: "Water-free fin-fan air-cooled heat exchangers for power plants and desert gas compression.",
-        },
-      },
-    ],
-  };
+  const orgAndSiteJsonLd = buildOrganizationAndWebsiteJsonLd();
 
   return (
     <html lang="en">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={orgAndSiteJsonLd} />
       </head>
       <body className="min-h-screen flex flex-col font-sans text-graphite bg-white antialiased">
         <Header />

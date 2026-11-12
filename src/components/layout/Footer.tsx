@@ -22,6 +22,7 @@ export function Footer() {
                 alt="GSB Export — Industrial Heat Exchanger Solutions"
                 width={260}
                 height={85}
+                sizes="220px"
                 className="w-auto h-9 sm:h-10 object-contain"
               />
             </Link>

@@ -1,29 +1,60 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ShieldCheck, Compass, Target, Award, CheckCircle2, ArrowRight, FileText, Globe2, Building2 } from "lucide-react";
+import { ShieldCheck, Compass, Target, Building2 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { COMPANY_INFO } from "@/content/company";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us | Industrial Heat Exchanger Exporter & Technical Partner | GSB Export",
-  description:
-    "Learn about GSB Export: our mission, technical coordination model, commitment to quality, and role connecting international buyers with certified heat exchanger manufacturing in India.",
-};
+const PAGE_DESCRIPTION =
+  "Learn about GSB Export in Vadodara, India: our thermal engineering coordination model, partner facility vetting, ASME/TEMA compliance, and export oversight.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "About Us — Thermal Engineering & Export Partner",
+  description: PAGE_DESCRIPTION,
+  path: "/about-us",
+  keywords: [
+    "GSB Export Vadodara",
+    "Industrial Heat Exchanger Exporter India",
+    "Heat Exchanger Technical Coordination",
+    "ASME TEMA Supply Partner Gujarat",
+  ],
+});
 
 export default function AboutUsPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/about-us" },
+  ]);
+  const aboutPageJsonLd = buildWebPageJsonLd({
+    name: "About GSB Export",
+    description: PAGE_DESCRIPTION,
+    path: "/about-us",
+    type: "AboutPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={aboutPageJsonLd} />
+
       {/* Page Header Banner */}
       <section className="bg-navy py-16 sm:py-20 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
+            <BannerBreadcrumb items={[{ label: "About Us" }]} />
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Company Overview &amp; Principles
             </span>
             <h1 className="text-h1 font-bold text-white leading-tight">
-              About Us
+              About GSB Export
             </h1>
             <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed mb-0">
               Industrial heat exchanger solutions, technical coordination, and dependable international supply coordination based in Gujarat, India.
@@ -216,6 +247,7 @@ export default function AboutUsPage() {
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
               <Link href="/products" className="btn-outline-white text-sm font-bold px-5 py-2.5 rounded-full">Explore Equipment</Link>
+              <Link href="/quality-assurance" className="btn-outline-white text-sm font-bold px-5 py-2.5 rounded-full">Quality &amp; ITP</Link>
               <Link href="/request-a-quote" className="btn-copper text-sm font-bold px-5 py-2.5 rounded-full">Request a Quote</Link>
             </div>
           </div>

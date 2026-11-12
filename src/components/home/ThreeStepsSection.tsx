@@ -1,18 +1,15 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRight, CheckCircle2, Sliders, ShieldCheck, Clock, Zap } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, ShieldCheck, Clock } from "lucide-react";
 
 export function ThreeStepsSection() {
   const router = useRouter();
-  const sectionRef = useRef<HTMLDivElement>(null);
 
   const [calcData, setCalcData] = useState({
-    category: "Shell and Tube Heat Exchanger",
+    category: "Shell & Tube Heat Exchanger",
     fluid: "Hydrocarbon Gas / Water",
     temp: "180",
     pressure: "25",
@@ -39,12 +36,8 @@ export function ThreeStepsSection() {
     router.push(`/request-a-quote?${query}`);
   };
 
-  useEffect(() => {
-    // Keep elements fully visible with guaranteed render
-  }, []);
-
   return (
-    <section ref={sectionRef} className="py-16 lg:py-24 bg-white border-b border-neutral-100">
+    <section className="py-16 lg:py-24 bg-white border-b border-neutral-100">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Title & 3 Steps Progression */}
@@ -164,9 +157,9 @@ export function ThreeStepsSection() {
                     onChange={handleInputChange}
                     className="form-input rounded-xl border-neutral-300 bg-neutral-50/50 focus:bg-white"
                   >
-                    <option value="Shell and Tube Heat Exchanger">Shell &amp; Tube Heat Exchanger (TEMA)</option>
+                    <option value="Shell & Tube Heat Exchanger">Shell &amp; Tube Heat Exchanger (TEMA)</option>
                     <option value="Plate Heat Exchanger">Plate Heat Exchanger (Gasketed / Welded)</option>
-                    <option value="Air-Cooled Heat Exchanger">Air-Cooled Heat Exchanger (Fin-Fan)</option>
+                    <option value="Air Cooled Heat Exchanger">Air-Cooled Heat Exchanger (Fin-Fan)</option>
                     <option value="Double Pipe Heat Exchanger">Double Pipe / Hairpin Heat Exchanger</option>
                     <option value="Spiral Heat Exchanger">Spiral Heat Exchanger (Slurry &amp; Viscous)</option>
                   </select>

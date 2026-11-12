@@ -1,34 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, Plus, Minus } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Plus, Minus } from "lucide-react";
+import { HOME_FAQS } from "@/content/home-faq";
 
 export function FaqAccordionSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const faqs = [
-    {
-      q: "What is GSB Export's business and operational model?",
-      a: "GSB Export operates as an industrial thermal solutions supplier, engineering coordinator, and international export partner based in Vadodara, Gujarat, India. Rather than claiming single-plant manufacturing of every category, we coordinate with specialized, pre-audited Indian fabrication bays while our in-house engineers manage thermal sizing, ASME/TEMA verification, stage-wise QA witnessing, and seaworthy export logistics.",
-    },
-    {
-      q: "Can equipment be supplied with ASME and TEMA certification?",
-      a: "Yes. All equipment is engineered in strict compliance with ASME Section VIII Division 1 and TEMA Class R, C, or B standards. When official ASME code stamping is specified, fabrication is executed in partner facilities holding valid ASME U-stamp and National Board accreditations.",
-    },
-    {
-      q: "What quality documentation is included with international orders?",
-      a: "Every shipment is accompanied by a comprehensive technical dossier: Inspection Test Plan (ITP), EN 10204 3.1 Mill Test Certificates for all pressure parts, Positive Material Identification (PMI) logs, NDT reports (Radiography, Ultrasonic, Dye Penetrant), 100% hydrostatic test charts, weld maps, and Certificate of Origin.",
-    },
-    {
-      q: "Which international export destinations and incoterms do you support?",
-      a: "We support EPC contractors and plant operators across the UAE, Saudi Arabia, Oman, Vietnam, Bangladesh, Malaysia, Africa, and Europe. Shipments are professionally packed in ISPM 15 treated seaworthy timber crating and dispatched on Ex-Works, FOB (Nhava Sheva / Mundra), CFR, or CIF terms.",
-    },
-    {
-      q: "How fast can our team receive an engineering quotation?",
-      a: "Once you share your process datasheet (thermal duty, fluid streams, inlet/outlet temperatures, operating pressures, and metallurgy), our thermal engineers complete preliminary sizing and issue a formal itemized technical and commercial proposal within 24 to 48 hours.",
-    },
-  ];
 
   const toggle = (idx: number) => {
     setOpenIndex(openIndex === idx ? null : idx);
@@ -38,7 +15,7 @@ export function FaqAccordionSection() {
     <section className="py-16 lg:py-24 bg-white border-b border-neutral-100">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column matching reference */}
+          {/* Left Column */}
           <div className="lg:col-span-5 space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200/70 inline-block">
               Frequently Asked Questions
@@ -52,12 +29,12 @@ export function FaqAccordionSection() {
             </p>
           </div>
 
-          {/* Right Column: Clean Accordion matching reference */}
+          {/* Right Column: Clean Accordion */}
           <div className="lg:col-span-7 divide-y divide-slate-200/80">
-            {faqs.map((faq, idx) => {
+            {HOME_FAQS.map((faq, idx) => {
               const isOpen = openIndex === idx;
               return (
-                <div key={faq.q} className="py-5 first:pt-0 last:pb-0">
+                <div key={faq.question} className="py-5 first:pt-0 last:pb-0">
                   <button
                     type="button"
                     aria-expanded={isOpen}
@@ -65,7 +42,7 @@ export function FaqAccordionSection() {
                     className="w-full flex items-center justify-between text-left gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F4C81] focus-visible:ring-offset-2 rounded-lg py-1 group"
                   >
                     <span className="text-base sm:text-lg font-bold font-sans text-[#0A1C33] group-hover:text-[#C2410C] transition-colors">
-                      {faq.q}
+                      {faq.question}
                     </span>
                     <span className="w-8 h-8 rounded-full bg-neutral-100 group-hover:bg-orange-50 text-slate-700 group-hover:text-[#C2410C] flex items-center justify-center shrink-0 transition-colors">
                       {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
@@ -74,7 +51,7 @@ export function FaqAccordionSection() {
 
                   {isOpen && (
                     <div className="pt-3 pr-8 text-sm sm:text-base text-slate-700 leading-relaxed font-sans">
-                      {faq.a}
+                      {faq.answer}
                     </div>
                   )}
                 </div>
@@ -86,4 +63,3 @@ export function FaqAccordionSection() {
     </section>
   );
 }
-

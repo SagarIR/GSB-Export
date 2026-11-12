@@ -19,6 +19,13 @@ import {
 import { PRODUCTS, getProductBySlug } from "@/content/products";
 import { INDUSTRIES } from "@/content/industries";
 import { Container } from "@/components/ui/Container";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildProductJsonLd,
+} from "@/lib/seo";
 
 function SectionTitle({
   icon: Icon,
@@ -58,19 +65,26 @@ export function generateMetadata({ params }: ProductPageProps): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) {
     return {
-      title: "Product Not Found | GSB Export",
+      title: "Product Not Found",
+      robots: { index: false, follow: false },
     };
   }
 
-  return {
-    title: `${product.name} | Industrial Heat Exchanger Solutions | GSB Export`,
-    description: product.shortDescription,
-    openGraph: {
-      title: `${product.name} | GSB Export`,
-      description: product.shortDescription,
-      type: "website",
-    },
-  };
+  const description = `${product.shortDescription} ${product.tagline}.`.slice(0, 160);
+
+  return buildPageMetadata({
+    title: product.name,
+    description,
+    path: `/products/${product.slug}`,
+    image: product.image,
+    imageAlt: `${product.name} — ${product.schematicType}`,
+    keywords: [
+      product.name,
+      `${product.name} supplier India`,
+      product.schematicType,
+      "Industrial Heat Exchanger",
+    ],
+  });
 }
 
 export default function ProductDetailPage({ params }: ProductPageProps) {
@@ -106,28 +120,29 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
       : []),
   ];
 
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: product.name, path: `/products/${product.slug}` },
+  ]);
+  const productJsonLd = buildProductJsonLd(product);
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={productJsonLd} />
+
       {/* Product Header & Breadcrumb */}
       <section className="bg-navy py-12 sm:py-16 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-4xl">
-            {/* Breadcrumb */}
-            <nav
-              aria-label="Breadcrumb"
-              className="flex flex-wrap items-center gap-2 text-sm text-slate-200 mb-4"
-            >
-              <Link href="/" className="hover:text-[#FA8540] transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <Link href="/products" className="hover:text-[#FA8540] transition-colors">
-                Products
-              </Link>
-              <span>/</span>
-              <span className="text-[#FA8540] font-semibold">{product.name}</span>
-            </nav>
+            <BannerBreadcrumb
+              items={[
+                { label: "Products", href: "/products" },
+                { label: product.name },
+              ]}
+            />
 
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-3">
               {product.schematicType}
@@ -226,8 +241,9 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                   <div className="relative aspect-[16/10] bg-dot-pattern p-6 sm:p-8 flex items-center justify-center">
                     <Image
                       src={product.image}
-                      alt={`${product.name} Technical Visual`}
+                      alt={`${product.name} (${product.schematicType}) engineering layout`}
                       fill
+                      sizes="(max-width: 1024px) 100vw, 66vw"
                       className="object-contain p-4 sm:p-6 drop-shadow-md"
                       priority
                     />
@@ -531,6 +547,42 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                   </div>
                 </div>
               )}
+
+              {/* Engineering & QA Resources Links */}
+              <div className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm space-y-3">
+                <h3 className="text-sm font-bold text-[#0A1C33] uppercase tracking-wider border-b border-slate-200/80 pb-2.5 mb-2">
+                  Engineering &amp; QA Reference
+                </h3>
+                <ul className="space-y-2.5 text-sm">
+                  <li>
+                    <Link
+                      href="/engineering-solutions"
+                      className="text-[#0F4C81] hover:text-[#C2410C] font-semibold flex items-center justify-between"
+                    >
+                      <span>Thermal Sizing &amp; ASME Alignment</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/quality-assurance"
+                      className="text-[#0F4C81] hover:text-[#C2410C] font-semibold flex items-center justify-between"
+                    >
+                      <span>ITP &amp; Hydrotest Inspection Protocols</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/resources/heat-exchanger-material-selection"
+                      className="text-[#0F4C81] hover:text-[#C2410C] font-semibold flex items-center justify-between"
+                    >
+                      <span>Metallurgy Selection Guide</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
 
               {/* Back to Products */}
               <div className="text-center pt-1">

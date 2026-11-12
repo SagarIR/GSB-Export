@@ -27,8 +27,20 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileEngineeringOpen, setMobileEngineeringOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  const capabilityLinks = [
+    { href: "/engineering-solutions", label: "Engineering Solutions", desc: "Thermal sizing, LMTD & ASME/TEMA compliance" },
+    { href: "/quality-assurance", label: "Quality Assurance & ITP", desc: "EN 10204 3.1, NDT & hydrotest witnessing" },
+    { href: "/manufacturing-supply", label: "Manufacturing & Supply", desc: "Partner fabrication & ISPM 15 export packing" },
+    { href: "/global-markets", label: "Global Export Corridors", desc: "Mundra, Hazira & JNPT shipping under Incoterms" },
+    { href: "/projects", label: "Projects & Applications", desc: "Illustrative industrial case studies" },
+    { href: "/resources", label: "Technical Resources", desc: "Heat exchanger design & selection guides" },
+  ];
+
+  const isCapabilityRoute = capabilityLinks.some((item) => pathname.startsWith(item.href));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +54,7 @@ export function Header() {
   useEffect(() => {
     setMobileMenuOpen(false);
     setMobileProductsOpen(false);
+    setMobileEngineeringOpen(false);
   }, [pathname]);
 
   return (
@@ -102,6 +115,7 @@ export function Header() {
                 alt="GSB Export — Industrial Heat Exchanger Solutions"
                 width={280}
                 height={93}
+                sizes="(max-width: 640px) 144px, 224px"
                 className="w-auto h-9 sm:h-11 object-contain"
                 priority
               />
@@ -248,6 +262,41 @@ export function Header() {
               Industries
             </Link>
 
+            {/* Engineering & Resources Dropdown */}
+            <div className="relative group">
+              <Link
+                href="/engineering-solutions"
+                className={cn(
+                  "inline-flex items-center gap-1 px-2.5 py-2 rounded-md hover:text-[#C2410C] transition-colors whitespace-nowrap relative",
+                  isCapabilityRoute
+                    ? "text-navy font-bold after:absolute after:bottom-0 after:left-2.5 after:right-2.5 after:h-0.5 after:bg-[#F36C21] after:rounded-full"
+                    : "text-graphite"
+                )}
+              >
+                <span>Capabilities</span>
+                <ChevronDown className="w-3.5 h-3.5 text-slate-600 group-hover:text-[#C2410C] group-hover:rotate-180 group-focus-within:rotate-180 transition-transform duration-200" />
+              </Link>
+
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 w-[520px] max-w-[calc(100vw-2rem)] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 transform group-hover:translate-y-0 group-focus-within:translate-y-0 -translate-y-1 z-50 pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto">
+                <div className="bg-white rounded-2xl shadow-2xl border border-slate-200/90 overflow-hidden p-3 sm:p-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {capabilityLinks.map((cap) => (
+                    <Link
+                      key={cap.href}
+                      href={cap.href}
+                      className="p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200/80 transition-all group/cap"
+                    >
+                      <div className="text-sm font-bold text-[#0A1C33] group-hover/cap:text-[#C2410C] transition-colors">
+                        {cap.label}
+                      </div>
+                      <div className="text-xs text-slate-600 mt-0.5 line-clamp-1">
+                        {cap.desc}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             {/* Contact */}
             <Link
               href="/contact-us"
@@ -345,6 +394,37 @@ export function Header() {
             <Link href="/industries" className="py-3.5 text-navy hover:text-[#C2410C]">
               Industries
             </Link>
+
+            {/* Capabilities Accordion in Mobile Menu */}
+            <div className="py-3.5">
+              <button
+                type="button"
+                aria-expanded={mobileEngineeringOpen}
+                className="w-full flex items-center justify-between text-navy cursor-pointer font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F4C81] rounded"
+                onClick={() => setMobileEngineeringOpen(!mobileEngineeringOpen)}
+              >
+                <span>Capabilities &amp; Resources</span>
+                <ChevronDown
+                  className={cn(
+                    "w-4 h-4 transition-transform duration-200",
+                    mobileEngineeringOpen ? "rotate-180 text-[#C2410C]" : "text-slate-600"
+                  )}
+                />
+              </button>
+              {mobileEngineeringOpen && (
+                <div className="pl-3 pt-3 space-y-2.5 border-l-2 border-[#F36C21]/50 mt-2">
+                  {capabilityLinks.map((cap) => (
+                    <Link
+                      key={cap.href}
+                      href={cap.href}
+                      className="block py-1.5 text-sm text-graphite hover:text-[#C2410C] font-medium"
+                    >
+                      {cap.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <Link href="/contact-us" className="py-3.5 text-navy hover:text-[#C2410C]">
               Contact Us

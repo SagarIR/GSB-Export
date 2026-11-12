@@ -4,39 +4,64 @@ import {
   ShieldCheck,
   Award,
   Layers,
+  ArrowRight,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { IndustriesCatalogue } from "@/components/industries/IndustriesCatalogue";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Industries | Industrial Heat Exchanger Applications | GSB Export",
-  description:
-    "Explore precision heat exchanger solutions engineered for oil & gas, petrochemical, pharmaceutical, dairy, food, power generation, district cooling, and wastewater industries.",
-};
+const PAGE_DESCRIPTION =
+  "Heat exchanger solutions engineered for oil & gas, chemical, pharmaceutical, dairy, food, power generation, HVAC district cooling & wastewater treatment.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Industries & Process Applications",
+  description: PAGE_DESCRIPTION,
+  path: "/industries",
+  keywords: [
+    "Industrial Heat Exchanger Applications",
+    "Oil and Gas Heat Exchangers",
+    "Chemical Process Heat Exchangers",
+    "Pharmaceutical Sanitary Heat Exchangers",
+    "Power Generation Condensers",
+  ],
+});
 
 export default function IndustriesPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Industries", path: "/industries" },
+  ]);
+  const collectionJsonLd = buildWebPageJsonLd({
+    name: "Industries & Process Applications",
+    description: PAGE_DESCRIPTION,
+    path: "/industries",
+    type: "CollectionPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={collectionJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-14 sm:py-18 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-4xl">
-            {/* Breadcrumb */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-slate-200 mb-4">
-              <Link href="/" className="hover:text-[#FA8540] transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#FA8540] font-semibold">Industries</span>
-            </nav>
+            <BannerBreadcrumb items={[{ label: "Industries" }]} />
 
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Sector Engineering Solutions
             </span>
 
             <h1 className="text-h1 font-bold text-white leading-tight font-sans">
-              Industries
+              Industries We Serve
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed max-w-3xl">
@@ -80,6 +105,34 @@ export default function IndustriesPage() {
 
           {/* Interactive Industries Catalogue */}
           <IndustriesCatalogue />
+
+          {/* Application Benchmarks & Technical Resources Cross-Links */}
+          <div className="mt-14 p-6 sm:p-8 bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-1.5 max-w-2xl">
+              <h2 className="text-h3 font-bold text-[#0A1C33]">
+                Explore Technical Benchmarks &amp; Application Guides
+              </h2>
+              <p className="text-sm sm:text-base text-slate-700 mb-0">
+                Inspect illustrative process applications across refining, dairy, and wastewater, or review our sector-specific thermal engineering articles.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <Link
+                href="/projects"
+                className="btn-outline-navy text-sm font-semibold px-5 py-2.5 rounded-full inline-flex items-center gap-1.5"
+              >
+                <span>Projects &amp; Applications</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link
+                href="/resources/heat-exchanger-applications-sectors"
+                className="btn-copper text-sm font-bold px-5 py-2.5 rounded-full inline-flex items-center gap-1.5"
+              >
+                <span>Sector Application Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
         </Container>
       </section>
     </div>

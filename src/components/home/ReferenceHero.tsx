@@ -7,21 +7,15 @@ import {
   ShieldCheck,
   CheckCircle2,
   Cpu,
-  Layers,
   Activity,
   Box,
   Truck,
-  Sparkles,
   FileCheck2,
 } from "lucide-react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function ReferenceHero() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const leftCardRef = useRef<HTMLDivElement>(null);
-  const rightCardRef = useRef<HTMLDivElement>(null);
-  const centerNodeRef = useRef<HTMLDivElement>(null);
   const floatPill1Ref = useRef<HTMLDivElement>(null);
   const floatPill2Ref = useRef<HTMLDivElement>(null);
   const floatPill3Ref = useRef<HTMLDivElement>(null);
@@ -29,41 +23,13 @@ export function ReferenceHero() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    gsap.registerPlugin(ScrollTrigger);
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      // Intro Stagger Animation for Hero Text
-      gsap.from(".hero-anim-item", {
-        opacity: 0,
-        y: 28,
-        duration: 0.9,
-        stagger: 0.12,
-        ease: "power3.out",
-      });
-
-      // Twin Cards entrance
-      gsap.from([leftCardRef.current, rightCardRef.current], {
-        opacity: 0,
-        y: 40,
-        scale: 0.96,
-        duration: 1.1,
-        stagger: 0.2,
-        delay: 0.4,
-        ease: "power3.out",
-      });
-
-      // Center Node entrance
-      if (centerNodeRef.current) {
-        gsap.from(centerNodeRef.current, {
-          scale: 0,
-          opacity: 0,
-          duration: 0.8,
-          delay: 0.8,
-          ease: "back.out(1.7)",
-        });
-      }
-
-      // Gentle continuous floating animation on micro-badges
+      // Gentle continuous floating animation on decorative micro-badges only (keeps LCP text visible immediately)
       const floatingPills = [
         floatPill1Ref.current,
         floatPill2Ref.current,
@@ -107,7 +73,7 @@ export function ReferenceHero() {
 
           {/* Master Heading */}
           <h1 className="hero-anim-item text-h1 font-bold font-sans text-[#0A1C33] leading-[1.15]">
-            Run international heat exchanger operations on one{" "}
+            Industrial heat exchanger solutions on one global{" "}
             <span className="text-[#D9550D] font-bold underline decoration-[#F36C21]/40 decoration-2 underline-offset-8">
               standard.
             </span>
@@ -193,7 +159,6 @@ export function ReferenceHero() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch relative">
             {/* Center Connecting Bridge & Node (visible on desktop) */}
             <div
-              ref={centerNodeRef}
               className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex-col items-center justify-center"
             >
               <div className="w-14 h-14 rounded-full bg-white shadow-xl border-2 border-[#F36C21] flex items-center justify-center relative group">
@@ -207,7 +172,6 @@ export function ReferenceHero() {
 
             {/* Left Card: Process Parameter Sizing Engine */}
             <div
-              ref={leftCardRef}
               className="bg-white rounded-2xl border border-slate-200/90 shadow-xl p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden"
             >
               {/* Card Window Header */}
@@ -283,7 +247,6 @@ export function ReferenceHero() {
 
             {/* Right Card: Manufacturing & Export Dispatch Bay */}
             <div
-              ref={rightCardRef}
               className="bg-white rounded-2xl border border-slate-200/90 shadow-xl p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden"
             >
               {/* Card Window Header */}

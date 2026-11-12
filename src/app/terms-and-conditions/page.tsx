@@ -9,12 +9,21 @@ import { COMPANY_INFO } from "@/content/company";
 import { LegalPageShell } from "@/components/legal/LegalPageShell";
 import { LegalSection } from "@/components/legal/LegalSection";
 import { LegalFaqAccordion } from "@/components/legal/LegalFaqAccordion";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions | Commercial Coordination & Website Use",
-  description:
-    "Review GSB Export's website Terms and Conditions governing indicative thermal specifications, partner manufacturing positioning, non-binding RFQ submissions, Incoterms 2020, and Indian jurisdiction.",
-};
+const PAGE_DESCRIPTION =
+  "Review GSB Export's Terms & Conditions governing indicative thermal specifications, partner manufacturing coordination, non-binding RFQs & Indian law.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Terms & Conditions — Commercial & Website Use",
+  description: PAGE_DESCRIPTION,
+  path: "/terms-and-conditions",
+});
 
 const SECTIONS = [
   {
@@ -112,8 +121,22 @@ const TERMS_FAQS = [
 ];
 
 export default function TermsAndConditionsPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Terms & Conditions", path: "/terms-and-conditions" },
+  ]);
+  const pageJsonLd = buildWebPageJsonLd({
+    name: "Terms & Conditions — GSB Export",
+    description: PAGE_DESCRIPTION,
+    path: "/terms-and-conditions",
+    type: "WebPage",
+  });
+
   return (
-    <LegalPageShell
+    <>
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={pageJsonLd} />
+      <LegalPageShell
       badge="Commercial & Legal Framework"
       title="Terms & Conditions"
       subtitle="Terms of website access, preliminary engineering disclosures, partner manufacturing coordination, non-binding RFQ submissions, and governing commercial law for GSB Export."
@@ -516,5 +539,6 @@ export default function TermsAndConditionsPage() {
         items={TERMS_FAQS}
       />
     </LegalPageShell>
+    </>
   );
 }

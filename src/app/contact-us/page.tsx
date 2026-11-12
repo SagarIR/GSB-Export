@@ -1,25 +1,54 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Mail, Clock, MapPin, Phone, ShieldCheck, ArrowRight, FileText } from "lucide-react";
+import { Mail, Clock, MapPin, Phone, ShieldCheck, FileText } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { COMPANY_INFO } from "@/content/company";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BannerBreadcrumb } from "@/components/ui/BannerBreadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildWebPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact Us | Engineering Coordination & Export Desk | GSB Export",
-  description:
-    "Get in touch with GSB Export for general inquiries, technical coordination questions, and industrial heat exchanger supply consultation.",
-};
+const PAGE_DESCRIPTION =
+  "Contact GSB Export in Vadodara, Gujarat, India for general inquiries, thermal engineering coordination, and industrial heat exchanger supply consultation.";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Contact Us — Engineering & Export Desk",
+  description: PAGE_DESCRIPTION,
+  path: "/contact-us",
+  keywords: [
+    "Contact GSB Export",
+    "Heat Exchanger Supplier Vadodara Contact",
+    "Industrial Thermal Equipment Inquiry India",
+  ],
+});
 
 export default function ContactUsPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Contact Us", path: "/contact-us" },
+  ]);
+  const contactJsonLd = buildWebPageJsonLd({
+    name: "Contact GSB Export",
+    description: PAGE_DESCRIPTION,
+    path: "/contact-us",
+    type: "ContactPage",
+  });
+
   return (
     <div className="bg-white">
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={contactJsonLd} />
+
       {/* Header Banner */}
       <section className="bg-navy py-16 sm:py-20 text-white relative overflow-hidden border-b border-steel/30">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl">
+            <BannerBreadcrumb items={[{ label: "Contact Us" }]} />
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-copper/20 text-copper-light border border-copper/40 mb-4">
               Get in Touch
             </span>

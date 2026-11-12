@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, FileText, ArrowRight, Clock, ShieldCheck, Mail } from "lucide-react";
+import { CheckCircle2, ArrowRight, Clock, Mail } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { CopyReferenceButton } from "@/components/ui/CopyReferenceButton";
 import { COMPANY_INFO } from "@/content/company";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Thank You | Request Submitted Successfully",
-  description: "Your Request for Quotation or message has been successfully received by GSB Export.",
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Inquiry Received",
+  description:
+    "Your Request for Quotation or message has been successfully received by GSB Export.",
+  path: "/thank-you",
+  noIndex: true,
+});
 
 interface ThankYouPageProps {
   searchParams: {
